@@ -1,0 +1,160 @@
+! //////////////////////////////////////////////////////////////////////////////////////////////////
+! //
+! // Notice : Copyright (C) 2017, Devuna
+! //         Distributed under the MIT License (https://opensource.org/licenses/MIT)
+! //
+! //    This file is part of Devuna-KwikSourceSearch (https://github.com/Devuna/Devuna-KwikSourceSearch)
+! //
+! //    Devuna-KwikSourceSearch is free software: you can redistribute it and/or modify
+! //    it under the terms of the MIT License as published by
+! //    the Open Source Initiative.
+! //
+! //    Devuna-KwikSourceSearch is distributed in the hope that it will be useful,
+! //    but WITHOUT ANY WARRANTY; without even the implied warranty of
+! //    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+! //    MIT License for more details.
+! //
+! //    You should have received a copy of the MIT License
+! //    along with Devuna-KwikSourceSearch.  If not, see <https://opensource.org/licenses/MIT>.
+! //
+! //////////////////////////////////////////////////////////////////////////////////////////////////
+! //
+! //   SSSS S  BBBBBB
+! //  S    SS   B    B
+! //  S     S   B    B
+! //  S         B    B
+! //   SSS      BBBBB         SetupBuilder 10 Install Project Script
+! //      SS    B    B
+! //        S   B    B        Created with build: 10.0.5452
+! //  S     S   B    B
+! //  SS    S   B    B
+! //  S SSSS   BBBBBB
+! //
+! //////////////////////////////////////////////////////////////////////////////////////////////////
+  
+[ Support Files ]
+! --- Required temporary installation files ---
+  
+  
+[ Billboards ]
+! --- Billboard files ---
+  
+  
+[ Initialize Setup ]
+! --- Define commonly used constants ---
+#include script "Common Definitions.sbi"
+Set Variable %_UPDATE_% to "0"
+Set Variable %_DESKTOP_SHORTCUT_% to "0"
+Set Variable %_SB_INSTALLDIR% to ""
+Set Variable %_DOCOPY_% to "0"
+Set Variable %_SB_KCR_INSTALLDIR% to ""
+  
+! Important: Initialize default install folder and program group variables
+Set Variable %_SB_INSTALLDIR% to FUNCTION:Detect Previous Version ("{9E80B820-A3B7-11E3-72AE-415EB4A72CD6}")
+If %_SB_ERRORCODE% Equals "0" Then
+   Set Variable %_UPDATE_% to "0"
+   Set Variable %_SB_INSTALLDIR% to "[INSTALLDIR]"
+   Set Variable %_SB_KCR_INSTALLDIR% to FUNCTION:Detect Previous Version ("{48DC9C60-268A-11E1-3D6C-05B19B714AE1}")
+   If %_SB_ERRORCODE% Does Not Equal "0" Then
+      Set Variable %_DOCOPY_% to "1"
+   End
+End
+Set Variable %_SB_PROGRAMGROUP% to "[PRODUCTNAME]"
+  
+! %_SB_BACKUPDIR% holds the path that all backup files will be copied to when overwritten
+Set Variable %_SB_BACKUPDIR% to "%_SB_INSTALLDIR%\BACKUP"
+  
+  
+[ Features ]
+! If features are enabled, %_SB_FEATURESID% holds all selections separated by a vertical bar "|"
+! Warning: It is not recommended to manually modify the %_SB_FEATURESID% variable!
+  
+  
+[ Setup Types ]
+! If setup types are enabled, %_SB_SETUPTYPEID% holds the selected type
+! Warning: It is not recommended to manually modify the %_SB_SETUPTYPEID% variable!
+  
+::Define Setup Type ("Typical")
+::Define Setup Type ("Minimal")
+::Define Setup Type ("Custom") [Custom Type]
+  
+If %_UPDATE_% Equals "0" Then
+  
+   Define Wizard Dialog "#1" (Welcome)
+[ User Interface ]
+   ! Wizard dialog definition(s)
+   Define Wizard Dialog "#2" (License Agreement)
+   Define Wizard Dialog "#3" (Select Install Folder) (%_SB_INSTALLDIR%)
+   Define Wizard Dialog "#4" (Check Boxes) (%_DESKTOP_SHORTCUT_%)
+   Define Wizard Dialog "#5" (Ready to Install) ()
+  
+   ! The Wizard Loop displays the dialog screens that the user sees in the installation
+   Loop Wizard (Abort Dialog Active)
+   End
+End
+  
+! Display progress dialog
+Progress Dialog: Display ()
+  
+! Create installation .log
+Create Installation App & Log ("[UNINSTALL_LOG]")
+  
+[ Create Folders ]
+  
+  
+[ Install Files ]
+  
+Install File(s) "C:\GitHub\Devuna-KwikSourceSearch\bin\*.*" to "%_SB_INSTALLDIR%\*.*" [Feature:Always Install]
+Install File(s) "C:\GitHub\Devuna-KwikSourceSearch\help\kss.chm" to "%_SB_INSTALLDIR%\kss.chm" [Feature:Always Install]
+  
+[ Create Shortcuts ]
+  
+If %_DESKTOP_SHORTCUT_% Equals "1" on Position "1" Then
+   ::Create Shortcut "KiSS" in "Desktop\KiSS" [Feature:Always Install]
+Else
+End
+If %_UPDATE_% Equals "0" Then
+   ::Create Program Folder "Kwik Source Search" in "Programs\Kwik Source Search" [Feature:Always Install]
+   ::Create Shortcut "Kwik Source Search" in "Programs\Kwik Source Search\Kwik Source Search" [Feature:Always Install]
+   ::Create Shortcut "Kwik Source Search Help" in "Programs\Kwik Source Search\Kwik Source Search Help" [Feature:Always Install]
+   ::Create Shortcut "Uninstall Kwik Source Search" in "Programs\Kwik Source Search\Uninstall Kwik Source Search" [Feature:Always Install]
+   If %_DOCOPY_% Equals "1" Then
+      Create Folder ("%_CSIDL_APPDATA%\Devuna")
+      Create Folder ("%_CSIDL_APPDATA%\Devuna\KSS")
+      Copy File(s) from "%_CSIDL_APPDATA%\Keystone Computer Resources\KSS\*.*" to "%_CSIDL_APPDATA%\Devuna\KSS\" [Permanent]
+   End
+End
+  
+[ Edit Registry ]
+  
+  
+[ Edit INI Files ]
+  
+  
+[ Modify System ]
+  
+  
+[ Execute Programs ]
+  
+  
+[ Finalize Setup ]
+! Register all queued pending file operations
+Register all pending file operations ()
+  
+! Register all queued Clarion Template files
+Register all pending Clarion Templates ()
+  
+If %_UPDATE_% Equals "0" Then
+  
+   Run Program ("%_SB_INSTALLDIR%\kss.exe", "") [Feature:Always Install] [Non-Elevated] [At Finish: Run Kwik Source Search once installation exits]
+  
+[ Final User Interface ]
+   ! Final wizard dialog definition(s)
+   Define Wizard Dialog "#1" (Finish) ()
+  
+   ! The Wizard Loop displays the dialog screens that the user sees in the installation
+   Loop Wizard (Abort Dialog Active)
+   End
+Else
+   Run Program ("%_SB_INSTALLDIR%\kss.exe", "") [Feature:Always Install] [Non-Elevated]
+End

@@ -1,0 +1,1994 @@
+!Windows Naming Conventions - used in Clarion prototypes
+!        
+UINT                    EQUATE(UNSIGNED)
+FOURCC                  EQUATE(LONG)
+WCHAR                   EQUATE(BYTE)
+UCHAR                   EQUATE(BYTE)
+CHAR                    EQUATE(BYTE)
+BOOL                    EQUATE(SIGNED)
+BYTE                    EQUATE(BYTE)
+WORD                    EQUATE(USHORT)
+DWORD                   EQUATE(ULONG)
+HANDLE                  EQUATE(UNSIGNED)
+LPVOID                  EQUATE(ULONG)
+PVOID                   EQUATE(ULONG)
+FLOAT                   EQUATE(SREAL)
+LPSTR                   EQUATE(CSTRING)    !Usage:Pass the Label of the LPSTR
+LPCSTR                  EQUATE(CSTRING)    !Usage:Pass the Label of the LPCSTR
+
+ OMIT('_EndOfOmit_',MAX_PATH = 260)
+MAX_PATH            EQUATE(260)
+! _EndOfOmit_
+
+HWND                    EQUATE(HANDLE)
+HINSTANCE               EQUATE(HANDLE)
+HMODULE                 EQUATE(HINSTANCE)
+HTASK                   EQUATE(HANDLE)
+HDC                     EQUATE(HANDLE)
+WPARAM                  EQUATE(UINT)
+LPARAM                  EQUATE(LONG)
+LRESULT                 EQUATE(LONG)
+LPBOOL                  EQUATE(ULONG)
+LPCVOID                 EQUATE(ULONG)
+
+HDIOBJ                  EQUATE(HANDLE)
+HCOLORSPACE             EQUATE(HANDLE)
+HRDVR                   EQUATE(HANDLE)
+HWAVEOUT                EQUATE(HANDLE)
+HWAVEIN                 EQUATE(HANDLE)
+HACCEL                  EQUATE(HANDLE)
+HBITMAP                 EQUATE(HANDLE)
+HPEN                    EQUATE(HANDLE)
+HWINSTA                 EQUATE(HANDLE)
+HBRUSH                  EQUATE(HANDLE)
+HRGN                    EQUATE(HANDLE)
+HKL                     EQUATE(HANDLE)
+HPALETTE                EQUATE(HANDLE)
+HFONT                   EQUATE(HANDLE)
+HHOOK                   EQUATE(HANDLE)
+HDRVR                   EQUATE(HANDLE)
+HDWP                    EQUATE(HANDLE)
+HRSRC                   EQUATE(HANDLE)
+HSTR                    EQUATE(HANDLE)
+HCURSOR                 EQUATE(HANDLE)
+HICON                   EQUATE(HCURSOR)
+HGRN                    EQUATE(HANDLE)
+HMENU                   EQUATE(HANDLE)
+SC_HANDLE               EQUATE(HANDLE)
+HDESK                   EQUATE(HANDLE)
+HENHMETAFILE            EQUATE(HANDLE)
+HSZ                     EQUATE(WORD)
+HMETAFILE               EQUATE(HANDLE)
+HMIDIIN                 EQUATE(HANDLE)
+HMIDIOUT                EQUATE(HANDLE)
+HMMIO                   EQUATE(HANDLE)
+HFILE                   EQUATE(SIGNED)
+LUID                    EQUATE(LONG)
+PLUID                   EQUATE(LONG)
+
+ANYSIZE_ARRAY           EQUATE(1)        
+PHANDLE                 EQUATE(HANDLE)        
+SPHANDLE                EQUATE(HANDLE)        
+LPHANDLE                EQUATE(HANDLE)        
+HGLOBAL                 EQUATE(HANDLE)        
+HLOCAL                  EQUATE(HANDLE)        
+!GLOBALHANDLE           EQUATE(HANDLE)  !Definition creates conflict with GlobalHandle prototype
+LOCALHANDLE             EQUATE(HANDLE)        
+ATOM                    EQUATE(UINT)        
+
+COLORREF                EQUATE(DWORD)                   
+HDDEDATA                EQUATE(DWORD)                   
+HCONV                   EQUATE(DWORD)                   
+HCONVLIST               EQUATE(DWORD)                   
+LONGREAL                EQUATE(REAL)        
+DWORDLONG               EQUATE(REAL)        
+WORDLONG                EQUATE(REAL)        
+LARGE_INTEGER           EQUATE(LONG)        
+ULARGE_INTEGER          EQUATE(ULONG)        
+BOOLEAN                 EQUATE(BYTE)        
+UVERSION                EQUATE(UNSIGNED)
+
+LCID        EQUATE(WORD)
+LIST_ENTRY  GROUP,TYPE
+Flink        LONG
+Blink        LONG
+            END
+
+COORD       GROUP,TYPE
+X               SIGNED
+Y               SIGNED
+            END
+
+  OMIT('EndDefine',_WINAPI_)
+MAX_DEFAULTCHAR     EQUATE(2)
+MAX_LEADBYTES       EQUATE(12)
+  !EndDefine
+
+MAXPNAMELEN         EQUATE(50)
+LANGID              EQUATE(WORD)
+SC_LOCK             EQUATE(LPVOID)
+
+
+XFORM       GROUP,TYPE
+eM11         FLOAT
+eM12         FLOAT
+eM21         FLOAT
+eM22         FLOAT
+eDx          FLOAT
+eDy          FLOAT
+            END
+
+!!BITMAP          GROUP,TYPE
+!!bmType           SIGNED
+!!bmWidth          SIGNED
+!!bmHeight         SIGNED
+!!bmWidthBytes     SIGNED
+!!bmPlanes         WORD
+!!bmBitsPixel      WORD
+!!bmBits           LPVOID
+!!                END
+
+RGBTRIPLE       GROUP,TYPE
+rgbtBlue         BYTE
+rgbtGreen        BYTE
+rgbtRed          BYTE
+                END
+
+!!RGBQUAD        GROUP,TYPE
+!!rgbBlue         BYTE
+!!rgbGreen        BYTE
+!!rgbRed          BYTE
+!!rgbReserved     BYTE
+!!               END
+
+LCSCSTYPE               EQUATE(LONG)
+LCSGAMUTMATCH           EQUATE(LONG)
+FXPT16DOT16             EQUATE(LONG)
+FXPT2DOT30              EQUATE(LONG)
+
+CIEXYZ  GROUP,TYPE
+ciexyzX    FXPT2DOT30
+ciexyzY    FXPT2DOT30
+ciexyzZ    FXPT2DOT30
+        END
+
+CIEXYZTRIPLE    LIKE(CIEXYZ)
+
+LOGCOLORSPACE   GROUP,TYPE
+lcsSignature     DWORD
+lcsVersion       DWORD
+lcsSize          DWORD
+lcsCSType        LCSCSTYPE
+lcsIntent        LCSGAMUTMATCH
+lcsEndpoints     LIKE(CIEXYZTRIPLE)
+lcsGammaRed      DWORD
+lcsGammaGreen    DWORD
+lcsGammaBlue     DWORD
+lcsFilename      CHAR(MAX_PATH)
+               END
+
+BITMAPCOREHEADER        GROUP,TYPE
+bcSize                   DWORD
+bcWidth                  WORD
+bcHeight                 WORD
+bcPlanes                 WORD
+bcBitCount               WORD
+                        END
+
+BI_RGB      EQUATE(0)
+BI_RLE8     EQUATE(1)
+BI_RLE4     EQUATE(2)
+
+!!BITMAPINFOHEADER        GROUP,TYPE
+!!biSize                   DWORD                   
+!!biWidth                  LONG
+!!biHeight                 LONG
+!!biPlanes                 WORD
+!!biBitCount               WORD
+!!biCompression            DWORD
+!!biSizeImage              DWORD
+!!biXPelsPerMeter          LONG
+!!biYPelsPerMeter          LONG
+!!biClrUsed                DWORD
+!!biClrImportant           DWORD
+!!                        END
+
+!!BITMAPINFO      GROUP,TYPE
+!!bmiHeader        LIKE(BITMAPINFOHEADER)
+!!bmiColors        LIKE(RGBQUAD)
+!!                END
+
+BITMAPCOREINFO  GROUP,TYPE
+bmciHeader        LIKE(BITMAPCOREHEADER)
+bmciColors        LIKE(RGBTRIPLE)
+                END
+
+
+BITMAPFILEHEADER       GROUP,TYPE
+bfType                  WORD
+bfSize                  DWORD
+bfReserved1             WORD
+bfReserved2             WORD
+bfOffbits               DWORD
+                       END
+
+FONTSIGNATURE   GROUP,TYPE
+fsUsb            DWORD,DIM(4)
+fsCsb            DWORD,DIM(2)
+                END
+
+CHARSETINFO    GROUP,TYPE
+ciCharset       UINT
+ciACP           UINT
+fs              LIKE(FONTSIGNATURE)
+               END
+
+TCI_SRCCHARSET  EQUATE(1)
+TCI_SRCCODEPAGE EQUATE(2)
+TCI_SRCFONTSIG  EQUATE(3)
+
+LOCALESIGNATURE   GROUP,TYPE
+lsUsb              DWORD,DIM(4)
+lsCsbDefaule       DWORD,DIM(2)
+lsCsbSupported     DWORD,DIM(2)
+                  END
+
+  OMIT('EndDefine',_WINAPI_)
+POINT           GROUP,TYPE
+X                SIGNED
+Y                SIGNED
+                END
+  !EndDefine
+
+RECT    GROUP,TYPE
+left     SIGNED
+top      SIGNED
+right    SIGNED
+bottom   SIGNED
+        END
+RECTL   LIKE(RECT)
+
+  OMIT('EndDefine',_WINAPI_)
+SIZE    GROUP,TYPE
+cx       SIGNED
+cy       SIGNED
+        END
+SIZEL   LIKE(SIZE)
+  !EndDefine
+
+HGDIOBJ         EQUATE(HANDLE)
+
+HANDLETABLE     GROUP,TYPE
+objectHandle     HGDIOBJ
+                END
+
+METARECORD      GROUP,TYPE
+rdSize           DWORD
+rdFuction        WORD
+rdParm           WORD(1)
+                END
+
+METAFILEPICT   GROUP,TYPE
+mm              LONG
+xExt            LONG
+yExt            LONG
+hMF             LONG
+               END
+
+METAHEADER      GROUP,TYPE
+mtType           WORD
+mtHeaderSize     WORD
+mtVersion        WORD
+mtSize           DWORD
+mtNoObjects      WORD
+mtMaxRecord      DWORD
+mtNoParameters   WORD
+                END
+
+ENHMETARECORD    GROUP,TYPE
+iType             DWORD
+nSize             DWORD
+dParam            DWORD,DIM(1)
+                 END
+
+ENHMETAHEADER       GROUP,TYPE
+iType               DWORD
+nSize               DWORD
+rclBounds           LIKE(RECTL)
+rclFrame            LIKE(RECTL)
+dSignature          DWORD
+nVersion            DWORD
+nBytes              DWORD
+nRecords            DWORD
+nHandles            WORD
+sReserved           WORD
+nDescription        DWORD
+offDescription      DWORD
+nPalEntries         DWORD
+szlDevice           LIKE(SIZEL)
+szlMillimeters      LIKE(SIZEL)
+                END
+
+
+TEXTMETRIC           GROUP,TYPE
+tmHeight                LONG
+tmAscent                LONG
+tmDescent               LONG
+tmInternalLeading       LONG
+tmExternalLeading       LONG
+tmAveCharWidth          LONG
+tmMaxCharWidth          LONG
+tmWeight                LONG
+tmOverhang              LONG
+tmDigitizedAspectX      LONG
+tmDigitizedAspectY      LONG
+tmFirstChar             BYTE
+tmLastChar              BYTE
+tmDefaultChar           BYTE
+tmBreakChar             BYTE
+tmItalic                BYTE
+tmUnderlined            BYTE
+tmStruckOut             BYTE
+tmPitchAndFamily        BYTE
+tmCharSet               BYTE
+                END
+
+NEWTEXTMETRIC         GROUP,TYPE
+tmHeight                LONG
+tmAscent                LONG
+tmDescent               LONG
+tmInternalLeading       LONG
+tmExternalLeading       LONG
+tmAveCharWidth          LONG
+tmMaxCharWidth          LONG
+tmWeight                LONG
+tmOverhang              LONG
+tmDigitizedAspectX      LONG
+tmDigitizedAspectY      LONG
+tmFirstChar             BYTE
+tmLastChar              BYTE
+tmDefaultChar           BYTE
+tmBreakChar             BYTE
+tmItalic                BYTE
+tmUnderlined            BYTE
+tmStruckOut             BYTE
+tmPitchAndFamily        BYTE
+tmCharSet               BYTE
+tmFlags                 DWORD
+ntmSizeEM               UINT
+ntmCellHeight           UINT
+ntmAvgWidth             UINT
+                END
+
+NEWTEXTMETRICEX    GROUP,TYPE
+ntmTm                LIKE(NEWTEXTMETRIC)
+ntmFontSig           LIKE(FONTSIGNATURE)
+                    END
+
+PELARRAY        GROUP,TYPE
+paXCount         LONG
+paYCount         LONG
+paXExt           LONG
+paYExt           LONG
+paRGBs           BYTE
+                END
+
+LOGBRUSH        GROUP,TYPE
+lbStyle          UINT
+lbColor          COLORREF
+lbHatch          LONG
+                END
+
+PATTERN          LIKE(LOGBRUSH)
+
+LOGPEN          GROUP,TYPE
+lopnStyle        UINT
+lopnWidth        LIKE(POINT)
+lopnColor        COLORREF
+                END
+
+EXTLOGPEN       GROUP,TYPE
+elpPenStyle        DWORD
+elpWidth           DWORD
+elpBrushStyle      UINT
+elpColor           COLORREF
+elpHatch           LONG
+elpNumEntries      DWORD
+elpStyleEntry      DWORD,DIM(1)
+                END
+
+PALETTEENTRY    GROUP,TYPE
+peRed              BYTE
+peGreen            BYTE
+peBlue             BYTE
+peFlags            BYTE
+                END
+
+LOGPALETTE      GROUP,TYPE
+palVersion          WORD
+palNumEntries       WORD
+palPalEntry         LIKE(PALETTEENTRY)
+                END
+LF_FACESIZE         EQUATE(32)
+
+LOGFONT            GROUP,TYPE
+lfHeight                LONG
+lfWidth                 LONG
+lfEscapement            LONG
+lfOrientation           LONG
+lfWeight                LONG
+lfItalic                BYTE
+lfUnderline             BYTE
+lfStrikeOut             BYTE
+lfCharSet               BYTE
+lfOutPrecision          BYTE
+lfClipPrecision         BYTE
+lfQuality               BYTE
+lfPitchAndFamily        BYTE
+lfFaceName              CHAR,DIM(LF_FACESIZE)
+                    END
+LF_FULLFACESIZE     EQUATE(64)
+
+ENUMLOGFONT        GROUP,TYPE
+elfLogFont           LIKE(LOGFONT)
+elfFullName          BYTE,DIM(LF_FULLFACESIZE)
+elfStyle             BYTE,DIM(LF_FACESIZE)
+                    END
+
+ENUMLOGFONTEX      GROUP,TYPE
+elfLogFont           LIKE(LOGFONT)
+elfFullName          BYTE,DIM(LF_FULLFACESIZE)
+elfStyle             BYTE,DIM(LF_FACESIZE)
+elfScript            BYTE,DIM(LF_FACESIZE)
+                   END
+PANOSE             GROUP,TYPE
+bFamilyType            BYTE
+bSerifStyle            BYTE
+bWeight                BYTE
+bProportion            BYTE
+bContrast              BYTE
+bStrokeVariation       BYTE
+bArmStyle              BYTE
+bLetterform            BYTE
+bMidline               BYTE
+bXHeight               BYTE
+                   END
+ELF_VENDOR_SIZE     EQUATE(4)
+EXLOGFONT          GROUP,TYPE
+elfLogFont              LIKE(LOGFONT)
+elfFullName             BYTE,DIM(LF_FULLFACESIZE)
+elfStyle                BYTE,DIM(LF_FACESIZE)
+elfVersion              DWORD
+elfStyleSize            DWORD
+elfMatch                DWORD
+elfReserved             DWORD
+elfVendorId             BYTE,DIM(ELF_VENDOR_SIZE)
+elfCulture              DWORD
+elfPanose               LIKE(PANOSE)
+                    END
+
+CCHDEVICENAME       EQUATE(32)
+CCHFORMNAME         EQUATE(32)
+
+DEVMODE       GROUP,TYPE
+dmDeviceName    BYTE,DIM(CCHDEVICENAME)
+dmSpecVersion   WORD
+dmDriverVersion WORD
+dmSize          WORD
+dmDriverExtra   WORD
+dmFields        DWORD
+dmOrientation   SIGNED
+dmPaperSize     SIGNED
+dmPaperLength   SIGNED
+dmPaperWidth    SIGNED
+dmScale         SIGNED
+dmCopies        SIGNED
+dmDefaultSource SIGNED
+dmPrintQuality  SIGNED
+dmColor         SIGNED
+dmDuplex        SIGNED
+dmYResolution   SIGNED
+dmTTOption      SIGNED
+dmCollate       SIGNED
+dmFormName      BYTE,DIM(CCHFORMNAME)
+dmLogPixels     WORD
+dmBitsPerPel    DWORD
+dmPelsWidth     DWORD
+dmPelsHeight    DWORD
+dmDisplayFlags  DWORD
+dmDisplayFrequency   DWORD
+dmICMMethod     DWORD
+dmICMIntent     DWORD
+dmMediaType     DWORD
+dmDitherType    DWORD
+dmReserved1     DWORD
+dmReserved2     DWORD
+            END
+
+
+!!RGNDATAHEADER   GROUP,TYPE
+!!dwSize           DWORD
+!!iType            DWORD
+!!nCount           DWORD
+!!nRgnSize         DWORD
+!!rcBound          LIKE(RECT)
+!!                END
+
+!!RGNDATA     GROUP,TYPE
+!!rdh          LIKE(RGNDATAHEADER)
+!!Buffer       CHAR(1)
+!!            END
+
+OUTLINETEXTMETRIC       GROUP,TYPE
+otmSize                     UINT
+otmTextMetrics              LIKE(TEXTMETRIC)
+otmFiller                   BYTE
+otmPanoseNumber             LIKE(PANOSE)
+otmfsSelection              UINT
+otmfsType                   UINT
+otmsCharSlopeRise           SIGNED
+otmsCharSlopeRun            SIGNED
+otmItalicAngle              SIGNED
+otmEMSquare                 UINT
+otmAscent                   SIGNED
+otmDescent                  SIGNED
+otmLineGap                  UINT
+otmsCapEmHeight             UINT
+otmsXHeight                 UINT
+otmrcFontBox                LIKE(RECT)
+otmMacAscent                SIGNED
+otmMacDescent               SIGNED
+otmMacLineGap               UINT
+otmusMinimumPPEM            UINT
+otmptSubscriptSize          LIKE(POINT)
+otmptSubscriptOffset        LIKE(POINT)
+otmptSuperscriptSize        LIKE(POINT)
+otmptSuperscriptOffset      LIKE(POINT)
+otmsStrikeoutSize           UINT
+otmsStrikeoutPosition       SIGNED
+otmsUnderscoreSize          SIGNED
+otmsUnderscorePosition      SIGNED
+otmpFamilyName              LONG    !*PSTR
+otmpFaceName                LONG    !*PSTR
+otmpStyleName               LONG    !*PSTR
+otmpFullName                LONG    !*PSTR
+                        END
+
+
+POLYTEXT    GROUP,TYPE
+x              SIGNED
+y              SIGNED
+n              UINT
+lpstr          LONG     !*LPCSTR
+uiFlags        UINT
+rcl            LIKE(RECT)
+pdx            LONG     !*INT
+            END
+
+FIXED   GROUP,TYPE
+fract       WORD
+value       SIGNED
+        END
+
+MAT2        GROUP,TYPE
+eM11            LIKE(FIXED)
+eM12            LIKE(FIXED)
+eM21            LIKE(FIXED)
+eM22            LIKE(FIXED)
+            END
+
+GLYPHMETRICS    GROUP,TYPE
+gmBlackBoxX      UINT
+gmBlackBoxY      UINT
+gmptGlyphOrigin  LIKE(POINT)
+gmCellIncX       SIGNED
+gmCellIncY       SIGNED
+                END
+
+
+POINTFX GROUP,TYPE
+x           LIKE(FIXED)
+y           LIKE(FIXED)
+        END
+
+TTPOLYCURVE     GROUP,TYPE
+wType               WORD
+cpfx                WORD
+apfx                LIKE(POINTFX)
+                END
+
+TTPOLYGONHEADER    GROUP,TYPE
+cb                  DWORD
+dwType              DWORD
+pfxStart            LIKE(POINTFX)
+                   END
+
+
+GCP_RESULTS     GROUP,TYPE
+lStructSize      DWORD
+lpOutString      LONG!*PSTR
+lpOrder          LONG
+lpDx             LONG        
+lpCaretPos       LONG
+lpClass          LONG!*PSTR
+lpGlyphs         LONG!*PSTR
+nGlyphs          UINT
+nMaxFit          SIGNED
+                END
+
+
+RASTERIZER_STATUS       GROUP,TYPE
+nSize                    SIGNED
+wFlags                   SIGNED
+nLanguage                SIGNED
+                        END
+
+
+PIXELFORMATDESCRIPTOR       GROUP,TYPE
+nSize                               WORD
+nVersion                            WORD
+dwFlags                             DWORD
+iPixelType                          BYTE
+cColorBits                          BYTE
+cRedBits                            BYTE
+cRedShift                           BYTE
+cGreenBits                          BYTE
+cGreenShift                         BYTE
+cBlueBits                           BYTE
+cBlueShift                          BYTE
+cAlphaBits                          BYTE
+cAlphaShift                         BYTE
+cAccumBits                          BYTE
+cAccumRedBits                       BYTE
+cAccumGreenBits                     BYTE
+cAccumBlueBits                      BYTE
+cAccumAlphaBits                     BYTE
+cDepthBits                          BYTE
+cStencilBits                        BYTE
+cAuxBuffers                         BYTE
+iLayerType                          BYTE
+bReserved                           BYTE
+dwLayerMask                         DWORD
+dwVisibleMask                       DWORD
+dwDamageMask                        DWORD
+                            END
+COLORADJUSTMENT     GROUP,TYPE
+caSize                  WORD
+caFlags                 WORD
+caIlluminantIndex       WORD
+caRedGamma              WORD
+caGreenGamma            WORD
+caBlueGamma             WORD
+caReferenceBlack        WORD
+caReferenceWhite        WORD
+caContrast              SIGNED
+caBrightness            SIGNED
+caColorfulness          SIGNED
+caRedGreenTint          SIGNED
+                    END
+
+DOCINFO    GROUP,TYPE
+cbSize       UNSIGNED
+lpszDocName  ULONG
+lpszOutput   ULONG
+lpszDataType ULONG
+fwType       DWORD
+            END
+
+DI_APPBANDING   EQUATE(0001h)
+FONTMAPPER_MAX  EQUATE(10)
+
+KERNINGPAIR     GROUP,TYPE
+wFirst           WORD
+wSecond          WORD
+iKernAmount      SIGNED
+                END
+
+ICM_OFF   EQUATE(1)
+ICM_ON    EQUATE(2)
+ICM_QUERY EQUATE(3)
+
+ENHMETA_SIGNATURE       EQUATE(464D4520h)
+ENHMETA_STOCK_OBJECT    EQUATE(80000000h)
+
+
+EMR     GROUP,TYPE
+iType    DWORD
+nSize    DWORD
+        END
+POINTL  GROUP,TYPE
+x        LONG
+y        LONG
+        END
+
+EMRTEXT     GROUP,TYPE
+ptlReference    LIKE(POINTL)
+nChars          DWORD
+offString       DWORD
+fOptions        DWORD
+rcl             LIKE(RECTL)
+offDx           DWORD
+            END
+
+
+STACK_FRAME_HEADER              GROUP,TYPE
+BackChain                            DWORD
+GlueSaved1                           DWORD
+GlueSaved2                           DWORD
+Reserved1                            DWORD
+Spare1                               DWORD
+Spare2                               DWORD
+Parameter0                           DWORD
+Parameter1                           DWORD
+Parameter2                           DWORD
+Parameter3                           DWORD
+Parameter4                           DWORD
+Parameter5                           DWORD
+Parameter6                           DWORD
+Parameter7                           DWORD
+                                END
+
+
+MEMORY_BASIC_INFORMATION    GROUP,TYPE
+BaseAddress                   PVOID
+AllocationBase                PVOID
+AllocationProtect             DWORD
+RegionSize                    DWORD
+State                         DWORD
+Protect                       DWORD
+Type                          DWORD
+                            END
+
+ACCESS_MASK                     EQUATE(LPVOID)
+GENERIC_MAPPING    GROUP,TYPE
+GenericRead           ACCESS_MASK
+GenericWrite          ACCESS_MASK
+GenereicExecute       ACCESS_MASK
+GenericAll            ACCESS_MASK
+                    END
+
+LUID_AND_ATTRIBUTES GROUP,TYPE
+Liud                 LUID
+Attributes           DWORD
+                    END
+
+SID_IDENTIFIER_AUTHORITY        GROUP,TYPE
+Value                            BYTE,DIM(6)
+                                END
+
+SID             GROUP,TYPE
+Revision            BYTE
+SubAuthorityCount   BYTE
+IdentifierAuthority LIKE(SID_IDENTIFIER_AUTHORITY)
+SubAuthority        DWORD,DIM(ANYSIZE_ARRAY)
+                END
+
+
+ACL     GROUP,TYPE
+AclRevision BYTE
+Sbz1        BYTE
+AclSize     WORD
+AceCount    WORD
+Sbz2        WORD
+        END
+
+ACE_HEADER      GROUP,TYPE
+AceType          BYTE
+AceFlags         BYTE
+AceSize          WORD
+                END
+
+ACCESS_ALLOWED_ACE      GROUP,TYPE
+Header                     LIKE(ACE_HEADER)
+Mask                       ACCESS_MASK
+SidStart                   DWORD
+                        END
+
+PRIVILEGE_SET       GROUP,TYPE
+PrivilegeCount       DWORD
+Control              DWORD
+Privilege            LIKE(LUID_AND_ATTRIBUTES)
+                    END
+
+
+
+WINDEBUGINFO    GROUP,TYPE
+flags             UINT
+dwOptions         DWORD
+dwFilter          DWORD
+achAllocModule    char,DIM(8)
+dwAllocBreak      DWORD
+dwAllocCount      DWORD
+                 END
+
+CATCHBUF        EQUATE(9)
+
+SEGINFO         GROUP,TYPE
+offSegment       UINT
+cbSegment        UINT
+flags            UINT
+cbAlloc          UINT
+h                HGLOBAL
+alignShift       UINT
+reserved         UINT,DIM(2)
+                END
+
+
+
+ABC     GROUP,TYPE
+abcA     SIGNED
+abcB     UINT
+abcC     SIGNED
+        END
+
+ABCFLOAT    LIKE(ABC)
+
+MSGTYPE GROUP,TYPE
+hwnd     HWND
+message  UINT
+wParam   WPARAM
+lParam   LPARAM
+time     DWORD
+pt       LIKE(POINT)
+        END
+
+
+!!WNDCLASS        GROUP,TYPE
+!!style            UINT
+!!lpfnWndProc      LONG!WNDPROC
+!!cbClsExtra       SIGNED
+!!cbWndExtra       SIGNED
+!!hInstance        HINSTANCE
+!!hIcon            HICON
+!!hCursor          HCURSOR
+!!hbrBackground    HBRUSH
+!!lpszMenuName     LONG   !*LPCSTR
+!!lpszClassName    LONG   !*LPCSTR
+!!                END
+
+CREATESTRUCT    GROUP,TYPE
+lpCreateParams   LPVOID
+hInstance        HINSTANCE
+hmenu            HMENU
+hwndParent       HWND
+cy               SIGNED
+cx               SIGNED
+y                SIGNED
+x                SIGNED
+style            LONG
+lpszName         LONG   !*LPCSTR
+lpszClass        LONG   !*LPCSTR
+dwExStyle        DWORD
+               END
+
+WINDOWPLACEMENT GROUP,TYPE
+length           UINT
+flags            UINT
+showCmd          UINT
+ptMinPosition    LIKE(POINT)
+ptMaxPosition    LIKE(POINT)
+rcNormalPosition LIKE(RECT)
+                END
+
+WINDOWPOS       GROUP,TYPE
+hwnd             HWND
+hwndInsertAfter  HWND
+x                SIGNED
+y                SIGNED
+cx               SIGNED
+cy               SIGNED
+flags            UINT
+                END
+
+MINMAXINFO      GROUP,TYPE
+ptReserved       LIKE(POINT)
+ptMaxSize        LIKE(POINT)
+ptMaxPosition    LIKE(POINT)
+ptMinTrackSize   LIKE(POINT)
+ptMaxTrackSize   LIKE(POINT)
+                END
+
+!!PAINTSTRUCT     GROUP,TYPE
+!!hdc              HDC
+!!fErase           BOOL
+!!rcPaint          LIKE(RECT)
+!!fRestore         BOOL
+!!fIncUpdate       BOOL
+!!rgbReserved      BYTE,DIM(32)
+!!                END
+
+MOUSEHOOKSTRUCT         GROUP,TYPE
+pt                       LIKE(POINT)
+hwnd                     HWND
+wHitTestCode             UINT
+dwExtraInfo              DWORD
+                        END
+
+!***** MDI Support *********************************************************/
+
+! CreateWindow lpParams structure for creating MDI client 
+
+CLIENTCREATESTRUCT      GROUP,TYPE
+hWindowMenu              HMENU
+idFirstChild             UINT
+                        END
+
+!!DRAWITEMSTRUCT          GROUP,TYPE
+!!CtlType                  UINT
+!!CtlID                    UINT
+!!itemID                   UINT
+!!itemAction               UINT
+!!itemState                UINT
+!!hwndItem                 HWND
+!!hDC                      HDC
+!!rcItem                   LIKE(RECT)
+!!itemData                 DWORD
+!!                        END
+
+MEASUREITEMSTRUCT       GROUP,TYPE
+CtlType                  UINT
+CtlID                    UINT
+itemID                   UINT
+itemWidth                UINT
+itemHeight               UINT
+itemData                 DWORD
+                        END
+
+DELETEITEMSTRUCT        GROUP,TYPE
+CtlType                  UINT
+CtlID                    UINT
+itemID                   UINT
+hwndItem                 HWND
+itemData                 DWORD
+                        END
+
+
+COMPAREITEMSTRUCT       GROUP,TYPE
+CtlType                  UINT
+CtlID                    UINT
+hwndItem                 HWND
+itemID1                  UINT
+itemData1                DWORD
+itemID2                  UINT
+itemData2                DWORD
+                        END
+
+
+CBT_CREATEWND   GROUP,TYPE
+lpcs             LONG
+hwndInsertAfter  HWND
+                END
+
+CBACTIVATESTRUCT        GROUP,TYPE
+fMouse                   BOOL
+hWndActive               HWND
+                        END
+WH_HARDWARE     EQUATE(8)
+
+HARDWAREHOOKSTRUCT      GROUP,TYPE
+hWnd                     HWND
+wMessage                 UINT
+wParam                   WPARAM
+lParam                   LPARAM
+                        END
+
+
+WH_DEBUG        EQUATE(9)
+
+DEBUGHOOKINFO   GROUP,TYPE
+idThread            DWORD
+idThreadInstaller   DWORD
+lParam              LPARAM
+wParam              WPARAM
+ncode               SIGNED
+                END
+
+
+MULTIKEYHELP    GROUP,TYPE
+mkSize           UINT
+mkKeylist        BYTE
+szKeyphrase      BYTE,DIM(1)
+                END
+
+HELPWININFO     GROUP,TYPE
+wStructSize      SIGNED
+x                SIGNED
+y                SIGNED
+dx               SIGNED
+dy               SIGNED
+wMax             SIGNED
+rgchMember       char,DIM(2)
+                END
+
+COMSTAT         GROUP,TYPE
+status          BYTE
+cbInQue         UINT
+cbOutQue        UINT
+                END
+
+
+DRVCONFIGINFO      GROUP,TYPE
+dwDCISize           DWORD
+lpszDCISectionName  LONG    !*LPCSTR
+lpszDCIAliasName    LONG    !*LPCSTR
+                   END
+
+DRIVERINFOSTRUCT        GROUP,TYPE
+length                   UINT
+hDriver                  HDRVR
+hModule                  HINSTANCE
+szAliasName              char,DIM(128)
+                        END
+
+
+!  File structures
+OVERLAPPED      GROUP,TYPE
+Internal         DWORD
+InternalHigh     DWORD
+Offset           DWORD
+OffsetHigh       DWORD
+hEvent           HANDLE
+                END
+
+
+!!SECURITY_ATTRIBUTES     GROUP,TYPE
+!!nLength                  DWORD
+!!lpSecurityDescriptor     LPVOID
+!!bInheritHandle           BOOL
+!!                        END
+
+PROCESS_INFORMATION     GROUP,TYPE
+hProcess                  HANDLE
+hThread                   HANDLE
+dwProcessId               DWORD
+dwThreadId                DWORD
+                        END
+
+FILETIME        GROUP,TYPE
+dwLowDateTime    DWORD
+dwHighDateTime   DWORD
+                END
+
+SYSTEMTIME      GROUP,TYPE              !System time struct
+wYear            WORD
+wMonth           WORD
+wDayOfWeek       WORD
+wDay             WORD
+wHour            WORD
+wMinute          WORD
+wSecond          WORD
+wMilliseconds    WORD
+                END
+
+LPLDT_ENTRY      EQUATE(LPVOID)
+COMMPROP    GROUP,TYPE
+wPacketLength           WORD
+wPacketVersion          WORD
+dwServiceMask           DWORD
+dwReserved1             DWORD
+dwMaxTxQueue            DWORD
+dwMaxRxQueue            DWORD
+dwMaxBaud               DWORD
+dwProvSubType           DWORD
+dwProvCapabilities      DWORD
+dwSettableParams        DWORD
+dwSettableBaud          DWORD
+wSettableData           WORD
+wSettableStopParity     WORD
+dwCurrentTxQueue        DWORD
+dwCurrentRxQueue        DWORD
+dwProvSpec1             DWORD
+dwProvSpec2             DWORD
+wcProvChar              WCHAR(1)
+            END
+
+COMMTIMEOUTS                GROUP,TYPE
+ReadIntervalTimeout           DWORD
+ReadTotalTimeoutMultiplier    DWORD
+ReadTotalTimeoutConstant      DWORD
+WriteTotalTimeoutMultiplier   DWORD
+WriteTotalTimeoutConstant     DWORD
+                            END
+
+DCB        GROUP,TYPE
+Id           BYTE
+BaudRate     UNSIGNED
+ByteSize     BYTE
+Parity       BYTE
+StopBits     BYTE
+RlsTimeout   UNSIGNED
+CtsTimeout   UNSIGNED
+DsrTimeout   UNSIGNED
+
+XonChar      STRING(1)
+XoffChar     STRING(1)
+XonLim       UNSIGNED
+XoffLim      UNSIGNED
+PeChar       STRING(1)
+EofChar      STRING(1)
+EvtChar      STRING(1)
+TxDelay      UNSIGNED
+          END
+
+COMMCONFIG      GROUP,TYPE
+dwSize            DWORD
+wVersion          WORD
+wReserved         WORD
+dcb               LIKE(DCB)
+dwProviderSubType DWORD
+dwProviderOffset  DWORD
+dwProviderSize    DWORD
+wcProviderData    CHAR,DIM(1)
+                END
+
+SYSTEM_INFO     GROUP,TYPE
+dwOemId                     DWORD
+dwPageSize                  DWORD
+lpMinimumApplicationAddress LPVOID
+lpMaximumApplicationAddress LPVOID
+dwActiveProcessorMask       DWORD
+dwNumberOfProcessors        DWORD
+dwProcessorType             DWORD
+dwAllocationGranularity     DWORD
+dwReserved                  DWORD
+              END
+
+
+MEMORYSTATUS    GROUP,TYPE
+dwLength            DWORD
+dwMemoryLoad        DWORD
+dwTotalPhys         DWORD
+dwAvailPhys         DWORD
+dwTotalPageFile     DWORD
+dwAvailPageFile     DWORD
+dwTotalVirtual      DWORD
+dwAvailVirtual      DWORD
+                END
+
+EXIT_THREAD_DEBUG_INFO  GROUP,TYPE
+dwExitCode                DWORD
+                        END
+
+EXIT_PROCESS_DEBUG_INFO     GROUP,TYPE
+dwExitCode                   DWORD
+                            END
+
+LOAD_DLL_DEBUG_INFO     GROUP,TYPE
+hFile                       HANDLE
+lpBaseOfDll                 LPVOID
+dwDebugInfoFileOffset       DWORD
+nDebugInfoSize              DWORD
+lpImageName                 LPVOID
+fUnicode                    WORD
+                        END
+
+UNLOAD_DLL_DEBUG_INFO    GROUP,TYPE
+lpBaseOfDll                 LPVOID
+                         END
+
+OUTPUT_DEBUG_STRING_INFO GROUP,TYPE
+lpDebugStringData           LONG!*PSTR
+fUnicode                    WORD
+nDebugStringLength          WORD
+                         END
+
+RIP_INFO    GROUP,TYPE
+dwError      DWORD
+dwType       DWORD
+            END
+
+CONTEXT             GROUP,TYPE
+FltF0                  DWORD
+FltF1                  DWORD
+FltF2                  DWORD
+FltF3                  DWORD
+FltF4                  DWORD
+FltF5                  DWORD
+FltF6                  DWORD
+FltF7                  DWORD
+FltF8                  DWORD
+FltF9                  DWORD
+FltF10                 DWORD
+FltF11                 DWORD
+FltF12                 DWORD
+FltF13                 DWORD
+FltF14                 DWORD
+FltF15                 DWORD
+FltF16                 DWORD
+FltF17                 DWORD
+FltF18                 DWORD
+FltF19                 DWORD
+FltF20                 DWORD
+FltF21                 DWORD
+FltF22                 DWORD
+FltF23                 DWORD
+FltF24                 DWORD
+FltF25                 DWORD
+FltF26                 DWORD
+FltF27                 DWORD
+FltF28                 DWORD
+FltF29                 DWORD
+FltF30                 DWORD
+FltF31                 DWORD
+IntV0                  DWORD
+IntT0                  DWORD
+IntT1                  DWORD
+IntT2                  DWORD
+IntT3                  DWORD
+IntT4                  DWORD
+IntT5                  DWORD
+IntT6                  DWORD
+IntT7                  DWORD
+IntS0                  DWORD
+IntS1                  DWORD
+IntS2                  DWORD
+IntS3                  DWORD
+IntS4                  DWORD
+IntS5                  DWORD
+IntFp                  DWORD
+IntA0                  DWORD
+IntA1                  DWORD
+IntA2                  DWORD
+IntA3                  DWORD
+IntA4                  DWORD
+IntA5                  DWORD
+IntT8                  DWORD
+IntT9                  DWORD
+IntT10                 DWORD
+IntT11                 DWORD
+IntRa                  DWORD
+IntT12                 DWORD
+IntAt                  DWORD
+IntGp                  DWORD
+IntSp                  DWORD
+IntZero                DWORD
+Fpcr                   DWORD
+SoftFpcr               DWORD
+Fir                    DWORD
+Psr                    DWORD
+ContextFlags           DWORD
+HighFltF0              DWORD
+HighFltF1              DWORD
+HighFltF2              DWORD
+HighFltF3              DWORD
+HighFltF4              DWORD
+HighFltF5              DWORD
+HighFltF6              DWORD
+HighFltF7              DWORD
+HighFltF8              DWORD
+HighFltF9              DWORD
+HighFltF10             DWORD
+HighFltF11             DWORD
+HighFltF12             DWORD
+HighFltF13             DWORD
+HighFltF14             DWORD
+HighFltF15             DWORD
+HighFltF16             DWORD
+HighFltF17             DWORD
+HighFltF18             DWORD
+HighFltF19             DWORD
+HighFltF20             DWORD
+HighFltF21             DWORD
+HighFltF22             DWORD
+HighFltF23             DWORD
+HighFltF24             DWORD
+HighFltF25             DWORD
+HighFltF26             DWORD
+HighFltF27             DWORD
+HighFltF28             DWORD
+HighFltF29             DWORD
+HighFltF30             DWORD
+HighFltF31             DWORD
+HighIntV0              DWORD
+HighIntT0              DWORD
+HighIntT1              DWORD
+HighIntT2              DWORD
+HighIntT3              DWORD
+HighIntT4              DWORD
+HighIntT5              DWORD
+HighIntT6              DWORD
+HighIntT7              DWORD
+HighIntS0              DWORD
+HighIntS1              DWORD
+HighIntS2              DWORD
+HighIntS3              DWORD
+HighIntS4              DWORD
+HighIntS5              DWORD
+HighIntFp              DWORD
+HighIntA0              DWORD
+HighIntA1              DWORD
+HighIntA2              DWORD
+HighIntA3              DWORD
+HighIntA4              DWORD
+HighIntA5              DWORD
+HighIntT8              DWORD
+HighIntT9              DWORD
+HighIntT10             DWORD
+HighIntT11             DWORD
+HighIntRa              DWORD
+HighIntT12             DWORD
+HighIntAt              DWORD
+HighIntGp              DWORD
+HighIntSp              DWORD
+HighIntZero            DWORD
+HighFpcr               DWORD
+HighSoftFpcr           DWORD
+HighFir                DWORD
+DoNotUseThisField      REAL
+HighFill               DWORD,DIM(2)
+    END
+
+
+DRIVE_UNKNOWN      EQUATE(0)
+DRIVE_NO_ROOT_DIR  EQUATE(1)
+DRIVE_REMOVABLE    EQUATE(2)
+DRIVE_FIXED        EQUATE(3)
+DRIVE_REMOTE       EQUATE(4)
+DRIVE_CDROM        EQUATE(5)
+DRIVE_RAMDISK      EQUATE(6)
+
+OFS_MAXPATHNAME    EQUATE(128)
+OFSTRUCT    GROUP,TYPE
+cBytes       BYTE
+cFixedDisk   BYTE
+nErrCode     WORD
+Reserved1    WORD
+Reserved2    WORD
+szPathName   CHAR,DIM(OFS_MAXPATHNAME)
+            END
+
+
+MAXINTATOM      EQUATE(0C000H)
+INVALID_ATOM    EQUATE(0)
+Block           GROUP,TYPE
+hMem                HANDLE
+dwReserved          DWORD,DIM(3)
+                END
+PROCESS_HEAP_ENTRY      GROUP,TYPE
+lpData                   PVOID
+cbData                   DWORD
+cbOverhead               BYTE
+iRegionIndex             BYTE
+wFlags                   WORD
+u                        GROUP
+Block                    GROUP
+hMem                      HANDLE
+dwReserved                DWORD,DIM(3)
+                         END
+Region                   GROUP
+dwCommittedSize           DWORD
+dwUnCommittedSize         DWORD
+lpFirstBlock              LPVOID
+lpLastBlock               LPVOID
+                         END
+                        END
+                      END
+
+
+BY_HANDLE_FILE_INFORMATION  GROUP,TYPE
+dwFileAttributes             DWORD
+ftCreationTime               LIKE(FILETIME)
+ftLastAccessTime             LIKE(FILETIME)
+ftLastWriteTime              LIKE(FILETIME)
+dwVolumeSerialNumber         DWORD
+nFileSizeHigh                DWORD
+nFileSizeLow                 DWORD
+nNumberOfLinks               DWORD
+nFileIndexHigh               DWORD
+nFileIndexLow                DWORD
+                            END
+
+TIME_ZONE_INFORMATION   GROUP,TYPE
+Bias                     LONG
+StandardName             CHAR,DIM(32)
+StandardDate             LIKE(SYSTEMTIME)
+StandardBias             LONG
+DaylightName             CHAR,DIM(32)
+DaylightDate             LIKE(SYSTEMTIME)
+DaylightBias             LONG
+                        END
+
+!  Stream id structure
+
+WIN32_STREAM_ID     GROUP,TYPE
+dwStreamId              DWORD
+dwStreamAttributes      DWORD
+Size                    LARGE_INTEGER
+dwStreamNameSize        DWORD
+cStreamName             CHAR,DIM(ANYSIZE_ARRAY)
+                    END
+
+STARTUPINFO GROUP,TYPE
+cb              DWORD
+lpReserved      LONG    !*PSTR
+lpDesktop       LONG    !*PSTR
+lpTitle         LONG    !*PSTR
+dwX             DWORD
+dwY             DWORD
+dwXSize         DWORD
+dwYSize         DWORD
+dwXCountChars   DWORD
+dwYCountChars   DWORD
+dwFillAttribute DWORD
+dwFlags         DWORD
+wShowWindow     WORD
+cbReserved2     WORD
+lpReserved2     LONG    !*BYTE
+hStdInput       HANDLE
+hStdOutput      HANDLE
+hStdError       HANDLE
+dwHotKey        DWORD
+dwShellData     DWORD
+            END
+
+SHUTDOWN_NORETRY                EQUATE(00000001H)
+
+ OMIT('***')
+WIN32_FIND_DATA                GROUP,TYPE
+dwFileAttributes                    DWORD
+ftCreationTime                      LIKE(FILETIME)
+ftLastAccessTime                    LIKE(FILETIME)
+ftLastWriteTime                     LIKE(FILETIME)
+nFileSizeHigh                       DWORD
+FileSizeLow                         DWORD
+dwReserved0                         DWORD
+dwReserved1                         DWORD
+cFileName                           CHAR,DIM(MAX_PATH)
+cAlternateFileName                  CHAR,DIM(14)
+                                 END
+! *** - WIN32_FIND_DATA is already in CWutil.clw. KV 2010.09.16
+
+ OMIT('_EndOfOmit_',_OSVersionInfoPresent_)
+_OSVersionInfoPresent_ EQUATE(1)
+
+OSVERSIONINFO          GROUP,TYPE
+dwOSVersionInfoSize      DWORD
+dwMajorVersion           DWORD
+dwMinorVersion           DWORD
+dwBuildNumber            DWORD
+dwPlatformId             DWORD
+szCSDVersion             CHAR,DIM(128)
+                        END
+! _EndOfOmit_
+
+SYSTEM_POWER_STATUS     GROUP,TYPE
+ACLineStatus             BYTE
+BatteryFlag              BYTE
+BatteryLifePercent       BYTE
+Reserved1                BYTE
+BatteryLifeTime          DWORD
+BatteryFullLifeTime      DWORD
+                        END
+       
+
+CBTACTIVATESTRUCT   GROUP,TYPE
+fMouse                  BOOL
+hWndActive              HWND
+                    END
+
+EVENTMSG    GROUP,TYPE
+message     UINT
+paramL      UINT
+paramH      UINT
+time        DWORD
+hwnd        HWND
+            END
+
+CWPSTRUCT       GROUP,TYPE
+lparam           LPARAM
+wParam           WPARAM
+message          UINT
+hwnd             HWND
+                END
+
+CWPRETSTRUCT       GROUP,TYPE
+lResult          LRESULT
+lParam           LPARAM
+wParam           WPARAM
+message          UINT
+hwnd             HWND
+                END
+
+
+!!WNDCLASSEX     GROUP,TYPE
+!!cbSize              UINT
+!!style               UINT
+!!lpfnWndProc         LONG    !WNDPROC
+!!cbClsExtra          SIGNED
+!!cbWndExtra          SIGNED
+!!hInstance           HINSTANCE
+!!hIcon               HICON
+!!hCursor             HCURSOR
+!!hbrBackground       HBRUSH
+!!lpszMenuName        LONG    !*LPCSTR
+!!lpszClassName       LONG    !*LPCSTR
+!!hIconSm             HICON
+!!                END
+
+COPYDATASTRUCT  GROUP,TYPE
+dwData           DWORD
+cbData           DWORD
+lpData           PVOID
+                END
+
+
+MDINEXTMENU            GROUP,TYPE
+hmenuIn                 HMENU
+hmenuNext               HMENU
+hwndNext                HWND
+                       END
+
+ACCEL       GROUP,TYPE
+fVirt           BYTE
+key             WORD
+cmd             WORD
+            END
+
+
+
+BROADCASTSYSMSG GROUP,TYPE
+uiMessage           UINT
+wParam              WPARAM
+lParam              LPARAM
+                END
+
+DLGTEMPLATE     GROUP,TYPE
+style               DWORD
+dwExtendedStyle     DWORD
+cdit                WORD
+x                   SIGNED
+y                   SIGNED
+cx                  SIGNED
+cy                  SIGNED
+               END
+
+TPMPARAMS         GROUP,TYPE
+cbSize               UINT
+rcExclude            LIKE(RECT)
+                 END
+
+!!MENUITEMINFO            GROUP,TYPE
+!!cbSize                   UINT
+!!fMask                    UINT
+!!fType                    UINT
+!!fState                   UINT
+!!wID                      UINT
+!!hSubMenu                 HMENU
+!!hbmpChecked              HBITMAP
+!!hbmpUnchecked            HBITMAP
+!!dwItemData               DWORD
+!!dwTypeData               LONG!*PSTR
+!!cch                      UINT
+!!                        END
+
+DROPSTRUCT     GROUP,TYPE
+hwndSource       HWND
+hwndSink         HWND
+wFmt             DWORD
+dwData           DWORD
+ptDrop           LIKE(POINT)
+dwControlData    DWORD
+                END
+
+DRAWTEXTPARAMS          GROUP,TYPE
+cbSize                      UINT
+iTabLength                  SIGNED
+iLeftMargin                 SIGNED
+iRightMargin                SIGNED
+uiLengthDrawn               UINT
+                        END
+
+HELPINFO        GROUP,TYPE
+cbSize           UINT
+iContextType     SIGNED
+iCtrlId          SIGNED
+hItemHandle      HANDLE
+dwContextId      DWORD
+MousePos         LIKE(POINT)
+                END
+
+
+MSGBOXPARAMS        GROUP,TYPE
+cbSize               UINT
+hwndOwner            HWND
+hInstance            HINSTANCE
+lpszText             LONG!*LPCSTR
+lpszCaption          LONG!*LPCSTR
+dwStyle              DWORD
+lpszIcon             LONG!*LPCSTR
+dwContextHelpId      DWORD
+lpfnMsgBoxCallback   LONG   !MSGBOXCALLBACK
+dwLanguageId         DWORD
+                    END
+
+
+MENUITEMTEMPLATEHEADER  GROUP,TYPE
+versionNumber            WORD
+offset                   WORD
+                        END
+
+
+MENUITEMTEMPLATE       GROUP,TYPE
+mtOption                 WORD
+mtID                     WORD
+mtString                 char,DIM(1)
+                        END
+
+ICONINFO        GROUP,TYPE
+fIcon            BOOL
+xHotspot         DWORD
+yHotspot         DWORD
+hbmMask          HBITMAP
+hbmColor         HBITMAP
+                END
+
+
+!!SCROLLINFO      GROUP,TYPE
+!!cbSize           UINT
+!!fMask            UINT
+!!nMin             SIGNED
+!!nMax             SIGNED
+!!nPage            UINT
+!!nPos             SIGNED
+!!                END
+
+MDICREATESTRUCT         GROUP,TYPE
+szClass                  LONG!*LPCSTR
+szTitle                  LONG!*LPCSTR
+hOwner                   HINSTANCE
+x                        SIGNED
+y                        SIGNED
+cx                       SIGNED
+cy                       SIGNED
+style                    DWORD
+lParam                   LPARAM
+                        END
+
+ANIMATIONINFO       GROUP,TYPE
+cbSize               UINT
+iMinAnimate          SIGNED
+                    END
+
+SERIALKEYS      GROUP,TYPE
+cbSize              UINT
+dwFlags             DWORD
+lpszActivePort      LONG!*PSTR
+lpszPort            LONG!*PSTR
+iBaudRate           UINT
+iPortState          UINT
+iActive             UINT
+                 END
+
+HIGHCONTRAST       GROUP,TYPE
+cbSize                  UINT
+dwFlags                 DWORD
+lpszDefaultScheme       LONG    !*PSTR
+                    END
+
+
+FILTERKEYS          GROUP,TYPE
+cbSize                UINT
+dwFlags               DWORD
+iWaitMSec             DWORD
+iDelayMSec            DWORD
+iRepeatMSec           DWORD
+iBounceMSec           DWORD
+                    END
+
+STICKYKEYS      GROUP,TYPE
+cbSize              UINT
+dwFlags             DWORD
+                END
+
+MOUSEKEYS       GROUP,TYPE
+cbSize              UINT
+dwFlags             DWORD
+iMaxSpeed           DWORD
+iTimeToMaxSpeed     DWORD
+iCtrlSpeed          DWORD
+dwReserved1         DWORD
+dwReserved2         DWORD
+                END
+
+ACCESSTIMEOUT       GROUP,TYPE
+cbSize               UINT
+dwFlags              DWORD
+iTimeOutMSec         DWORD
+                    END
+
+SOUNDSENTRY               GROUP,TYPE
+cbSize                      UINT
+dwFlags                     DWORD
+iFSTextEffect               DWORD
+iFSTextEffectMSec           DWORD
+iFSTextEffectColorBits      DWORD
+iFSGrafEffect               DWORD
+iFSGrafEffectMSec           DWORD
+iFSGrafEffectColor          DWORD
+iWindowsEffect              DWORD
+iWindowsEffectMSec          DWORD
+lpszWindowsEffectDLL        LONG    !*PSTR
+iWindowsEffectOrdinal       DWORD
+                           END
+
+TOGGLEKEYS      GROUP,TYPE
+cbSize           UINT
+dwFlags          DWORD
+                END
+
+NCCALCSIZE_PARAMS   GROUP,TYPE
+rgrc                 LIKE(RECT),DIM(3)
+lppos                LONG!WINDOWPOS
+                    END
+
+
+SMALL_RECT      GROUP,TYPE
+Left             SIGNED
+Top              SIGNED
+Right            SIGNED
+Bottom           SIGNED
+                END
+
+STACKTRACEENTRY  GROUP,TYPE
+dwSize            DWORD
+hTask             HTASK
+wSS               WORD
+wBP               WORD
+wCS               WORD
+wIP               WORD
+hModule           HMODULE
+wSegment          WORD
+wFlags            WORD
+                 END
+
+MIDIHDR          GROUP,TYPE
+lpData            LONG      !*PSTR
+dwBufferLength    DWORD
+dwBytesRecorded   DWORD
+dwUser            DWORD
+dwFlags           DWORD
+lpnext            ULONG
+reserved          DWORD
+                 END
+
+MMCKINFO        GROUP,TYPE
+ckid             FOURCC
+cksize           DWORD
+fccType          FOURCC
+dwDataOffset     DWORD
+dwFlags          DWORD
+                END
+
+
+MMIOINFO        GROUP,TYPE
+dwFlags          DWORD
+fccIOProc        FOURCC
+pIOProc          LONG       !*MMIOPROC
+wErrorRet        UINT
+htask            HTASK
+cchBuffer        LONG
+pchBuffer        LONG       !*PSTR
+pchNext          LONG       !*PSTR
+pchEndRead       LONG       !*PSTR
+pchEndWrite      LONG       !*PSTR
+lBufOffset       LONG
+lDiskOffset      LONG
+adwInfo          DWORD,DIM(3)
+dwReserved1      DWORD
+dwReserved2      DWORD
+hmmio            HMMIO
+                END
+
+GLOBALINFO      GROUP,TYPE
+dwSize           DWORD
+wcItems          WORD
+wcItemsFree      WORD
+wcItemsLRU       WORD
+                END
+
+GLOBALENTRY     GROUP,TYPE
+dwSize           DWORD
+dwAddress        DWORD
+dwBlockSize      DWORD
+hBlock           HGLOBAL
+wcLock           WORD
+wcPageLock       WORD
+wFlags           WORD
+wHeapPresent     BOOL
+hOwner           HGLOBAL
+wType            WORD
+wData            WORD
+dwNext           DWORD
+dwNextAlt        DWORD
+                END
+
+
+CHOOSECOLOR     GROUP,TYPE
+lStructSize      DWORD
+hwndOwner        HWND
+hInstance        HWND
+rgbResult        COLORREF
+lpCustColors     LONG   !*COLORREF
+Flags            DWORD
+lCustData        LPARAM
+lpfnHook         LONG   !*LPCCHOOKPROC
+lpTemplateName   LONG   !*LPCSTR
+                END
+
+va_list         LONG        !*LPCSTR
+
+PRINTER_DEFAULTS        GROUP,TYPE
+pDatatype                LONG   !*PSTR
+pDevMode                 LONG   !LPDEVMODE
+DesiredAccess            DWORD
+                        END
+
+SERVICE_STATUS_HANDLE   EQUATE(DWORD)
+
+SERVICE_STATUS          GROUP,TYPE
+dwServiceType                     DWORD
+dwCurrentState                    DWORD
+dwControlsAccepted                DWORD
+dwServiceSpecifixExitCode         DWORD
+dwCheckPoint                      DWORD
+dwWaitHint                        DWORD
+                        END
+
+TOKEN_PRIVILEGES        GROUP,TYPE
+PrivilegeCount           DWORD
+Privileges               LIKE(LUID_AND_ATTRIBUTES),DIM(ANYSIZE_ARRAY)
+                        END
+
+SID_AND_ATTRIBUTES      GROUP,TYPE
+Sid                      LONG   !*PSID
+Attributes               DWORD
+                        END
+
+TOKEN_GROUPS    GROUP,TYPE
+GroupCount       DWORD
+Groups           LIKE(SID_AND_ATTRIBUTES),DIM(ANYSIZE_ARRAY)
+                END
+
+SECURITY_INFORMATION    EQUATE(DWORD)
+
+CONSOLE_SCREEN_BUFFER_INFO      GROUP,TYPE
+dwSize                           LIKE(COORD)
+dwCursorPosition                 LIKE(COORD)
+wAttributes                      WORD
+srWindow                         LIKE(RECT)
+dwMaximumWindowSize              LIKE(COORD)
+                                END
+
+CONSOLE_CURSOR_INFO     GROUP,TYPE
+dwSize                   DWORD
+bVisible                 BOOL
+                        END
+
+RTL_CRITICAL_SECTION    GROUP,TYPE
+DebugInfo                ULONG  !pointer to rtl_critical_section_debug
+LockCount                LONG
+RecursionCount           LONG
+LockSemaphore            HANDLE
+Reserved                 DWORD
+                        END
+
+MAX_MODULE_NAME         EQUATE(9)
+
+MODULEENTRY     GROUP,TYPE
+dwSize           DWORD
+szModule         char,DIM(MAX_MODULE_NAME+1)
+hModule          HMODULE
+wcUsage          WORD
+szExePath        char,DIM(MAX_PATH)
+wNext            WORD
+                END
+
+MMTIME          GROUP,TYPE
+wType            WORD
+u                GROUP
+ms                DWORD
+sample            DWORD
+cb                DWORD
+smpte             GROUP
+hour                BYTE
+MIN                 BYTE
+sec                 BYTE
+frame               BYTE
+fps                 BYTE
+dummy               BYTE
+                  END 
+midi              GROUP
+songptrpos         DWORD
+                  END 
+                 END    
+                END     
+
+JOYINFO         GROUP,TYPE
+wXpos            UINT
+wYpos            UINT
+wZpos            UINT
+wButtons         UINT
+                END
+
+
+CPINFO         GROUP,TYPE
+MaxCharSize     UINT
+DefaultChar     BYTE,DIM(MAX_DEFAULTCHAR)
+LeadByte        BYTE,DIM(MAX_LEADBYTES)
+               END
+
+
+WAVEHDR         GROUP,TYPE
+lpData           LONG   !*PSTR
+dwBufferLength   DWORD
+dwBytesRecorded  DWORD
+dwUser           DWORD
+dwFlags          DWORD
+dwLoops          DWORD
+lpNext           ULONG
+reserved         DWORD
+                END
+
+
+WAVEINCAPS     GROUP,TYPE
+wMid             UINT
+wPid             UINT
+vDriverVersion   UVERSION
+szPname          char,DIM(MAXPNAMELEN)
+dwFormats        DWORD
+wChannels        UINT
+                END
+
+WAVEOUTCAPS     GROUP,TYPE
+wMid             UINT
+wPid             UINT
+vDriverVersion   UVERSION
+szPname          char,DIM(MAXPNAMELEN)
+dwFormats        DWORD
+wChannels        UINT
+dwSupport        DWORD
+                END
+
+
+MIDIOUTCAPS     GROUP,TYPE
+wMid             UINT
+wPid             UINT
+vDriverVersion   UVERSION
+szPname          char,DIM(MAXPNAMELEN)
+wTechnology      UINT
+wVoices          UINT
+wNotes           UINT
+wChannelMask     UINT
+dwSupport        DWORD
+                END
+
+
+AUXCAPS         GROUP,TYPE
+wMid             UINT
+wPid             UINT
+vDriverVersion   UVERSION
+szPname          char,DIM(MAXPNAMELEN)
+wTechnology      UINT
+dwSupport        DWORD
+                END
+
+WAVEFORMAT      GROUP,TYPE
+wFormatTag       WORD
+nChannels        WORD
+nSamplesPerSec   DWORD
+nAvgBytesPerSec  DWORD
+nBlockAlign      WORD
+                END
+
+MIDIINCAPS      GROUP,TYPE
+wMid             UINT
+wPid             UINT
+vDriverVersion   UVERSION
+szPname          char,DIM(MAXPNAMELEN)
+                END
+
+ENUM_SERVICE_STATUS     GROUP,TYPE
+lpServiceName            LONG   !*LPCSTR
+lpDisplayName            LONG   !*LPCSTR
+ServiceStatus            LIKE(SERVICE_STATUS)
+                        END

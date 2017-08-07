@@ -1,0 +1,106 @@
+<!--
+! ================================================================================
+! Notice : Copyright (C) 2017, Devuna
+!          Distributed under MIT License (https://opensource.org/licenses/MIT)
+!
+!    This file is part of Devuna-KwikSourceSearch (https://github.com/Devuna/Devuna-KwikSourceSearch)
+!
+!    Devuna-KwikSourceSearch is free software: you can redistribute it and/or modify
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
+!
+!    Devuna-KwikSourceSearch is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    MIT License for more details.
+!
+!    You should have received a copy of the MIT License
+!    along with Devuna-KwikSourceSearch.  If not, see <https://opensource.org/licenses/MIT>.
+! ================================================================================
+-->
+<html><head><title>Using Regular Expressions</title>
+<meta name="GENERATOR" content="Forehtml Pro 5.0">
+<link rel="stylesheet" type="text/css" href="kss.css">
+
+
+<body>
+
+
+<p class="BannerBase">
+Using Regular Expressions</p><hr>
+<p class="Normal">
+KSS is capable of finding the exact text you are looking for in any ASCII file or files. However, sometimes
+you have only part of the information that you want to match, or you want to find a wider range of information.
+In such cases, KSS has the powerful capability to search for patterns of text using regular expressions.</p>
+<p class="Normal">
+Regular expressions are a notation for specifying patterns of text, as opposed to exact strings of characters.
+The notation uses literal characters and metacharacters. Every character that does not have special meaning
+in the regular expression syntax is a literal character and matches an occurrence of that character. For
+example, letters and numbers are literal characters. A metacharacter is a symbol with special meaning
+(an operator or delimiter) in the regular-expression syntax.</p>
+<p class="Normal">
+The following table lists the metacharacters that the <a href="html\SearchFor.htm">Search For</a> dialog accepts.</p><table BORDER="1" cellpadding="2">
+<tr><td width="87" Valign="center">
+<p class="Normal">
+.</p></td><td width="699" Valign="center">
+<p class="Normal">
+Period (.) matches any single character except a new line. For example: .P matches any single character
+followed by a P in a string. Using concatenation we can make regular expressions like 'U.A', which matches
+any three-character sequence that begins with 'U' and ends with 'A'.</p></td></tr>
+<tr><td width="87" Valign="center">
+<p class="Normal">
+*</p></td><td width="699" Valign="center">
+<p class="Normal">
+Asterisk means that the preceding regular expression is to be repeated as many times as possible to find
+a match. For example: ph* applies the * symbol to the preceding h and looks for matches to one p followed
+by any number of h's. This will also match just p if no h's are present. The * repeats the smallest possible
+preceding expression (use parentheses if you wish to repeat a larger expression). It finds as many repetitions
+as possible. For example: (c[ad][ad]*r x) matches a string of the form (car x), (cdr x), (cadr x), and
+so on.</p></td></tr>
+<tr><td width="87" Valign="center">
+<p class="Normal">
+^</p></td><td width="699" Valign="center">
+<p class="Normal">
+Caret matches the beginning of the string or the beginning of a line within the string. For example:^@chapter
+matches the &quot;@chapter&quot; at the beginning of a string.</p></td></tr>
+<tr><td width="87" Valign="center">
+<p class="Normal">
+$</p></td><td width="699" Valign="center">
+<p class="Normal">
+Dollar sign is similar to the caret, but it matches only at the end of a string or the end of a line within
+the string. For example:p$ matches a record that ends with a p.</p></td></tr>
+<tr><td width="87" Valign="center">
+<p class="Normal">
+[class]</p></td><td width="699" Valign="center">
+<p class="Normal">
+Character class: it matches any one of the characters that are enclosed in the square brackets. For example:
+[MVX] matches any one of the characters M, V, or X in a string. Ranges of characters are indicated by
+using a hyphen between the beginning and ending characters, and enclosing the whole thing in brackets.
+For example:[0-9] matches any digit. To match '-', write it as '---', which is a range containing only
+'-'. You may also give '-' as the first or last character in the set. To match '^', put it anywhere except
+as the first character of a set. To match a ']', make it the first character in the set. For example:
+[]d^]matches either ']', 'd' or '^'.</p></td></tr>
+<tr><td width="87" Valign="center">
+<p class="Normal">
+[^class]</p></td><td width="699" Valign="center">
+<p class="Normal">
+Inverse class: the first character after the [ must be a ^.  It matches any characters except those in
+the square brackets (or newline).  For example: [^0-9] matches any character that is not a digit.</p></td></tr>
+<tr><td width="87" Valign="center">
+<p class="Normal">
+\x</p></td><td width="699" Valign="center">
+<p class="Normal">
+Backslash is used to suppress the special meaning of a character when matching. For example: \$ matches
+the character $.</p></td></tr>
+<tr><td width="87" Valign="center">
+<p class="Normal">
+\&lt;xyz</p></td><td width="699" Valign="center">
+<p class="Normal">
+Word position: beginning of word</p></td></tr>
+<tr><td width="87" Valign="center">
+<p class="Normal">
+xyz\&gt;</p></td><td width="699" Valign="center">
+<p class="Normal">
+Word position: end of word</p></td></tr></table>
+
+</body></html>

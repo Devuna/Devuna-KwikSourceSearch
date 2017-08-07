@@ -1,0 +1,391 @@
+<!--
+! ================================================================================
+! Notice : Copyright (C) 2017, Devuna
+!          Distributed under MIT License (https://opensource.org/licenses/MIT)
+!
+!    This file is part of Devuna-KwikSourceSearch (https://github.com/Devuna/Devuna-KwikSourceSearch)
+!
+!    Devuna-KwikSourceSearch is free software: you can redistribute it and/or modify
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
+!
+!    Devuna-KwikSourceSearch is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    MIT License for more details.
+!
+!    You should have received a copy of the MIT License
+!    along with Devuna-KwikSourceSearch.  If not, see <https://opensource.org/licenses/MIT>.
+! ================================================================================
+-->
+<html><head><title>Main Window</title>
+<meta name="GENERATOR" content="Forehtml Pro 5.0">
+<link rel="stylesheet" type="text/css" href="kss.css">
+
+
+<body>
+
+
+<p class="BannerBase">
+Main Window</p><hr>
+<p class="Normal">
+The main KSS window consists of a tabbed results sheet, a toolbar, and a text editor.  The status bar
+at the bottom of the window displays the Last Modified data and time for the currently highlighted file
+in the Results List, product registration information and product version.</p>
+<p class="Normal">
+<b>Tabbed Results Sheet</b></p>
+<p class="Normal">
+After a search request has been completed, the results are shown in a list on the current tab unless the
+'Search New Tab' button was pressed on the <span class="Hyperlink"><a href="html\SearchFor.htm">Search for</a></span>
+dialog box.</p>
+<p class="Normal">
+A new tab for search results can also be created by clicking on the tab with the plus sign [+] or by pressing
+<kbd>[Ctrl + T]</kbd>.<kbd></kbd></p>
+<p class="Normal">
+Press <kbd>[Alt + S]</kbd> , <kbd>[Ctrl + W]</kbd>, or <kbd>[Esc]</kbd> when the result list has focus
+to display the <span class="Hyperlink"><a href="html\SearchFor.htm">Search for</a></span> dialog used to initiate
+a new search.</p>
+<p class="Normal">
+Press <kbd>[Ctrl+C]</kbd> to copy the full path and filename to the clipboard.</p>
+<p class="Normal">
+Right click on the results list header to display the <a href="html\ListboxFormatter.htm">Results List Formatter</a>
+dialog.  This dialog can be used to rearrange the order of the columns in the results list.  If the Location
+column is empty for all results, the column is hidden.</p>
+<p class="Normal">
+Double click on a column resize bar to change the column width to auto fit the contents.</p>
+<p class="Normal">
+Right click on the results list to display the context menu.  </p>
+<p class="Normal">
+<b><u>context menu/toolbar</u></b></p>
+<p class="Normal">
+Most of the results list context menu commands are on the toolbar for easy access. </p>
+<p class="Normal">
+<img src="images\Search.png" alt="Search.png" width="32" height="32" align="baseline">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Search <kbd>[Alt + S]</kbd>
+<bR>displays the <span class="Hyperlink"><a href="html\SearchFor.htm">Search for</a></span> dialog used to
+initiate a new search.</p>
+<p class="Normal">
+<img src="images\reload_rotate.png" alt="reload_rotate.png" width="32" height="32" align="baseline">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Redo Search <kbd>[F5]
+<bR></kbd>performs the same search again without displaying the <a href="html\SearchFor.htm">Search for</a>
+dialog.</p>
+<p class="Normal">
+Show Match Summary
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the <a href="html\MatchSummary.htm">Match Summary</a> dialog displays a summary
+list of the matches found.</p>
+<hr width=50% align=left >
+
+<p class="Normal">
+<img src="images\PreviousFolder.png" alt="PreviousFolder.png" width="32" height="32" align="baseline">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Jump –&gt; Previous Folder
+<bR>selects the first match in the previous folder in the path column.</p>
+<p class="Normal">
+<img src="images\PreviousFile.png" alt="PreviousFile.png" width="32" height="32" align="baseline">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Jump –&gt; Previous File
+<bR>selects the first match in the previous file in the Filename + Ext columns.</p>
+<p class="Normal">
+<img src="images\PreviousLine.png" alt="PreviousLine.png" width="32" height="32" align="baseline">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Jump –&gt; Previous Line
+<bR>selects the previous line in the results list.</p>
+<p class="Normal">
+<img src="images\NextLine.png" alt="NextLine.png" width="32" height="32" align="baseline">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Jump –&gt; Next Line
+<bR>selects the next line in the results list.</p>
+<p class="Normal">
+<img src="images\NextFile.png" alt="NextFile.png" width="32" height="32" align="baseline">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Jump –&gt; Next File
+<bR>selects the first match in the next file in the Filename + Ext columns.</p>
+<p class="Normal">
+<img src="images\NextFolder.png" alt="NextFolder.png" width="32" height="32" align="baseline">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Jump –&gt; Next Folder
+<bR>selects the first match in the next folder in the path column.</p>
+<hr width=50% align=left >
+
+<p class="Normal">
+<img src="images\DeleteLine.png" alt="DeleteLine.png" width="32" height="32" align="baseline">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Delete –&gt; Selected –&gt; Line <kbd>[delete key]</kbd>
+<bR>deletes the currently selected line.</p>
+<p class="Normal">
+<img src="images\DeleteFile.png" alt="DeleteFile.png" width="32" height="32" align="baseline">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Delete –&gt; Selected –&gt; Filename
+<bR>deletes all occurrences of the currently selected Filename + Ext columns; a delete confirmation message
+is displayed.</p>
+<p class="Normal">
+<img src="images\DeleteExtension.png" alt="DeleteExtension.png" width="32" height="32" align="baseline">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Delete –&gt; Selected –&gt; Extension
+<bR>deletes all occurrences of the currently selected Ext column; a delete confirmation message is displayed.</p>
+<p class="Normal">
+<img src="images\DeletePath.png" alt="DeletePath.png" width="32" height="32" align="baseline">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Delete –&gt; Selected –&gt; Path
+<bR>deletes all occurrences of the currently selected Path column; a delete confirmation message is displayed.</p>
+<p class="Normal">
+<img src="images\DeleteComment.png" alt="DeleteComment.png" width="32" height="32" align="baseline">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Delete –&gt; Comment Lines
+<bR>deletes all lines in which the match only occurs within a Clarion comment; a delete confirmation message
+is displayed.</p>
+<p class="Normal">
+<img src="images\DeleteLabel.png" alt="DeleteLabel.png" width="32" height="32" align="baseline">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Delete –&gt; Label Lines
+<bR>deletes all lines that do not have a space [ ] or exclamation mark [!] as the first character; a delete
+confirmation message is displayed.</p>
+<p class="Normal">
+<img src="images\DeleteCode.png" alt="DeleteCode.png" width="32" height="32" align="baseline">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Delete –&gt; Matches in CODE
+<bR>deletes all lines that occur in Clarion CODE sections; a delete confirmation message is displayed.</p>
+<p class="Normal">
+<img src="images\DeleteData.png" alt="DeleteData.png" width="32" height="32" align="baseline">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Delete –&gt; Matches in DATA
+<bR>deletes all lines that occur in Clarion DATA sections; a delete confirmation message is displayed.</p>
+<p class="Normal">
+<img src="images\FindDelete.png" alt="FindDelete.png" width="32" height="32" align="baseline">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Delete –&gt; Find and Delete <kbd>[Ctrl + Delete]</kbd>
+<bR>displays the <span class="Hyperlink"><a href="html\FindAndDeleteOptions.htm">Find and Delete Options</a></span>
+dialog used to search for text within a column in the results list and delete matching or non-matching
+entries; a delete confirmation message is displayed.</p>
+<p class="Normal">
+<img src="images\UndoDelete.png" alt="UndoDelete.png" width="32" height="32" align="baseline">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Undo Delete <kbd>[Ctrl + Z]</kbd>
+<bR>restores deleted results to the list.</p>
+<p class="Normal">
+Macro –&gt; Player
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the <a href="html\MacroPlayer.htm">Macro Player</a> dialog window is displayed.
+Use this dialog to Load, Save and Play delete commands that have been previously recorded.</p>
+<p class="Normal">
+Macro –&gt; Record
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;starts recording all delete command actions performed by the user.</p>
+<p class="Normal">
+Macro –&gt; Stop Recording
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stops the recording of delete command actions.</p>
+<hr width=50% align=left >
+
+<p class="Normal">
+<img src="images\Save.png" alt="Save.png" width="32" height="32" align="baseline">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Save Results
+<bR>displays the <span class="Hyperlink"><a href="html\SaveResults.htm">Save Results</a></span> dialog used
+to save results to the clipboard or a file.</p>
+<p class="Normal">
+<img src="images\SendTo.png" alt="SendTo.png" width="32" height="32" align="baseline">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Send To <kbd>[Ctrl + E]</kbd>
+<bR>executes the send to command specified in the <span class="Hyperlink"><a href="html\UserOptions.htm">Options</a></span>
+dialog. If more than one send to command has been defined and the Prompt for Command check box is checked,
+the <span class="Hyperlink"><a href="html\SelectSendToCommand.htm">Send To</a></span> dialog is displayed and
+then the selected command is executed.</p>
+<hr width=50% align=left >
+
+<p class="Normal">
+Copy Fullname to Clipboard <kbd>[Ctrl + C]</kbd>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;copies the full path and filename of the currently selected result list
+item to the clipboard.</p>
+<p class="Normal">
+Copy Path to Clipboard
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;copies the file path of the currently selected result list item to the clipboard.</p>
+<p class="Normal">
+Copy Findstr to Clipboard
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;copies the findstr command used to provide the search results to the clipboard.
+This can be useful for debugging unexpected results.</p>
+<p class="Normal">
+Reveal in Explorer
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;open the folder that contains the currently selected file.</p>
+<hr width=50% align=left >
+
+<p class="Normal">
+<img src="images\UserOptions.png" alt="UserOptions.png" width="32" height="32" align="baseline">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Options
+<bR>displays the <span class="Hyperlink"><a href="html\UserOptions.htm">Options</a></span> dialog.</p>
+<p class="Normal">
+<img src="images\SplitH.png" alt="SplitH.png" width="32" height="32" align="baseline"><img src="images\SplitV.png" alt="SplitV.png" width="32" height="32" align="baseline">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Change Layout
+<bR>alternately switches the arrangement of the results list and the text editor between' Results on Left
+and Editor on Right' and 'Results on Top and Editor on Bottom'.</p>
+<p class="Normal">
+Center Resizer Bar <kbd>[Crtl + |]</kbd>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Centers the resizer bar on the window.</p>
+<p class="Normal">
+Change Results List Format
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;displays the <a href="html\ListboxFormatter.htm">Results List Formatter</a> dialog
+which which can be used to rearrange the results list columns.</p>
+<p class="Normal">
+Auto Size Columns
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;resizes all results list columns to fit the contents.</p>
+<hr width=50% align=left >
+
+<p class="Normal">
+<img src="images\main19.jpg" alt="images/main19.jpg" width="32" height="29" align="baseline">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Close Tab [Ctrl + F4] or [Ctrl + W]
+<bR>closes the currently selected results tab. note: the first tab cannot be closed and pressing this
+when the first tab is selected causes the resul;ts list to be cleared and a new search initiated.</p>
+<p class="Normal">
+<img src="images\main20.jpg" alt="images/main20.jpg" width="32" height="29" align="baseline">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cancel Search
+<bR>terminates a search in progress.</p>
+<hr width=50% align=left >
+
+<p class="Normal">
+<img src="images\CheckBox_On.png" alt="CheckBox_On.png" width="32" height="32" align="baseline"><img src="images\CheckBox_Off.png" alt="CheckBox_Off.png" width="32" height="32" align="baseline">
+Hide Edit Panel
+<bR>Hides or unhides the edit panel.</p>
+<hr width=100% align=left >
+
+<p class="Normal">
+<b>Text Editor</b></p>
+<p class="Normal">
+The Text Editor displays the currently selected file and result line each time a new result list row is
+selected.  The Text Editor provides Clarion syntax highlighting and all matches found in the currently
+selected file are  bookmarked.</p>
+<p class="Normal">
+The 'File Modified' indicator <img src="images\save-warn.png" alt="save-warn.png" width="16" height="16" align="baseline">
+is enabled if the file currently being viewed has been modified by the user.  The indicator is a button
+which can be pressed to save the file contents.</p>
+<p class="Normal">
+Right click on the Text Editor to display the context menu.  Most context menu commands have a corresponding
+key combination.</p>
+<p class="Normal">
+<b>context menu</b></p>
+<p class="Normal">
+Save
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<kbd>[Ctrl + S]</kbd>
+<bR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;saves the Text Editor buffer to the file.</p>
+<p class="Normal">
+Save As
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<kbd>[Ctrl + Shift + S]
+<bR></kbd>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;displays the Windows Save As dialog and saves the Text Editor buffer to
+the selected file.</p>
+<p class="Normal">
+Auto Save
+<bR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;when enabled, modified files are automatically saved (without prompting
+the user) when moving to another file on the result list.</p>
+<p class="Normal">
+Send To
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<kbd>[Ctrl + E]</kbd>
+<bR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;executes the send to command specified in the <a href="html\UserOptions.htm">Options</a>
+dialog. If more than one send to command has been defined and the Prompt for Command check box is checked,
+the <a href="html\SelectSendToCommand.htm">Send To</a> dialog is displayed and then the selected command is
+executed.</p>
+<p class="Normal">
+Print
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<kbd>[Ctrl + P]</kbd>
+<bR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;prints the file currently displayed in the text editor.  The file is printed
+with full syntax colouring to the printer you select.
+<bR><span class="SmallCaps">note:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>there is no print preview.  If you want to preview select a PDF or
+XPS printer.  For XPS Printer go to printer preferences,  XPS documents, and make sure Auto Open is checked.</p>
+<p class="Normal">
+Cut
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<kbd>[Ctrl + X]</kbd>
+<bR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;copies the currently selected text to the clipboard and deletes the text.</p>
+<p class="Normal">
+Copy
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<kbd>[Ctrl + C]</kbd>
+<bR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;copies the currently selected text to the clipboard.</p>
+<p class="Normal">
+Paste
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<kbd>[Ctrl + V]</kbd>
+<bR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pastes the current contents of the clipboard into the document at the current
+cursor position.</p>
+<p class="Normal">
+Delete
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<kbd>[Delete]</kbd>
+<bR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;deletes the currently  selected text from the document.</p>
+<p class="Normal">
+<a name="FileModeMenu"></a>File Mode -&gt; selects the desired language syntax highlighting
+<bR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;default languages are clarion and text; the choices can be expanded by the
+use of special <a href="html\PropertyFiles.htm">property files</a>.</p>
+<p class="Normal">
+Folding -&gt; Toggle Fold <kbd>[Ctrl + Shift + M]
+<bR></kbd>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;expands or contracts the current fold based on its fold state.</p>
+<p class="Normal">
+Folding -&gt; Toggle All Folds <kbd>[Ctrl + Shift + T]</kbd>
+<bR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;expands or contracts all folds based on the fold state of the first fold
+marker in the file.</p>
+<p class="Normal">
+Folding -&gt; Fold Margin
+<bR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;displays or hides the fold margin.</p>
+<p class="Normal">
+Find
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<kbd>[Alt + F3]</kbd>
+<bR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;displays the <a href="html\Find.htm">Find</a> dialog used to locate text within
+the text editor.</p>
+<p class="Normal">
+Find Next
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<kbd>[F3]</kbd>
+<bR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;finds the next matching text in the file.  A Find operation must first be
+initiated in order to set the text to look for.</p>
+<p class="Normal">
+Replace
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<kbd>[Ctrl + R]</kbd>
+<bR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;displays the <a href="html\Find.htm">Replace</a> dialog used to locate and replace
+text within the text editor.</p>
+<p class="Normal">
+Toggle Bookmark
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<kbd>[Ctrl + F2]</kbd>
+<bR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;adds or removes a bookmark from the currently selected line.</p>
+<p class="Normal">
+Previous Bookmark
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<kbd>[Shift + F2]</kbd>
+<bR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scrolls the previous bookmark into view.</p>
+<p class="Normal">
+Next Bookmark
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<kbd>[F2]</kbd>
+<bR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scrolls the next bookmark into view.</p>
+<p class="Normal">
+Clear All Bookmarks
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<kbd>[Ctrl + Shift + F2]</kbd>
+<bR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;removes all bookmarks.</p>
+<p class="Normal">
+Hot Spots Enabled
+<bR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;enables or disables hot spot support.  When enabled, clicking on a hot spot
+causes the program to attempt to find help for the clicked item.  For Clarion, help is obtained from the
+help file specified on the <a href="html\UserOptions.htm">Options</a> dialog.  For all other languages a search
+on the internet is initiated.</p>
+<p class="Normal">
+Go To Line Number
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<kbd>[Ctrl + G]</kbd>
+<bR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;displays the <a href="html\GoTo.htm">Go To Line Number</a> dialog used to scroll
+the specified line number into view.</p>
+<p class="Normal">
+Move -&gt; Top
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<kbd>[Ctrl + Home]</kbd>
+<bR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scrolls to the top of the file.</p>
+<p class="Normal">
+Move -&gt; Page Up
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<kbd>[PgUp]</kbd>
+<bR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scrolls up one page.</p>
+<p class="Normal">
+Move -&gt; Page Down
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<kbd>[PgDn]</kbd>
+<bR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scrolls down one page.</p>
+<p class="Normal">
+Move -&gt; Bottom
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<kbd>[Ctrl + End]</kbd>
+<bR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scrolls to the bottom of the file.</p>
+<p class="Normal">
+Hide Results List
+<bR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hide or show the results list.</p>
+</body></html>

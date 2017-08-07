@@ -1,0 +1,43 @@
+# Set the default behavior, in case people don't have core.autocrlf set.
+* text eol=crlf
+
+# Explicitly declare text files you want to always be normalized and converted
+# to native line endings on checkout.
+*.clw text
+*.inc text
+*.int text
+*.cwproj text
+*.sln text
+
+# Declare files that will always have CRLF line endings on checkout.
+*.sln text eol=crlf
+
+# Denote all files that are truly binary and should not be modified.
+*.app binary
+*.bmp binary
+*.chm binary
+*.dct binary
+*.dll binary
+*.exe binary
+*.gif binary
+*.hlp binary
+*.ico binary
+*.jpg binary
+*.png binary
+*.sbp binary
+*.zip binary
+
+# Declare help as documentation folder
+help/* linguist-documentation
+
+# Declare languuage association
+*.clw linguist-language=Clarion
+*.cwproj linguist-language=Clarion
+*.equ linguist-language=Clarion
+*.inc linguist-language=Clarion
+*.int linguist-language=Clarion
+*.sln linguist-language=Clarion
+*.tpl linguist-language=Clarion
+*.tpw linguist-language=Clarion
+*.txa linguist-language=Clarion
+*.txd linguist-language=Clarion

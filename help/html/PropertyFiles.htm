@@ -1,0 +1,159 @@
+<!--
+! ================================================================================
+! Notice : Copyright (C) 2017, Devuna
+!          Distributed under MIT License (https://opensource.org/licenses/MIT)
+!
+!    This file is part of Devuna-KwikSourceSearch (https://github.com/Devuna/Devuna-KwikSourceSearch)
+!
+!    Devuna-KwikSourceSearch is free software: you can redistribute it and/or modify
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
+!
+!    Devuna-KwikSourceSearch is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    MIT License for more details.
+!
+!    You should have received a copy of the MIT License
+!    along with Devuna-KwikSourceSearch.  If not, see <https://opensource.org/licenses/MIT>.
+! ================================================================================
+-->
+<html><head><title>Property Files</title>
+<meta name="GENERATOR" content="Forehtml Pro 5.0">
+<link rel="stylesheet" type="text/css" href="kss.css">
+
+
+<body>
+
+
+<p class="BannerBase">
+Property Files</p><hr>
+<p class="Normal">
+Keystone Source Search can be easily extended to support styling for other languages using special property
+files. These are simply text files that provide lexer, keyword, and styling options for the Scintilla
+control. These are similar to, but not as sophisticated as, the property files used with the <a href="http://www.scintilla.org/SciTEDoc.html">sciTE
+editor</a>.</p>
+<p class="Normal">
+<b>File Locations</b>
+<bR>KSS searches for the special property files in two locations:
+<bR>%ProgramFiles%/Keystone Computer Resources/KSS - this folder is reserved for special property files
+that may be shipped as part of the basic product. These files should not be modified.</p>
+<p class="Normal">
+%AppData%/Keystone Computer Resources/KSS - this folder is reserved for user defined special property
+files. Property files in this folder override similarly named property files located in the %ProgramFiles%/Keystone
+Computer Resources/KSS folder.</p>
+<p class="Normal">
+<b>File Names
+<bR></b>Property files have a required naming format which is <i>language</i>.properties where <i>language</i>
+is the name that will appear on the KSS <a href="html\main.htm#FileModeMenu">File Mode menu</a>.</p>
+<p class="Normal">
+<b>File Contents
+<bR></b>Blank lines and Clarion style comments, line begins with a !, are ignored.</p>
+<p class="Normal">
+The first non-comment line in the file should specify the lexer to be used like this:
+<bR><b>Lexer=</b><b><i>lexer_name</i></b>
+<bR>where <i>lexer_name</i> is one of <b>clarion</b>, <b>cpp</b>, <b>html</b>, or <b>text</b>; these are
+the only lexers currently supported. Invalid values are equated to text.</p>
+<p class="Normal">
+The remainder of the file contents are organized into sections denoted by [ ] and followed by the data
+for that section. Data for each section can be specified on multiple lines. Sections should be laid out
+in the following order:</p>
+<p class="Normal">
+<b>[FilePatterns]</b>
+<bR>Specify each of the file patterns, separated by a space, to be associated with this property file.
+If the same extension appears in multiple property files, only the first occurrance found will be used.
+The property files are processed alphabetically.</p>
+<p class="Normal">
+example:
+<bR>[FilePatterns]
+<bR>*.xml *.xsl *.svg *.xul *.xsd *.dtd
+<bR>*.xslt *.axl *.xrc *.rdf</p>
+<p class="Normal">
+<b>[Options]</b>
+<bR>A lexer may have special options that control its behaviour.  Use this section to specify the lexer
+options, one per line.  The format for this section is option, &quot;=&quot;, the option value, &quot;;&quot;,
+the option description.</p>
+<p class="Normal">
+example:
+<bR>fold=1;Folding is turned on by setting fold=true.</p>
+<p class="Normal">
+<b>[Keywords#]</b>
+<bR>Each lexer uses different sets of keywords to provide its functionality. The <b>#</b> refers to the
+Scintilla keyword list that is to contain the specified keywords. Depending on the lexer, the case of
+the keywords can be significant. Most lexers use lower case, however, the Clarion lexer requires upper
+case keywords.</p>
+<p class="Normal">
+example: </p>
+<p class="Normal">
+! Comment that describes Keyword Set
+<bR>[Keywords1]
+<bR>abstract as ascending base bool break by byte case catch char checked
+<bR>class const continue decimal default delegate descending do double else enum
+<bR>equals event explicit extern false finally fixed float for foreach from goto group if</p>
+<p class="Normal">
+! Comment that describes Keyword Set
+<bR>[Keywords2]
+<bR>file group region</p>
+<p class="Normal">
+<b>[Styles]</b>
+<bR>The lexers determine a style number for each lexical type, such as keyword, comment or number. These
+settings determine the visual style to be used for each style number of each lexer.</p>
+<p class="Normal">
+The value of each setting is a set of ',' separated fields, some of which have a subvalue after a ':'.
+Each lexer uses several styles to highlight various aspects of the text. The styles are numbered and can
+contain the following, comma separated, values in any order:</p>
+<p class="Normal">
+Style<i>#</i>=font:<i>font_name</i>,size:<i>font_size</i>,bold,italic,underline,fore:<i>fore_color</i>,back:<i>back_color
+</i>,eolfilled,case:<i>case_opt</i>,hide,hotspot</p>
+<p class="Normal">
+Style#=
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;specify the style number being defined.<span class="SmallCaps"><span class="SmallCaps" style=" font-variant: small-caps ;"><span class="SmallCaps" style=" font-variant: small-caps ;"><span  style=" font-variant: small-caps ;"
+Style32 is the default style; specify it first to have the defaults applied to all other document styles.</span></span></span></span></p>
+<p class="Normal">
+font:<i>font_name</i>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;specify the name of the font to be used</p>
+<p class="Normal">
+size:<i>font_size</i>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;specify the point size of the font</p>
+<p class="Normal">
+bold
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;specify this for a bold font style</p>
+<p class="Normal">
+italic
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;specify this for an italic font style</p>
+<p class="Normal">
+underline
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;specify this for an underline font effect</p>
+<p class="Normal">
+fore:<i>fore_color
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i>specify the foreground color as a hexadecimal rgb value [#RRGGBB]</p>
+<p class="Normal">
+back:<i>back_color
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i>specify the background color as a hexadecimal rgb value [#RRGGBB]</p>
+<p class="Normal">
+eolfilled
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if the last character in the line has a style with this attribute set, the
+remainder of the line up to the right edge of the window is filled with the background colour set for
+the last character. This is useful when a document contains embedded sections in another language such
+as html pages with embedded JavaScript.</p>
+<p class="Normal">
+case:<i>case_opt</i>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;specify 0 for Mixed Case, 1 for Upper Case, or 2 for Lower Case</p>
+<p class="Normal">
+hide
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;specify this if the lexical type is to be hidden</p>
+<p class="Normal">
+hotspot
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;specify this if the lexical type is to act like a hyperlink. Within KSS,
+this is only useful for the Clarion lexer. Hotspots attempt to display the Clarion Help for the lexical
+type.</p>
+<p class="Normal">
+example:
+<bR>[Styles]
+<bR>! <b>&lt;Default&gt;</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;use this format for the Default style to cause it to sort to the top of
+the list
+<bR>style32=font:Verdana,size:10
+<bR>! Doc Comment Line: line comments beginning with /// or //!.
+<bR>style15=fore:#3F703F,font:Comic Sans MS,size:9</p>
+</body></html>

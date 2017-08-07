@@ -1,0 +1,81 @@
+
+[OPTIONS]
+Language=
+Default Font=Segoe UI,10
+Compiled file=kss.chm
+Default Topic=html\Introduction.htm
+Default Window=default
+Display compile progress=No
+Display compile notes=No
+Enhanced decompilation=Yes
+Binary TOC=No
+Binary Index=No
+Full-text search=Yes
+Flat=No
+Index file=KSS.hhk
+Contents file=KSS.hhc
+TITLE=Kwik Source Search
+
+[FILES]
+html\ApplicationFunctionKeyAssig.htm
+html\Find.htm
+html\FindAndDeleteOptions.htm
+html\GoTo.htm
+html\Introduction.htm
+html\kss.css
+html\ListboxFormatter.htm
+html\MacroPlayer.htm
+html\main.htm
+html\MatchSummary.htm
+html\PropertyEditor.htm
+html\PropertyFiles.htm
+html\RegularExpressionOperators.htm
+html\Replace.htm
+html\SaveResults.htm
+html\SearchFor.htm
+html\SelectSendToCommand.htm
+html\UserOptions.htm
+html\UsingRegularExpressions.htm
+images\abdnrow.png
+images\abuprow.png
+images\CheckBox_Off.png
+images\CheckBox_On.png
+images\delete16.png
+images\DeleteCode.png
+images\DeleteComment.png
+images\DeleteData.png
+images\DeleteExtension.png
+images\DeleteFile.png
+images\DeleteLabel.png
+images\DeleteLine.png
+images\DeletePath.png
+images\FindDelete.png
+images\Help.png
+images\NextFile.png
+images\NextFolder.png
+images\NextLine.png
+images\NextMacro.png
+images\PreviousFile.png
+images\PreviousFolder.png
+images\PreviousLine.png
+images\PreviousMacro.png
+images\Printer.png
+images\reload_rotate.png
+images\save-warn.png
+images\Save.png
+images\Search.png
+images\SendTo.png
+images\SplitH.png
+images\SplitV.png
+images\UndoDelete.png
+images\UserOptions.png
+images\main19.jpg
+images\main20.jpg
+
+[MAP]
+
+[ALIAS]
+
+[WINDOWS]
+default= "Kwik Source Search","KSS.hhc","KSS.hhk",,,,,,,9248,200,12294,[100,50,600,550],12845056,0,1,0,0,0
+

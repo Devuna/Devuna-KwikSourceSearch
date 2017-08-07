@@ -1,0 +1,69 @@
+
+<HTML>
+<!-- Sitemap 1.0 -->
+<OBJECT TYPE="text/site properties">
+	<PARAM NAME="Window Styles" VALUE="0x00800025">
+	<PARAM NAME="ExWindow Styles" VALUE="0x00000000">
+</OBJECT>
+<UL>
+	<LI><OBJECT TYPE="text/sitemap">
+		<PARAM NAME="Name" VALUE="Kwik Source Search">
+		</OBJECT>
+	<UL>
+		<LI><OBJECT TYPE="text/sitemap">
+			<PARAM NAME="Name" VALUE="Introduction">
+			<PARAM NAME="Local" VALUE="html\Introduction.htm">
+			</OBJECT>
+
+		<LI><OBJECT TYPE="text/sitemap">
+			<PARAM NAME="Name" VALUE="Main Window">
+			<PARAM NAME="Local" VALUE="html\main.htm">
+			</OBJECT>
+
+		<LI><OBJECT TYPE="text/sitemap">
+			<PARAM NAME="Name" VALUE="Search For">
+			<PARAM NAME="Local" VALUE="html\SearchFor.htm">
+			</OBJECT>
+
+		<LI><OBJECT TYPE="text/sitemap">
+			<PARAM NAME="Name" VALUE="Match Summary">
+			<PARAM NAME="Local" VALUE="html\MatchSummary.htm">
+			</OBJECT>
+
+		<LI><OBJECT TYPE="text/sitemap">
+			<PARAM NAME="Name" VALUE="Find and Delete Options">
+			<PARAM NAME="Local" VALUE="html\FindAndDeleteOptions.htm">
+			</OBJECT>
+
+		<LI><OBJECT TYPE="text/sitemap">
+			<PARAM NAME="Name" VALUE="Macro Player">
+			<PARAM NAME="Local" VALUE="html\MacroPlayer.htm">
+			</OBJECT>
+
+		<LI><OBJECT TYPE="text/sitemap">
+			<PARAM NAME="Name" VALUE="Save Results">
+			<PARAM NAME="Local" VALUE="html\SaveResults.htm">
+			</OBJECT>
+
+		<LI><OBJECT TYPE="text/sitemap">
+			<PARAM NAME="Name" VALUE="Send To">
+			<PARAM NAME="Local" VALUE="html\SelectSendToCommand.htm">
+			</OBJECT>
+
+		<LI><OBJECT TYPE="text/sitemap">
+			<PARAM NAME="Name" VALUE="Options">
+			<PARAM NAME="Local" VALUE="html\UserOptions.htm">
+			</OBJECT>
+
+		<LI><OBJECT TYPE="text/sitemap">
+			<PARAM NAME="Name" VALUE="Property Editor">
+			<PARAM NAME="Local" VALUE="html\PropertyEditor.htm">
+			</OBJECT>
+
+		<LI><OBJECT TYPE="text/sitemap">
+			<PARAM NAME="Name" VALUE="Using Regular Expressions">
+			<PARAM NAME="Local" VALUE="html\UsingRegularExpressions.htm">
+			</OBJECT>
+		</UL>
+	</UL>
+</HTML>

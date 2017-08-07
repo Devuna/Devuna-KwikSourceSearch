@@ -1,0 +1,185 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{C9888D57-DC7C-4A89-B029-BC892C8ABA06}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">Win32</Platform>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>kss</RootNamespace>
+    <AssemblyName>kss</AssemblyName>
+    <OutputName>kss</OutputName>
+    <CWOutputType>Exe</CWOutputType>
+    <Model>Dll</Model>
+    <stack_size>16384</stack_size>
+    <CopyCore>True</CopyCore>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <ApplicationIcon>kss.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>True</DebugSymbols>
+    <DebugType>Full</DebugType>
+    <vid>full</vid>
+    <check_stack>True</check_stack>
+    <check_index>True</check_index>
+    <OutputPath>bin\debug\</OutputPath>
+    <GenerateMap>True</GenerateMap>
+    <line_numbers>False</line_numbers>
+    <DefineConstants>_ABCDllMode_=&gt;0%3b_ABCLinkMode_=&gt;1%3b_SCIDllMode_=&gt;0%3b_SCILinkMode_=&gt;1</DefineConstants>
+    <warnings>on</warnings>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>False</DebugSymbols>
+    <DebugType>None</DebugType>
+    <vid>off</vid>
+    <check_stack>False</check_stack>
+    <check_index>False</check_index>
+    <GenerateMap>True</GenerateMap>
+    <line_numbers>False</line_numbers>
+    <DefineConstants>_ABCDllMode_=&gt;0%3b_ABCLinkMode_=&gt;1%3b_SCIDllMode_=&gt;0%3b_SCILinkMode_=&gt;1</DefineConstants>
+    <OutputPath>bin\release\</OutputPath>
+    <warnings>on</warnings>
+  </PropertyGroup>
+  <ItemGroup>
+    <Library Include="blank.ico" />
+    <Library Include="button_pause.ico" />
+    <Library Include="button_play.ico" />
+    <Library Include="button_record.ico" />
+    <Library Include="button_stop.ico" />
+    <Library Include="check-green.ico" />
+    <Library Include="Checkbox_off.ico" />
+    <Library Include="Checkbox_on.ico" />
+    <Library Include="checkno.ico" />
+    <Library Include="CLAOLE.LIB" />
+    <Library Include="ClearAllBookmarks.ico" />
+    <Library Include="copy.ico" />
+    <Library Include="cut.ico" />
+    <Library Include="cwHH%25V%25.LIB" />
+    <Library Include="CWHHla.lib" />
+    <Library Include="delete.ico" />
+    <Library Include="FileSave.ico" />
+    <Library Include="Find.ico" />
+    <Library Include="FindNext.ico" />
+    <Library Include="harrow.cur" />
+    <Library Include="kss.EXE.manifest" />
+    <Library Include="kss.ico" />
+    <Library Include="kss.res" />
+    <Library Include="link-broken.ico" />
+    <Library Include="NextBookmark.ico" />
+    <Library Include="paste.ico" />
+    <Library Include="PreviousBookmark.ico" />
+    <Library Include="print.ico" />
+    <Library Include="psapi.lib" />
+    <Library Include="RedoSearch.ico" />
+    <Library Include="Replace.ico" />
+    <Library Include="SaveAs.ico" />
+    <Library Include="splith.cur" />
+    <Library Include="splith.ico" />
+    <Library Include="SPLITHB.CUR" />
+    <Library Include="splitv.cur" />
+    <Library Include="SplitV.ico" />
+    <Library Include="ToggleBookmark.ico" />
+    <Library Include="warning.ico" />
+    <FileDriver Include="ASCII" />
+    <FileDriver Include="DOS" />
+    <FileDriver Include="TOPSPEED" />
+    <Compile Include="kss.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="kss001.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="kss002.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="kss003.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="kss004.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="kss005.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="kss006.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="kss007.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="kss008.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="kss009.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="kss010.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="kss011.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="kss012.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="kss013.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="kss014.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="kss015.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="kss016.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="kss017.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="kss018.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="kss019.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="kss020.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="kss021.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="kss022.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="kss023.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="kss024.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="kss025.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="kss026.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="kss027.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="kss028.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="kss029.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="kss030.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="KSS_BC.CLW">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="kss_BC0.CLW">
+      <Generated>true</Generated>
+    </Compile>
+  </ItemGroup>
+  <Import Project="$(ClarionBinPath)\SoftVelocity.Build.Clarion.targets" />
+</Project>

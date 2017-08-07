@@ -1,0 +1,118 @@
+<!--
+! ================================================================================
+! Notice : Copyright (C) 2017, Devuna
+!          Distributed under MIT License (https://opensource.org/licenses/MIT)
+!
+!    This file is part of Devuna-KwikSourceSearch (https://github.com/Devuna/Devuna-KwikSourceSearch)
+!
+!    Devuna-KwikSourceSearch is free software: you can redistribute it and/or modify
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
+!
+!    Devuna-KwikSourceSearch is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    MIT License for more details.
+!
+!    You should have received a copy of the MIT License
+!    along with Devuna-KwikSourceSearch.  If not, see <https://opensource.org/licenses/MIT>.
+! ================================================================================
+-->
+<html><head><title>Search For</title>
+<meta name="GENERATOR" content="Forehtml Pro 5.0">
+<link rel="stylesheet" type="text/css" href="kss.css">
+
+
+<body>
+
+
+<p class="BannerBase">
+Search For</p><hr>
+<p class="Normal">
+The Search for... dialog allows the user to specify what they want to find, how the matching is to be
+done, and where and what files are to be searched.</p>
+<p class="Normal">
+<b>Find</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This is the text to be searched for.  It can be either a literal search
+string or a <a href="html\UsingRegularExpressions.htm">regular expression</a>.  Multiple search arguments can
+be specified here by using a vertical bar | to separate the arguments.  To search for a vertical bar,
+place two vertical bars together like this ||.</p>
+<p class="Normal">
+<b>Get Find Text From Specified File</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Specifies that the search strings are to be loaded from the specified file.
+Enter multiple search strings, one per line, in a simple text file and supply that filename to search
+for the specified strings.</p>
+<p class="Normal">
+<b>Case Sensitive
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>Specifies that the search is to be case-sensitive.</p>
+<p class="Normal">
+<b>Exclude Comment Lines
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>Specifies that matches which occur only within a Clarion comment are
+to be excluded from the search results. Only certain files, identified on the <a href="html\UserOptions.htm">Options</a>
+dialog, receive this special Clarion processing.</p>
+<p class="Normal">
+<b>Match Pattern at Start of Line</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Matches the pattern if at the beginning of a line.</p>
+<p class="Normal">
+<b>Match Pattern at End of Line</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Matches the pattern if at the end of a line.</p>
+<p class="Normal">
+<b>Exact Match</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Only lines that match exactly.</p>
+<p class="Normal">
+<b>Exclude Matching Lines</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Only lines that do not contain a match.</p>
+<p class="Normal">
+<b>Use Regular Expressions
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>The Find string as a <a href="html\UsingRegularExpressions.htm">regular expression</a>.
+The search engine interprets all metacharacters as regular expressions.</p>
+<p class="Normal">
+<img src="images\Help.png" alt="Help.png" width="32" height="32" align="baseline">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Press this button to get regular expression help</p>
+<p class="Normal">
+<b>Filenames Only</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Select this option to return one result line for each file that contains
+a match.  All matches are not identified, only that the file contains a match.</p>
+<p class="Normal">
+<b>Read File List from Specified File
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>Specifies that the list of files to be searched is contained in a text
+file.  Specify the full path and filename of files to be searched, one per line, in a simple text file
+and supply that file name to have the program search only the files in the supplied list.</p>
+<p class="Normal">
+<b>Paths</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Search a semicolon delimited list of directories. The user can enter or
+paste directories into the path, select from the drop down list, or use the two buttons located to the
+right of the path. The ellipsis [...] button displays the Windows File Dialog and replaces the path with
+the selected folder. The plus [+] button displays the Windows File Dialog and appends a semicolon and
+the selected folder to the path.</p>
+<p class="Normal">
+<b>Search Subdirectories</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Searches for matching files in the current directory and all subdirectories.</p>
+<p class="Normal">
+<b>Levels</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Specifies how many subdirectory levels are to be searched.  If the level
+is blank then all subdirectory levels are searched.</p>
+<p class="Normal">
+<b>Files</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Specifies a file or files to search.  Separate the file names with a semicolon,
+vertical bar, or space. Wildcards can be used in the filenames.</p>
+<p class="Normal">
+<b>Exclude</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Specifies a file or files to exclude from the Results List.  Separate the
+file names with a semicolon, vertical bar, or space. Wildcards can be used in the filenames.</p>
+<p class="Normal">
+<b>Load Saved Results</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The <a href="html\SaveResults.htm">Save Results</a> dialog allows the user to
+save the results to a re-loadable result list file.  This button is used to re-load a previously saved
+re-loadable result list file.</p>
+<p class="Normal">
+<b>Search New Tab</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Press this button to begin the search and display the results on a new tab.</p>
+<p class="Normal">
+<b>Search</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Press this button to begin the search.</p>
+<p class="Normal">
+<b>Cancel</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Press this button to close the dialog and return to the main window without
+doing a search.</p>
+</body></html>

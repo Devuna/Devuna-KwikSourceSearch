@@ -1,0 +1,149 @@
+<!--
+! ================================================================================
+! Notice : Copyright (C) 2017, Devuna
+!          Distributed under MIT License (https://opensource.org/licenses/MIT)
+!
+!    This file is part of Devuna-KwikSourceSearch (https://github.com/Devuna/Devuna-KwikSourceSearch)
+!
+!    Devuna-KwikSourceSearch is free software: you can redistribute it and/or modify
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
+!
+!    Devuna-KwikSourceSearch is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    MIT License for more details.
+!
+!    You should have received a copy of the MIT License
+!    along with Devuna-KwikSourceSearch.  If not, see <https://opensource.org/licenses/MIT>.
+! ================================================================================
+-->
+<html><head><title>Property Editor</title>
+<meta name="GENERATOR" content="Forehtml Pro 5.0">
+<link rel="stylesheet" type="text/css" href="kss.css">
+
+
+<body>
+
+
+<p class="BannerBase">
+Property Editor</p><hr>
+<p class="Normal">
+The Property Editor dialog provides a convenient way to override the application styling defaults used
+to display files in the editor window.  There are four tabs each with several fields.</p>
+<h3>
+<u>General Tab</u></h3>
+<p class="Normal">
+<b>Description</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A brief description of the property file contents</p>
+<p class="Normal">
+<b>File Patterns</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A space delimited list of file patterns used to identify the files that
+will receive the associated styling.</p>
+<p class="Normal">
+&nbsp;</p>
+<h3>
+<u>Options Tab</u></h3>
+<p class="Normal">
+<b>Options</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>Each lexer has certain options that control its behaviour.  All available
+options are listed and a brief description of the option is displayed below the list as well as in the
+tooltip for that option.</p>
+<p class="Normal">
+&nbsp;</p>
+<h3>
+<u>Keywords Tab</u></h3>
+<p class="Normal">
+<b>Keywords
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>Each lexer uses different sets of keywords to provide its functionality.
+There are a maximum of nine Keyword sets.  The Keyword Set Description is shown in the list on the left
+and the Keywords in the set are shown in the text box on the right.</p>
+<p class="Normal">
+Right click on the text box to display the text box context menu.  This menu has one option &quot;View
+as List&quot; which displays the Keywords in a sorted list.</p>
+<p class="Normal">
+Right click on the list to display the list context menu.  This menu has options to Insert, Edit, or Delete
+rows from the list as well as an option to &quot;View as Text&quot; whic reverts back to the text box
+view.  When the list has focus, the <kbd>[Insert]</kbd>, <kbd>[Ctrl+Enter]</kbd>, and <kbd>[Delete]</kbd>
+keys can also be used to initiate editing of the list.</p>
+<h3>
+&nbsp;</h3>
+<h3>
+<u>Styles Tab</u></h3>
+<p class="Normal">
+<b>Styles
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>The lexers determine a style number for each lexical type, such as keyword,
+comment or number. These settings determine the visual style to be used for each style number of each
+lexer.</p>
+<p class="Normal" style="margin: 5pt  0pt  5pt  0pt ; border: thin solid ; background-color: #ffff80; ">
+The <b>&lt;Default&gt;</b> style appears first in the Styles list and <b>has special significance.</b>
+<bR><b>This style provides the styling options that will be used for all other styles where a specific
+styling option has not been selected.  </b></p>
+<p class="Normal">
+The Property Editor indicates options that are inherited from the &lt;Default&gt; style with an italic
+prompt.  Options that are specifically set for a style, overriding the default option, are indicated with
+a bold prompt.  The Font option may have a mix of default and specific settings in which case the prompt
+is shown in bold italic<i><span  style=" font-variant: small-caps ;">.
+<bR>
+<bR>italic</span></i><b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>inherited from default <b>
+<bR></b><b><span  style=" font-variant: small-caps ;">bold</span></b><b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;specifically set, overrides default<b>
+<bR></b><b><i><span  style=" font-variant: small-caps ;">bold italic</span></i></b><b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b> mix of inherited and override options</p>
+<p class="Normal">
+<b>Font</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Press the ellipsis [...] button to the right of the field to display the
+font selection dialog to select the desired font. </p>
+<p class="Normal">
+<b>Fore Color</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Press the ellipsis [...] button to the right of the field to display the
+color selection dialog to select the desired text color. </p>
+<p class="Normal">
+<b>Back Color
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>Press the ellipsis [...] button to the right of the field to display
+the font selection dialog to select the desired background color. </p>
+<p class="Normal">
+<b>Options</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Additional text editor display options.
+<bR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hide
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The language element is hidden in the text editor when checked.
+<bR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hot Spot
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This option is used to mark language elements in the text that can detect
+mouse clicks. The cursor changes to a hand over hotspots and an underline appears to indicate that these
+areas are sensitive to clicking. This is used to allow hyperlinks to Clarion help for the language element.
+<bR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EOL Filled
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If the last character in the line has a style with this attribute set, the
+remainder of the line up to the right edge of the window is filled with the background colour set for
+the last character. This is useful when a document contains embedded sections in another language such
+as html pages with embedded JavaScript.</p>
+<p class="Normal">
+<b>Case</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Select the case in which the language element is to be displayed.
+<bR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mixed
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the case of the language element is not altered.
+<bR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Upper
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the language element is converted to upper case.
+<bR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lower
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the language element is converted to lower case.</p>
+<p class="Normal">
+<b>Save</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Press the Save button to save your changes.  You will be asked to provide
+the path and filename for the modified properties file.</p>
+<p class="Normal">
+<b>Cancel</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Press the Cancel button to discard any changes and return to the <a href="html\UserOptions.htm">Options</a>
+dialog.</p>
+</body></html>

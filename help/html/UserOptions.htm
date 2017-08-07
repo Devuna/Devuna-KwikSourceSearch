@@ -1,0 +1,151 @@
+<!--
+! ================================================================================
+! Notice : Copyright (C) 2017, Devuna
+!          Distributed under MIT License (https://opensource.org/licenses/MIT)
+!
+!    This file is part of Devuna-KwikSourceSearch (https://github.com/Devuna/Devuna-KwikSourceSearch)
+!
+!    Devuna-KwikSourceSearch is free software: you can redistribute it and/or modify
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
+!
+!    Devuna-KwikSourceSearch is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    MIT License for more details.
+!
+!    You should have received a copy of the MIT License
+!    along with Devuna-KwikSourceSearch.  If not, see <https://opensource.org/licenses/MIT>.
+! ================================================================================
+-->
+<html><head><title>Options</title>
+<meta name="GENERATOR" content="Forehtml Pro 5.0">
+<link rel="stylesheet" type="text/css" href="kss.css">
+
+
+<body>
+
+
+<p class="BannerBase">
+Options</p><hr>
+<p class="Normal">
+The Options dialog is used to configure the application.</p>
+<p class="Normal">
+<b>Send To Command</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Use this field to define one or more send to commands.  If the command uses
+long file names the path and executable filename should be enclosed in double quotes.</p>
+<p class="Normal">
+KSS supports two special tokens for use in the edit commands (note: the tokens are not case sensitive):
+<bR>%1 or %file
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;represents the currently selected filename.
+<bR>%2 or %line   represents the currently selected line number for editors that provide a command line
+option to open the file at a specific line number.</p>
+<p class="Normal">
+The special &lt;Use Windows Default&gt; command cannot be removed from the list and instructs to program
+to use Windows file associations to determine the Send To command.</p>
+<p class="Normal">
+Press the ellipsis [...] button to use the Windows Explorer to select the Send To command executable.</p>
+<p class="Normal">
+<b>Prompt for Command</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If more than one send to command is defined and this option is checked,
+the user is prompted to select which command to use.</p>
+<p class="Normal">
+KSS performs special processing on Clarion file types.  This special processing consists of identifying
+procedure names, code and data sections, and optional comment removal.  To accomplish this special processing
+it is necessary to parse the entire file;  if there are many files to process the presentation of the
+results will be delayed.  For the best performance, it is recommended to enumerate the file extensions
+that will receive this special processing.</p>
+<p class="Normal">
+<b>Clarion Help File</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Use the ellipsis button to the right of the field to select the Clarion
+Help file you would like the application to use.  Any Hot Spots in the Text Editor will invoke the selected
+Clarion help file when clicked with the mouse.</p>
+<p class="Normal">
+<b>Apply Clarion processing to all files</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Check this option to ignore the Clarion File Extensions list and apply special
+processing to all files (not recommended).</p>
+<p class="Normal">
+<b>Clarion File Extensions</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Use the Insert, Edit, and Delete buttons to manage the extensions in the
+list.  The listed extensions are matched anywhere in the file name so, and entry of '.CLW', for example
+will match files named xyz.clw, xyz.clw.old, xyz.bad.clw.copy, etc.</p>
+<p class="Normal">
+<b>Properties</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The Properties list contains the names of all property files found by the
+application.  These special property files are used to define the keywords and styles used by the application
+to provide syntax and lexigraphical highlighting based on a files extension.  You can set the font name,
+size and use of bold, italic and underline, foreground and background colors. You can also choose to hide
+text with a given style, display all characters as upper or lower case and mark language elements as Hot
+Spots to trigger a call to the Clarion Help file.</p>
+<p class="Normal">
+Press the [Edit] button below the properties list, or double click on an entry, to open the <a href="html\PropertyEditor.htm">Property
+Editor</a> dialog.</p>
+<p class="Normal">
+<b>Confirm results deletions</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The default behaviour for the program is to display a warning message to
+the user when thay are about to delete more than 1 line from the results list.  There are three choices
+in the associated drop list:
+<bR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Never - the warning message is never displayed
+<bR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Always - the warning message is always displayed
+<bR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;When - this choice displays and additional field
+<bR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>removing at least N rows</b>.  Use the spin control to set the row limit
+for displaying the warning message.</p>
+<p class="Normal">
+<b>Result List</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The font Name, Size, Style, and Fore color of the results list.</p>
+<p class="Normal">
+<b>Application</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The background color of the main application window.</p>
+<p class="Normal">
+<b>Toolbar</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The background color of the application toolbar.</p>
+<p class="Normal">
+<b>Selected</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The background color to be used for selected text.</p>
+<p class="Normal">
+<b>Bookmark</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The background color to use for bookmarks.</p>
+<p class="Normal">
+<b>Link Paths and Files with Find Text
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>The <a href="html\SearchFor.htm">Search for</a> dialog has many independent
+fields and options.  When this option is enabled, all options in effect when you press the Search button
+are saved with the Find text.  The next time the Find text is selected from the Most Recently Used list,
+the options associated with that text are restored to their previous state.</p>
+<p class="Normal">
+<b>Allow Multiple Instances</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;When this option is selected the user will be allowed to start multiple
+instances of the application.  Note all instances of the application share the same file for linking paths
+and files with the find text.  Much like concurrency in database appplications, the last search for a
+particular text string will overwrite any previous search for the same text even if it is from a different
+instance of the application.</p>
+<p class="Normal">
+<b>Auto Resize Result Columns</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;With this option selected, the application will resize the columns to accommodate
+the data in the column when the result list is initially loaded<b>.</b></p>
+<p class="Normal">
+<b>Restore Point Timer</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The application can maintain a restore point for your session.  This is
+useful if you work within the application for extended periods and occassionally experience an abnormal
+termination of the program.  The timer value represents the frequency, in minutes, at which Restore Points
+are created.  Set this value to zero to disable the Restore Point feature.  Restore Points are deleted
+when the application terminates normally.  If a restore point is detected when the application starts,
+the user is given the opportunity to recover to the restore point.</p>
+<p class="Normal">
+<b>Application Function Keys</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The key combinations associated with the 'Jump to Previous Result Line'
+and 'Jump to Next Result Line' functions can be reassigned to support alternate keyboard types.  Click
+the adjacent ellipsis buttons to display the <a href="html\ApplicationFunctionKeyAssig.htm">Application Function
+Key Assignment</a> dialog.  </p>
+<p class="Normal">
+<b>Register</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This button only appears on the unlicensed evaluation copy and is used to
+register the key provided when the product is purchased.  Once the key is registered, the evaluation period
+is removed and the button will no longer be displayed on the Options dialog.</p>
+<p class="Normal">
+<b>Apply</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Closes the window and applies any changes to the application.</p>
+</body></html>

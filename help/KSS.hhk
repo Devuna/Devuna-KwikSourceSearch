@@ -1,0 +1,100 @@
+
+<HTML>
+<!-- Sitemap 1.0 -->
+<OBJECT TYPE="text/site properties">
+</OBJECT>
+<UL>
+	<LI><OBJECT TYPE="text/sitemap">
+		<PARAM NAME="Name" VALUE="ApplicationFunctionKeyAssignment">
+		<PARAM NAME="Name" VALUE="ApplicationFunctionKeyAssignment">
+		<PARAM NAME="Local" VALUE="html\ApplicationFunctionKeyAssig.htm">
+		</OBJECT>
+	<LI><OBJECT TYPE="text/sitemap">
+		<PARAM NAME="Name" VALUE="Find">
+		<PARAM NAME="Name" VALUE="Find">
+		<PARAM NAME="Local" VALUE="html\Find.htm">
+		</OBJECT>
+	<LI><OBJECT TYPE="text/sitemap">
+		<PARAM NAME="Name" VALUE="Find and Delete Options">
+		<PARAM NAME="Name" VALUE="Find and Delete Options">
+		<PARAM NAME="Local" VALUE="html\FindAndDeleteOptions.htm">
+		</OBJECT>
+	<LI><OBJECT TYPE="text/sitemap">
+		<PARAM NAME="Name" VALUE="Go To">
+		<PARAM NAME="Name" VALUE="Go To Line Number">
+		<PARAM NAME="Local" VALUE="html\GoTo.htm">
+		</OBJECT>
+	<LI><OBJECT TYPE="text/sitemap">
+		<PARAM NAME="Name" VALUE="Introduction">
+		<PARAM NAME="Name" VALUE="Introduction">
+		<PARAM NAME="Local" VALUE="html\Introduction.htm">
+		</OBJECT>
+	<LI><OBJECT TYPE="text/sitemap">
+		<PARAM NAME="Name" VALUE="Macro Player">
+		<PARAM NAME="Name" VALUE="Macro Player">
+		<PARAM NAME="Local" VALUE="html\MacroPlayer.htm">
+		</OBJECT>
+	<LI><OBJECT TYPE="text/sitemap">
+		<PARAM NAME="Name" VALUE="Main Window">
+		<PARAM NAME="Name" VALUE="Main Window">
+		<PARAM NAME="Local" VALUE="html\main.htm">
+		</OBJECT>
+	<LI><OBJECT TYPE="text/sitemap">
+		<PARAM NAME="Name" VALUE="Match Summary">
+		<PARAM NAME="Name" VALUE="Match Summary">
+		<PARAM NAME="Local" VALUE="html\MatchSummary.htm">
+		</OBJECT>
+	<LI><OBJECT TYPE="text/sitemap">
+		<PARAM NAME="Name" VALUE="Property Editor">
+		<PARAM NAME="Name" VALUE="Property Editor">
+		<PARAM NAME="Local" VALUE="html\PropertyEditor.htm">
+		</OBJECT>
+	<LI><OBJECT TYPE="text/sitemap">
+		<PARAM NAME="Name" VALUE="Property Files">
+		<PARAM NAME="Name" VALUE="Property Files">
+		<PARAM NAME="Local" VALUE="html\PropertyFiles.htm">
+		</OBJECT>
+	<LI><OBJECT TYPE="text/sitemap">
+		<PARAM NAME="Name" VALUE="Regular Expression Operators">
+		<PARAM NAME="Name" VALUE="Regular Expression Operators">
+		<PARAM NAME="Local" VALUE="html\RegularExpressionOperators.htm">
+		</OBJECT>
+	<LI><OBJECT TYPE="text/sitemap">
+		<PARAM NAME="Name" VALUE="Replace">
+		<PARAM NAME="Name" VALUE="Replace">
+		<PARAM NAME="Local" VALUE="html\Replace.htm">
+		</OBJECT>
+	<LI><OBJECT TYPE="text/sitemap">
+		<PARAM NAME="Name" VALUE="Results List Formatter">
+		<PARAM NAME="Name" VALUE="Results List Formatter">
+		<PARAM NAME="Local" VALUE="html\ListboxFormatter.htm">
+		</OBJECT>
+	<LI><OBJECT TYPE="text/sitemap">
+		<PARAM NAME="Name" VALUE="Save Results">
+		<PARAM NAME="Name" VALUE="Save Results">
+		<PARAM NAME="Local" VALUE="html\SaveResults.htm">
+		</OBJECT>
+	<LI><OBJECT TYPE="text/sitemap">
+		<PARAM NAME="Name" VALUE="Search For">
+		<PARAM NAME="Name" VALUE="Search For">
+		<PARAM NAME="Local" VALUE="html\SearchFor.htm">
+		</OBJECT>
+	<LI><OBJECT TYPE="text/sitemap">
+		<PARAM NAME="Name" VALUE="Select Editor">
+		<PARAM NAME="Name" VALUE="Send To">
+		<PARAM NAME="Local" VALUE="html\SelectSendToCommand.htm">
+		</OBJECT>
+	<LI><OBJECT TYPE="text/sitemap">
+		<PARAM NAME="Name" VALUE="User Options">
+		<PARAM NAME="Name" VALUE="Options">
+		<PARAM NAME="Local" VALUE="html\UserOptions.htm">
+		</OBJECT>
+	<LI><OBJECT TYPE="text/sitemap">
+		<PARAM NAME="Name" VALUE="Using Regular Expressions">
+		<PARAM NAME="Name" VALUE="Using Regular Expressions">
+		<PARAM NAME="Local" VALUE="html\UsingRegularExpressions.htm">
+		<PARAM NAME="Name" VALUE="Replace">
+		<PARAM NAME="Local" VALUE="html\Replace.htm">
+		</OBJECT>
+</UL>
+</HTML>

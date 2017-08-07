@@ -1,0 +1,157 @@
+<!--
+! ================================================================================
+! Notice : Copyright (C) 2017, Devuna
+!          Distributed under MIT License (https://opensource.org/licenses/MIT)
+!
+!    This file is part of Devuna-KwikSourceSearch (https://github.com/Devuna/Devuna-KwikSourceSearch)
+!
+!    Devuna-KwikSourceSearch is free software: you can redistribute it and/or modify
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
+!
+!    Devuna-KwikSourceSearch is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    MIT License for more details.
+!
+!    You should have received a copy of the MIT License
+!    along with Devuna-KwikSourceSearch.  If not, see <https://opensource.org/licenses/MIT>.
+! ================================================================================
+-->
+<html><head><title>Replace</title>
+<meta name="GENERATOR" content="Forehtml Pro 5.0">
+<link rel="stylesheet" type="text/css" href="kss.css">
+
+
+<body>
+
+
+<p class="BannerBase">
+Replace</p><hr>
+<p class="Normal">
+The Replace dialog is use to initiate a search and replace through the text displayed in the Text Editor.
+The various check boxes control the search type, which includes regular expression searches.</p>
+<p class="Normal">
+<b>Find What</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The text or pattern to search for.</p>
+<p class="Normal">
+<b>Replace With</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The text to be used for replacment.</p>
+<p class="Normal">
+<b>Case Sensitive</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A match only occurs with text that matches the case of the search string.</p>
+<p class="Normal">
+<b>Whole Word</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A match only occurs with text that matches the case of the search string.</p>
+<p class="Normal">
+<b>Word Start</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A match only occurs if the character before is not a word character.</p>
+<p class="Normal">
+<b>Regular Expression</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The search string should be interpreted as a regular expression.</p>
+<p class="Normal">
+<b>POSIX compatible</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Treat regular expression in a more POSIX compatible manner by interpreting
+bare ( and ) for tagged sections rather than \( and \).</p>
+<p class="Normal">
+In a regular expression, special characters interpreted are:</p><table BORDER="1" cellpadding="2">
+<tr><td width="33">
+<p class="Normal">
+.</p></td><td width="552">
+<p class="Normal">
+Matches any character.</p></td></tr>
+<tr><td width="33">
+<p class="Normal">
+\(</p></td><td width="552">
+<p class="Normal">
+This marks the start of a region for tagging a match.</p></td></tr>
+<tr><td width="33">
+<p class="Normal">
+\)</p></td><td width="552">
+<p class="Normal">
+This marks the end of a tagged region.</p></td></tr>
+<tr><td width="33">
+<p class="Normal">
+\n</p></td><td width="552">
+<p class="Normal">
+Where n is 1 through 9 refers to the first through ninth tagged region.</p></td></tr>
+<tr><td width="33">
+<p class="Normal">
+\&lt;</p></td><td width="552">
+<p class="Normal">
+This matches the start of a word using Scintilla's definitions of words.</p></td></tr>
+<tr><td width="33">
+<p class="Normal">
+\&gt;</p></td><td width="552">
+<p class="Normal">
+This matches the end of a word using Scintilla's definition of words.</p></td></tr>
+<tr><td width="33">
+<p class="Normal">
+\x</p></td><td width="552">
+<p class="Normal">
+This matches the end of a word using Scintilla's definition of words.</p></td></tr>
+<tr><td width="33">
+<p class="Normal">
+[...]</p></td><td width="552">
+<p class="Normal">
+This indicates a set of characters, for example, [abc] means any of the characters a, b or c. You can
+also use ranges, for example [a-z] for any lower case character.</p></td></tr>
+<tr><td width="33">
+<p class="Normal">
+[^...]</p></td><td width="552">
+<p class="Normal">
+The complement of the characters in the set. For example, [^A-Za-z] means any character except an alphabetic
+character.</p></td></tr>
+<tr><td width="33">
+<p class="Normal">
+^</p></td><td width="552">
+<p class="Normal">
+This matches the start of a line (unless used inside a set, see above).</p></td></tr>
+<tr><td width="33" height="21">
+<p class="Normal">
+$</p></td><td width="552" height="21">
+<p class="Normal">
+This matches the end of a line.</p></td></tr>
+<tr><td width="33">
+<p class="Normal">
+*</p></td><td width="552">
+<p class="Normal">
+This matches 0 or more times. For example, Sa*m matches Sm, Sam, Saam, Saaam and so on.</p></td></tr>
+<tr><td width="33">
+<p class="Normal">
++</p></td><td width="552">
+<p class="Normal">
+This matches 1 or more times. For example, Sa+m matches Sam, Saam, Saaam and so on.</p></td></tr></table>
+
+<p class="Base">
+&nbsp;</p>
+<p class="Normal">
+<b>Word Wrap</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Check this option to continue searching through the file when the end of
+file (direction down) or beginning or file (direction up) is reached.</p>
+<p class="Normal">
+<b>Direction</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Specifies the direction of search from the current selection.</p>
+<p class="Normal">
+<b>Find Next</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Press this button to move to the next matching entry in the specified direction.</p>
+<p class="Normal">
+<b>Replace</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Press this button to replace the current selection with the replacement
+text.</p>
+<p class="Normal">
+<b>Replace All</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Press this button to replace all occurrances of the Find text within the
+docment.</p>
+<p class="Normal">
+<b>Replace in Selection</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Press this button to replace all occurrances of the Find text within the
+current selection.</p>
+<p class="Normal">
+<b>Replace in Results</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Press this button to replace all occurrances of the Find text within the
+result list items.</p>
+<p class="Normal">
+<b>Cancel</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Press this button to cancel the search.</p>
+</body></html>

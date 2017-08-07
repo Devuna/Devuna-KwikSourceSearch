@@ -1,0 +1,45 @@
+     address { font-family: Segoe UI,sans-serif;  }
+     .BannerBase { font-size: 12pt ; font-weight: bold; color: #ffffff; margin: 0pt  0pt  1px  0pt ; background-color: #0080c0; font-family: Segoe UI,sans-serif; }
+     .Base { font-size: 10pt ; margin: 0pt  0pt  1px  0pt ; font-family: Segoe UI,sans-serif;  }
+     body { font-family: Segoe UI,sans-serif;  }
+     BlockQuote { font-family: Segoe UI,sans-serif;  }
+     .Bullet1 { font-size: 10pt ; margin: 0pt  0pt  1px  0pt;  }
+     .Bullet2 { font-size: 10pt ; margin: 0pt  0pt  1px  27pt ; text-indent: -27pt ;  }
+     .Bullet3 { font-size: 10pt ; margin: 0pt  0pt  1px  27pt ; text-indent: -27pt ;  }
+     .Bullet4 { font-size: 10pt ; margin: 0pt  0pt  1px  0pt;  }
+     .Bullet5 { font-size: 10pt ; margin: 0pt  0pt  1px  0pt;  }
+     .ButtonBar { font-size: 6pt ; font-weight: bold; color: #ffffff; margin: 0pt  0pt  1px  -0.1in ; background-color: #0080c0; }
+     code { font-family: Consolas,sans-serif; }
+     dd { font-family: Segoe UI,sans-serif;  }
+     dir { font-family: Segoe UI,sans-serif;  }
+     dir li { font-family: Segoe UI,sans-serif; }
+     dl { font-family: Segoe UI,sans-serif;  }
+     dt { font-family: Segoe UI,sans-serif;  }
+     h1 { font-family: Segoe UI,sans-serif;  }
+     h2 { font-family: Segoe UI,sans-serif;  }
+     h3 { font-family: Segoe UI,sans-serif;  }
+     h4 { font-family: Segoe UI,sans-serif;  }
+     h5 { font-family: Segoe UI,sans-serif;  }
+     h6 { font-family: Segoe UI,sans-serif;  }
+     .htmlbase { font-size: 12pt ; margin: 0pt  0pt  1px  0pt ; font-family: Segoe UI,sans-serif;  }
+     .Hyperlink { text-decoration: underline ; color: #0000ff; }
+     kbd { font-family: Consolas,sans-serif; }
+     listing { font-family: Consolas,sans-serif;  }
+     menu { font-family: Segoe UI,sans-serif;  }
+     menu li { font-family: Segoe UI,sans-serif; }
+     .Normal { font-size: 12pt ; margin: 5pt  0pt  5pt  0pt ; font-family: Segoe UI,sans-serif;  }
+     .Normal1 { font-size: 12pt ; margin: 5pt  0pt  5pt  0pt ; font-family: Times New Roman,sans-serif; }
+     .Number1 { font-size: 10pt ; margin: 0pt  0pt  1px  0pt;  }
+     .Number2 { font-size: 10pt ; margin: 0pt  0pt  1px  0pt;  }
+     .Number3 { font-size: 10pt ; margin: 0pt  0pt  1px  0pt;  }
+     .Number4 { font-size: 10pt ; margin: 0pt  0pt  1px  0pt;  }
+     .Number5 { font-size: 10pt ; margin: 0pt  0pt  1px  0pt;  }
+     ol { font-family: Segoe UI,sans-serif;  }
+     ol li { font-family: Segoe UI,sans-serif; }
+     p { font-family: Segoe UI,sans-serif;  }
+     pre { font-family: Consolas,sans-serif;  }
+     .SmallCaps { font-size: 11pt ; font-weight: bold; font-style: normal; text-decoration: none; color: #ff0000; vertical-align: baseline; text-transform: none; font-variant: small-caps; font-family: Segoe UI,sans-serif }
+     tt { font-family: Consolas,sans-serif; }
+     ul { font-family: Segoe UI,sans-serif;  }
+     ul li { font-family: Segoe UI,sans-serif; }
+     xmp { font-family: Consolas,sans-serif;  }
