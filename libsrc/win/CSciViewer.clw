@@ -199,8 +199,6 @@ ReturnValue BYTE,AUTO
 i           LONG
 
   CODE                                      ! Enter Procedure
-  db.mg_init('CSciViewer')
-   
   SELF.ErrorStatus &= NEW ErrorStatusClass  !2004.05.15 RR - 6.1
   SELF.ErrorMgr &= NEW ErrorClass
   SELF.ErrorMgr.Init(SELF.ErrorStatus)      !2004.05.15 RR - 6.1
@@ -432,7 +430,6 @@ FILE_MAP_READ       EQUATE(00004h)
      ReturnValue = FALSE
   END
   !clock2end = CLOCK()
-  !db.debugout('[' & lFileSize & '] method1 = ' & FORMAT((clock1end-clock1start)/100,@N5.3) & ' method2 = ' & FORMAT((clock2end-clock2start)/100,@N5.3))
   
   RETURN(ReturnValue)                       ! Exit Procedure
 
@@ -2155,7 +2152,6 @@ CSciViewer.Kill PROCEDURE
         SELF.szTextBuffer &= NULL
      END
      
-     db.Kill()
   END
 
   PARENT.Kill()
