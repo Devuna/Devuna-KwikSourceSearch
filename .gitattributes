@@ -23,6 +23,7 @@
 *.hlp binary
 *.ico binary
 *.jpg binary
+*.lib binary
 *.png binary
 *.sbp binary
 *.zip binary
