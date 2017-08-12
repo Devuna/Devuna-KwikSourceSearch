@@ -69,7 +69,7 @@ selects the first match in the next file in the Filename + Ext columns.
 ![NextFolder.png](images\\NextFolder.png)      Jump ?&gt; Next Folder  
 selects the first match in the next folder in the path column.
 
-* * *
+----------
 
 ![DeleteLine.png](images\\DeleteLine.png)      Delete ?&gt; Selected ?&gt;
 Line [delete key]  
@@ -125,7 +125,7 @@ by the user.
 
 Macro ?&gt; Stop Recording      stops the recording of delete command actions.
 
-* * *
+----------
 
 ![Save.png](images\\Save.png)      Save Results  
 displays the [Save Results](SaveResults.html) dialog used to save results
@@ -137,7 +137,7 @@ dialog. If more than one send to command has been defined and the Prompt for
 Command check box is checked, the [Send To](SelectSendToCommand.html)
 dialog is displayed and then the selected command is executed.
 
-* * *
+----------
 
 Copy Fullname to Clipboard [Ctrl + C]      copies the full path and filename
 of the currently selected result list item to the clipboard.
@@ -152,7 +152,7 @@ results.
 Reveal in Explorer      open the folder that contains the currently selected
 file.
 
-* * *
+----------
 
 ![UserOptions.png](images\\UserOptions.png)      Options  
 displays the [Options](UserOptions.html) dialog.
@@ -171,7 +171,7 @@ rearrange the results list columns.
 
 Auto Size Columns      resizes all results list columns to fit the contents.
 
-* * *
+----------
 
 ![images/main19.jpg](images\\main19.jpg)      Close Tab [Ctrl + F4] or [Ctrl +
 W]  
@@ -182,13 +182,13 @@ list to be cleared and a new search initiated.
 ![images/main20.jpg](images\\main20.jpg)      Cancel Search  
 terminates a search in progress.
 
-* * *
+----------
 
 ![CheckBox_On.png](images\\CheckBox_On.png)![CheckBox_Off.png](images\\CheckBox_Off.png)
 Hide Edit Panel  
 Hides or unhides the edit panel.
 
-* * *
+----------
 
 **Text Editor**
 
