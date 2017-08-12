@@ -1,6 +1,6 @@
-Results List Formatter
+# Results List Formatter #
 
-* * *
+----------
 
 The results list formatter is used to rearrange the order of the columns in
 the results list.

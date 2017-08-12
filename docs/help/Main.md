@@ -11,19 +11,19 @@ registration information and product version.
 
 After a search request has been completed, the results are shown in a list on
 the current tab unless the 'Search New Tab' button was pressed on the 
-[Search for](SearchFor.md) dialog box.
+[Search for](SearchFor.html) dialog box.
 
 A new tab for search results can also be created by clicking on the tab with
 the plus sign [+] or by pressing [Ctrl + T].
 
 Press [Alt + S] , [Ctrl + W], or [Esc] when the result list has focus to
-display the [Search for](SearchFor.md) dialog used to initiate a new
+display the [Search for](SearchFor.html) dialog used to initiate a new
 search.
 
 Press [Ctrl+C] to copy the full path and filename to the clipboard.
 
 Right click on the results list header to display the 
-[Results List Formatter](ListboxFormatter.md) dialog. This dialog can be used to
+[Results List Formatter](ListboxFormatter.html) dialog. This dialog can be used to
 rearrange the order of the columns in the results list. If the Location column
 is empty for all results, the column is hidden.
 
@@ -38,103 +38,103 @@ Most of the results list context menu commands are on the toolbar for easy
 access.
 
 ![Search.png](images\Search.png)      Search [Alt + S]  
-displays the [Search for](SearchFor.md) dialog used to initiate a new
+displays the [Search for](SearchFor.html) dialog used to initiate a new
 search.
 
 ![reload_rotate.png](images\\reload_rotate.png)      Redo Search [F5]  
 performs the same search again without displaying the 
-[Search for](SearchFor.md) dialog.
+[Search for](SearchFor.html) dialog.
 
-Show Match Summary      the [Match Summary](MatchSummary.md) dialog
+Show Match Summary      the [Match Summary](MatchSummary.html) dialog
 displays a summary list of the matches found.
 
 ----------
 
-![PreviousFolder.png](images\\PreviousFolder.png)      Jump &gt; Previous
+![PreviousFolder.png](images\\PreviousFolder.png)      Jump ?&gt; Previous
 Folder  
 selects the first match in the previous folder in the path column.
 
-![PreviousFile.png](images\\PreviousFile.png)      Jump &gt; Previous File  
+![PreviousFile.png](images\\PreviousFile.png)      Jump ?&gt; Previous File  
 selects the first match in the previous file in the Filename + Ext columns.
 
-![PreviousLine.png](images\\PreviousLine.png)      Jump &gt; Previous Line  
+![PreviousLine.png](images\\PreviousLine.png)      Jump ?&gt; Previous Line  
 selects the previous line in the results list.
 
-![NextLine.png](images\\NextLine.png)      Jump &gt; Next Line  
+![NextLine.png](images\\NextLine.png)      Jump ?&gt; Next Line  
 selects the next line in the results list.
 
-![NextFile.png](images\\NextFile.png)      Jump &gt; Next File  
+![NextFile.png](images\\NextFile.png)      Jump ?&gt; Next File  
 selects the first match in the next file in the Filename + Ext columns.
 
-![NextFolder.png](images\\NextFolder.png)      Jump &gt; Next Folder  
+![NextFolder.png](images\\NextFolder.png)      Jump ?&gt; Next Folder  
 selects the first match in the next folder in the path column.
 
 * * *
 
-![DeleteLine.png](images\\DeleteLine.png)      Delete &gt; Selected &gt;
+![DeleteLine.png](images\\DeleteLine.png)      Delete ?&gt; Selected ?&gt;
 Line [delete key]  
 deletes the currently selected line.
 
-![DeleteFile.png](images\\DeleteFile.png)      Delete &gt; Selected &gt;
+![DeleteFile.png](images\\DeleteFile.png)      Delete ?&gt; Selected ?&gt;
 Filename  
 deletes all occurrences of the currently selected Filename + Ext columns; a
 delete confirmation message is displayed.
 
-![DeleteExtension.png](images\\DeleteExtension.png)      Delete &gt; Selected
-&gt; Extension  
+![DeleteExtension.png](images\\DeleteExtension.png)      Delete ?&gt; Selected
+?&gt; Extension  
 deletes all occurrences of the currently selected Ext column; a delete
 confirmation message is displayed.
 
-![DeletePath.png](images\\DeletePath.png)      Delete &gt; Selected &gt;
+![DeletePath.png](images\\DeletePath.png)      Delete ?&gt; Selected ?&gt;
 Path  
 deletes all occurrences of the currently selected Path column; a delete
 confirmation message is displayed.
 
-![DeleteComment.png](images\\DeleteComment.png)      Delete &gt; Comment
+![DeleteComment.png](images\\DeleteComment.png)      Delete ?&gt; Comment
 Lines  
 deletes all lines in which the match only occurs within a Clarion comment; a
 delete confirmation message is displayed.
 
-![DeleteLabel.png](images\\DeleteLabel.png)      Delete &gt; Label Lines  
+![DeleteLabel.png](images\\DeleteLabel.png)      Delete ?&gt; Label Lines  
 deletes all lines that do not have a space [ ] or exclamation mark [!] as the
 first character; a delete confirmation message is displayed.
 
-![DeleteCode.png](images\\DeleteCode.png)      Delete &gt; Matches in CODE  
+![DeleteCode.png](images\\DeleteCode.png)      Delete ?&gt; Matches in CODE  
 deletes all lines that occur in Clarion CODE sections; a delete confirmation
 message is displayed.
 
-![DeleteData.png](images\\DeleteData.png)      Delete &gt; Matches in DATA  
+![DeleteData.png](images\\DeleteData.png)      Delete ?&gt; Matches in DATA  
 deletes all lines that occur in Clarion DATA sections; a delete confirmation
 message is displayed.
 
-![FindDelete.png](images\\FindDelete.png)      Delete &gt; Find and Delete
+![FindDelete.png](images\\FindDelete.png)      Delete ?&gt; Find and Delete
 [Ctrl + Delete]  
-displays the [Find and Delete Options](FindAndDeleteOptions.md) dialog
+displays the [Find and Delete Options](FindAndDeleteOptions.html) dialog
 used to search for text within a column in the results list and delete
 matching or non-matching entries; a delete confirmation message is displayed.
 
 ![UndoDelete.png](images\\UndoDelete.png)      Undo Delete [Ctrl + Z]  
 restores deleted results to the list.
 
-Macro &gt; Player      the [Macro Player](MacroPlayer.md) dialog
+Macro ?&gt; Player      the [Macro Player](MacroPlayer.html) dialog
 window is displayed. Use this dialog to Load, Save and Play delete commands
 that have been previously recorded.
 
-Macro &gt; Record      starts recording all delete command actions performed
+Macro ?&gt; Record      starts recording all delete command actions performed
 by the user.
 
-Macro &gt; Stop Recording      stops the recording of delete command actions.
+Macro ?&gt; Stop Recording      stops the recording of delete command actions.
 
 * * *
 
 ![Save.png](images\\Save.png)      Save Results  
-displays the [Save Results](SaveResults.md) dialog used to save results
+displays the [Save Results](SaveResults.html) dialog used to save results
 to the clipboard or a file.
 
 ![SendTo.png](images\\SendTo.png)      Send To [Ctrl + E]  
-executes the send to command specified in the [Options](UserOptions.md)
+executes the send to command specified in the [Options](UserOptions.html)
 dialog. If more than one send to command has been defined and the Prompt for
-Command check box is checked, the [Send To](SelectSendToCommand.md)
+Command check box is checked, the [Send To](SelectSendToCommand.html)
 dialog is displayed and then the selected command is executed.
 
 * * *
@@ -155,7 +155,7 @@ file.
 * * *
 
 ![UserOptions.png](images\\UserOptions.png)      Options  
-displays the [Options](UserOptions.md) dialog.
+displays the [Options](UserOptions.html) dialog.
 
 ![SplitH.png](images\\SplitH.png)![SplitV.png](images\\SplitV.png)      Change
 Layout  
@@ -166,7 +166,7 @@ on Bottom'.
 Center Resizer Bar [Crtl + |]      Centers the resizer bar on the window.
 
 Change Results List Format      displays the 
-[Results List Formatter](ListboxFormatter.md) dialog which which can be used to
+[Results List Formatter](ListboxFormatter.html) dialog which which can be used to
 rearrange the results list columns.
 
 Auto Size Columns      resizes all results list columns to fit the contents.

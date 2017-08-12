@@ -1,6 +1,6 @@
-Save Results
+# Save Results #
 
-* * *
+----------
 
 The Save Results dialog is used to save the current result set to a text file
 or the clipboard.
@@ -31,7 +31,7 @@ or the clipboard.
 
 **Save Text**      This option determines if the Text will be saved.
 
-**Send To command after save**      This option is available if Save To Text file has been selected. When checked, the [Send To](html\\SelectSendToCommand.htm) dialog will be displayed after the Text file is created.
+**Send To command after save**      This option is available if Save To Text file has been selected. When checked, the [Send To](SelectSendToCommand.html) dialog will be displayed after the Text file is created.
 
 **Save**      Press this button to save the results as specified.
 

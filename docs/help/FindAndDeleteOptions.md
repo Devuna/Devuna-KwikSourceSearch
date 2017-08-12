@@ -1,6 +1,6 @@
-Find and Delete Options
+# Find and Delete Options #
 
-* * *
+----------
 
 The Find and Delete Options dialog is used to initiate a search through the
 results and delete the rows that match the specified conditions.
@@ -15,7 +15,7 @@ results and delete the rows that match the specified conditions.
 
 **Match Type**      Specifies the type of comparison.   
      Simple      looks for the Text anywhere in the selected column.   
-     Regular Expression      the search string should be interpreted as a [regular expression](html\\RegularExpressionOperators.htm).
+     Regular Expression      the search string should be interpreted as a [regular expression](RegularExpressionOperators.html).
 
      ![Help.png](images\\Help.png)      Press this button to get regular expression help.
 

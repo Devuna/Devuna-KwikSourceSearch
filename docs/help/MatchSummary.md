@@ -1,6 +1,6 @@
-Match Summary
+# Match Summary #
 
-* * *
+----------
 
 The Match Summary dialog displays a summary view of the search results. The
 number of matches and number of files with matches is displayed at the top of

@@ -1,6 +1,6 @@
-Macro Player
+# Macro Player #
 
-* * *
+----------
 
 The Macro Player displays a list of delete actions that have been previously
 recorded.

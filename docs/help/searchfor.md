@@ -1,17 +1,17 @@
-Search For
+# Search For #
 
-* * *
+----------
 
 The Search for... dialog allows the user to specify what they want to find,
 how the matching is to be done, and where and what files are to be searched.
 
-**Find**      This is the text to be searched for. It can be either a literal search string or a [regular expression](html\\UsingRegularExpressions.htm). Multiple search arguments can be specified here by using a vertical bar | to separate the arguments. To search for a vertical bar, place two vertical bars together like this ||.
+**Find**      This is the text to be searched for. It can be either a literal search string or a [regular expression](UsingRegularExpressions.html). Multiple search arguments can be specified here by using a vertical bar | to separate the arguments. To search for a vertical bar, place two vertical bars together like this ||.
 
 **Get Find Text From Specified File**      Specifies that the search strings are to be loaded from the specified file. Enter multiple search strings, one per line, in a simple text file and supply that filename to search for the specified strings.
 
 **Case Sensitive      **Specifies that the search is to be case-sensitive.
 
-**Exclude Comment Lines      **Specifies that matches which occur only within a Clarion comment are to be excluded from the search results. Only certain files, identified on the [Options](html\\UserOptions.htm) dialog, receive this special Clarion processing.
+**Exclude Comment Lines      **Specifies that matches which occur only within a Clarion comment are to be excluded from the search results. Only certain files, identified on the [Options](UserOptions.html) dialog, receive this special Clarion processing.
 
 **Match Pattern at Start of Line**      Matches the pattern if at the beginning of a line.
 
@@ -21,7 +21,7 @@ how the matching is to be done, and where and what files are to be searched.
 
 **Exclude Matching Lines**      Only lines that do not contain a match.
 
-**Use Regular Expressions      **The Find string as a [regular expression](html\\UsingRegularExpressions.htm). The search engine interprets all metacharacters as regular expressions.
+**Use Regular Expressions      **The Find string as a [regular expression](UsingRegularExpressions.html). The search engine interprets all metacharacters as regular expressions.
 
 ![Help.png](images\\Help.png)      Press this button to get regular expression
 help
@@ -40,7 +40,7 @@ help
 
 **Exclude**      Specifies a file or files to exclude from the Results List. Separate the file names with a semicolon, vertical bar, or space. Wildcards can be used in the filenames.
 
-**Load Saved Results**      The [Save Results](html\\SaveResults.htm) dialog allows the user to save the results to a re-loadable result list file. This button is used to re-load a previously saved re-loadable result list file.
+**Load Saved Results**      The [Save Results](SaveResults.html) dialog allows the user to save the results to a re-loadable result list file. This button is used to re-load a previously saved re-loadable result list file.
 
 **Search New Tab**      Press this button to begin the search and display the results on a new tab.
 
