@@ -16,5 +16,13 @@ Most notably the Results List 'Print' and the 'CheckForUpdate' features have bee
 ## Help Contents ##
 
 - [Introduction](help//Introduction.md)
-
 - [Main Window](help//Main.md)
+- [Search For](help//SearchFor.md)
+- [Match Summary](help//MatchSummary.md)
+- [Find and Delete Options](help//FindAndDeleteOptions.md)
+- [Macro Player](help//MacroPlayer.md)
+- [Save Results](help//SaveResults.md)
+- [Send To](help//SendTo.md)
+- [Options](help//Options.md)
+- [Property Editor](help//PropertyEditor.md)
+- [Using Regular Expressions](help//UsingRegularExpressions.md)
