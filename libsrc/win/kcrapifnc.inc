@@ -1,27 +1,8 @@
-! ================================================================================
-! Notice : Copyright (C) 2017, Devuna
-!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
-!
-!    This file is part of Devuna-Common (https://github.com/Devuna/Devuna-Common)
-!
-!    Devuna-Common is free software: you can redistribute it and/or modify
-!    it under the terms of the MIT License as published by
-!    the Open Source Initiative.
-!
-!    Devuna-Common is distributed in the hope that it will be useful,
-!    but WITHOUT ANY WARRANTY; without even the implied warranty of
-!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-!    MIT License for more details.
-!
-!    You should have received a copy of the MIT License
-!    along with Devuna-Common.  If not, see <https://opensource.org/licenses/MIT>.
-! ================================================================================
-
-!Include Inside Global Map
  MODULE('kernel32')
     kcr_CallWindowProc(LONG lpPrevWndProc, HWND hwnd, UNSIGNED nMsg, UNSIGNED wParam, LONG lParam),LONG,PASCAL,NAME('CallWindowProcA')
     kcr_ChooseColor(*? cc),BOOL,PASCAL,RAW,PROC,NAME('ChooseColorA')
     kcr_ClientToScreen(HWND hwnd, *POINT pt),BOOL,PASCAL,RAW,PROC,NAME('ClientToScreen')
+    kcr_CloseClipboard(),BOOL,PROC,PASCAL,NAME('CloseClipboard')
     kcr_CloseHandle(HANDLE hObject),BOOL,PASCAL,PROC,NAME('CloseHandle')
     kcr_ClosePrinter(HANDLE hPrinter),BOOL,PASCAL,PROC,NAME('ClosePrinter')
     kcr_CopyFile(*CSTRING szFileName, *cstring szNewFileName, bool bFailIfExists),BOOL,RAW,PASCAL,NAME('CopyFileA')
@@ -44,12 +25,15 @@
     kcr_DeleteObject(UNSIGNED hGDIOBJ),BOOL,PASCAL,PROC,NAME('DeleteObject')
     kcr_DestroyIcon(HICON hIcon),BOOL,PASCAL,NAME('DestroyIcon')
     kcr_DeviceCapabilities(*CSTRING pDevice, *CSTRING pPort, WORD fwCapability, LONG pOutput, *tagDEVMODE pDevMode),DWORD,PASCAL,RAW,PROC,NAME('DeviceCapabilitiesA')
+    !kcr_DocumentProperties(HWND hWnd, HANDLE hPrinter, *CSTRING pDeviceName, LONG DevModeOutput, LONG DevModeInput, DWORD fMode),LONG,PASCAL,RAW,NAME('DocumentPropertiesA')
+    kcr_DocumentProperties(HWND hWnd, HANDLE hPrinter, LONG pDeviceName, LONG DevModeOutput, LONG DevModeInput, DWORD fMode),LONG,PASCAL,RAW,NAME('DocumentPropertiesA')
     kcr_DoDragDrop(LONG pDataObj, LONG pDropSource, LONG dwOKEffects, *DWORD dwEffect),LONG,PASCAL,RAW,NAME('DoDragDrop')
     kcr_DragDetect(HWND hWnd, LONG xPos, LONG yPos),BOOL,PASCAL,RAW,NAME('DragDetect')
     kcr_DragQueryFile(HDROP hDrop, UNSIGNED iFile, *CSTRING lpszFile,UNSIGNED cch),UNSIGNED,PASCAL,RAW,PROC,NAME('DragQueryFile')
     kcr_DrawIcon(HDC hDC, LONG x, LONG y, HANDLE hIcon),BOOL,PASCAL,PROC,NAME('DrawIcon')
     kcr_DrawMenuBar(HWND),BOOL,PASCAL,PROC,NAME('DrawMenuBar')
     kcr_DuplicateHandle(HANDLE hSourceProcessHandle, HANDLE hSourceHandle, HANDLE hTargetProcessHandle, *HANDLE lpTargetHandle, DWORD dwDesiredAccess, BOOL bInheritHandle, DWORD dwOptions),BOOL,PASCAL,RAW,PROC,NAME('DuplicateHandle')
+    kcr_EnumClipboardFormats(UNSIGNED uFormat),UNSIGNED,PASCAL,NAME('EnumClipboardFormats')
     kcr_ExtFloodFill(UNSIGNED hwnd, SIGNED x, SIGNED y, ULONG color, UNSIGNED),BOOL,PASCAL,PROC,NAME('ExtFloodFill')
     kcr_FindResource(HMODULE hModule, LONG lpName,  LONG lpType),HANDLE,PASCAL,NAME('FindResourceA')
     kcr_FindWindowEx(HWND hwndParent, HWND hwndChildAfter, LONG lpszClass, *CSTRING szWindowCaption),HWND,PASCAL,RAW,NAME('FindWindowExA')
@@ -60,6 +44,7 @@
     kcr_FreeLibrary(HINSTANCE hInst),BOOL,PASCAL,PROC,NAME('FreeLibrary')
     kcr_GetCapture(),HWND,PASCAL,NAME('GetCapture')
     kcr_GetClientRect(UNSIGNED,*RECT),RAW,PASCAL,PROC,NAME('GetClientRect')
+    kcr_GetClipboardFormatName(UNSIGNED uFormat, *CSTRING FormatName, LONG nMaxCount),LONG,PASCAL,RAW,NAME('GetClipboardFormatNameA')
     kcr_GetCurrentProcess(),HANDLE,PASCAL,NAME('GetCurrentProcess')
     kcr_GetCurrentProcessId(),LONG,PASCAL,NAME('GetCurrentProcessId')
     kcr_GetCurrentThread(),LONG,PASCAL,NAME('GetCurrentThread')
@@ -80,6 +65,7 @@
     kcr_GetPixel(UNSIGNED hdc, SIGNED x, SIGNED y),ULONG,PASCAL,NAME('GetPixel')
     kcr_GetPrinter(HANDLE hPrinter, DWORD Level, LONG lpPrinterInfo, DWORD cbBuf, *DWORD pcbNeeded),BOOL,RAW,PASCAL,PROC,NAME('GetPrinterA')
     kcr_GetProcAddress(UNSIGNED hModule,*CSTRING szProcName),LONG,PASCAL,RAW,NAME('GetProcAddress')
+    kcr_GetProcessHeap(),LONG,PASCAL,NAME('GetProcessHeap')
     kcr_GetProp(HWND hwnd, *CSTRING szPropertyName),HANDLE,RAW,PASCAL,NAME('GetPropA')
     kcr_GetProp(HWND hwnd, STRING szPropertyName),HANDLE,RAW,PASCAL,NAME('GetPropA')
     kcr_GetStdHandle(DWORD nStdHandle),HANDLE,RAW,PASCAL,NAME('GetStdHandle')    
@@ -87,6 +73,7 @@
     kcr_GetSystemMetrics(SIGNED),SIGNED,PASCAL,NAME('GetSystemMetrics')
     kcr_GetTempFileName(*CSTRING szPathName, *CSTRING szPrefixString, SHORT uUnique, *CSTRING szTempFileName),SHORT,PASCAL,RAW,PROC,NAME('GetTempFileNameA')
     kcr_GetTempPath(LONG nBufferLength, *CSTRING szBuffer),LONG,PASCAL,RAW,PROC,NAME('GetTempPathA')    
+    kcr_GetUserName(LONG pBuffer, *LONG pcbBuffer),BOOL,PASCAL,RAW,NAME('GetUserNameA')
     kcr_GetUpdateRgn(HWND hWnd, HANDLE hRegion, BOOL bErase),LONG,PASCAL,NAME('GetUpdateRgn')
     kcr_GetVersionEx(*OSVERSIONINFO osvi),BOOL,PASCAL,RAW,NAME('GetVersionExA'),PROC
     kcr_GetWindowDC(UNSIGNED hwnd),UNSIGNED,PASCAL,NAME('GetWindowDC')
@@ -96,7 +83,10 @@
     kcr_GlobalAlloc(LONG uFlags, LONG dwBytes),LONG,PASCAL,NAME('GlobalAlloc')
     kcr_GlobalFree(HGLOBAL hMem),HGLOBAL,PASCAL,PROC,NAME('GlobalFree')
     kcr_GlobalLock(HGLOBAL hMem),LONG,PASCAL,PROC,NAME('GlobalLock')
+    kcr_GlobalSize(HGLOBAL hMem),DWORD,NAME('GlobalSize'),PASCAL,NAME('GlobalSize')    
     kcr_GlobalUnlock(HGLOBAL hMem),BOOL,PASCAL,PROC,NAME('GlobalUnlock')
+    kcr_HeapAlloc(LONG hHeap, LONG dwFlags, LONG dwBytes),LONG,PASCAL,NAME('HeapAlloc')
+    kcr_HeapFree(LONG hHeap, LONG dwFlags, LONG lpMem),BOOL,PASCAL,PROC,NAME('HeapFree')
     kcr_InvalidateRect(HWND hWnd,*RECT lpRect ,BOOL bErase),BOOL,RAW,PASCAL,PROC,NAME('InvalidateRect')
     kcr_LoadLibraryEx(*CSTRING szLibraryName, HANDLE hReserved, DWORD dwFlags),HANDLE,PASCAL,RAW,NAME('LoadLibraryExA')
     kcr_LoadResource(HMODULE hModule, HRSRC hResInfo),LONG,PASCAL,NAME('LoadResource')
@@ -113,6 +103,7 @@
     kcr_OleSetClipboard(*IDataObject ppDataObject),HRESULT,RAW,PASCAL,PROC,NAME('OleSetClipboard')
     kcr_OleSetClipboard(LONG ppDataObject),HRESULT,RAW,PASCAL,PROC,NAME('OleSetClipboard')
     kcr_OleUninitialize(),PASCAL,NAME('OleUninitialize')
+    kcr_OpenClipboard(UNSIGNED hwnd),BOOL,PROC,PASCAL,NAME('OpenClipboard')    
     kcr_OpenPrinter(LONG lpPrinterName, *HANDLE hPrinter, LONG lpDefault),BOOL,RAW,PASCAL,PROC,NAME('OpenPrinterA')
     kcr_OpenPrinter(*CSTRING PrinterName, *HANDLE hPrinter, LONG lpDefault),BOOL,RAW,PASCAL,PROC,NAME('OpenPrinterA')
     kcr_OpenProcess(DWORD dwDesiredAccess, BOOL bInheritHandle, DWORD dwProcessId),HANDLE,RAW,PASCAL,PROC,NAME('OpenProcess')
@@ -125,6 +116,7 @@
     kcr_RedrawWindow(HWND hWnd, *RECT lpRect, HANDLE hRegion, ULONG uFlags),BOOL,PASCAL,RAW,PROC,NAME('RedrawWindow')
     kcr_RegCloseKey(UNSIGNED hKey),LONG,RAW,PASCAL,NAME('RegCloseKey'),PROC
     kcr_RegCreateKeyEx(UNSIGNED hKey,*CSTRING szSubKey,ULONG reserved,ULONG lpszClass,ULONG dwOptions,ULONG samDesired,ULONG lpSecurityAttributes,*ULONG hkResult,ULONG lpdwDisposition),LONG,RAW,PASCAL,NAME('RegCreateKeyExA')
+    kcr_RegisterClipboardFormat(*CSTRING lpString),LONG,RAW,PASCAL,NAME('RegisterClipboardFormatA')
     kcr_RegisterWindowMessage(*CSTRING lpString),LONG,RAW,PASCAL,NAME('RegisterWindowMessageA')
     kcr_RegEnumKeyEx(UNSIGNED hKey,ULONG dwIndex,*CSTRING lpName,*ULONG lpcName,ULONG lpReserved,ULONG lpClass,ULONG lpcClass,ULONG lpftLastWriteTime),LONG,RAW,PASCAL,NAME('RegEnumKeyExA'),PROC
     kcr_RegEnumValue(UNSIGNED hKey,ULONG dwIndex,*CSTRING valueName,*ULONG cchValueName, ULONG lpReserved, ULONG lpType, ULONG lpData, ULONG lpcbData),LONG,RAW,PASCAL,NAME('RegEnumValueA'),PROC
@@ -143,6 +135,7 @@
     kcr_SetCapture(HWND hwnd),HWND,PASCAL,PROC,NAME('SetCapture')
     kcr_SetClassLong(HWND,SHORT,LONG),DWORD,RAW,PASCAL,NAME('SetClassLongA'),PROC
     kcr_SetCurrentDirectory(*CSTRING szCurDir),BOOL,RAW,PASCAL,NAME('SetCurrentDirectoryA'),PROC
+    kcr_SetDefaultPrinter(*CSTRING szPrinterName),BOOL,RAW,PASCAL,PROC,NAME('SetDefaultPrinterA')
     kcr_SetEndOfFile(HANDLE hFile),BOOL,PASCAL,PROC,NAME('SetEndOfFile')
     kcr_SetFilePointer(HANDLE hFile, LONG lDistanceToMove, *LONG lDistanceToMoveHigh, LONG dwMoveMethod),LONG,RAW,PASCAL,PROC,NAME('SetFilePointer')
     kcr_SetFocus(HWND hwnd),HWND,PASCAL,PROC,NAME('SetFocus')
@@ -168,7 +161,14 @@
     kcr_WindowFromPoint(POINT pt),HWND,RAW,PASCAL,NAME('WindowFromPoint')
     kcr_WriteFile(HANDLE hFile, LPVOID lpBuffer, DWORD nNumberOfBytesToWrite, LPDWORD lpNumberOfBytesWritten, LPOVERLAPPED lpOverlapped),BOOL,PASCAL,RAW,NAME('WriteFile')    
     kcr_ZeroMemory(LONG DestinationPtr,LONG dwLength),RAW,PASCAL,NAME('RtlZeroMemory')
+    
+    kcr_MonitorFromPoint(POINT pt, DWORD dwFlags),HANDLE,RAW,PASCAL,NAME('MonitorFromPoint')
+    kcr_GetMonitorInfo(HANDLE hMonitor, LONG lpmi),LONG,RAW,PASCAL,NAME('GetMonitorInfoA')
  END
  MODULE('clib')
-    kcr_StrCpy(LONG pDestination, LONG pSource),LONG,RAW,PROC,NAME('_strcpy')
+    kcr_Free(LONG pMemBlock),NAME('_free')
+    kcr_Malloc(LONG dwBytes),LONG,NAME('_malloc')
+    kcr_Strcpy(LONG pDestination, LONG pSource),LONG,RAW,PROC,NAME('_strcpy')
+    kcr_Strncpy(LONG pDestination, LONG pSource, LONG cchMax),LONG,RAW,PROC,NAME('_strncpy')
+    kcr_Strlen(LONG pSource),LONG,RAW,NAME('_strlen')
  END

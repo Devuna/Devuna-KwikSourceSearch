@@ -71,6 +71,8 @@
     <Library Include="RedoSearch.ico" />
     <Library Include="Replace.ico" />
     <Library Include="SaveAs.ico" />
+    <Library Include="Skype.ico" />
+    <Library Include="Slack.ico" />
     <Library Include="splith.cur" />
     <Library Include="splith.ico" />
     <Library Include="SPLITHB.CUR" />

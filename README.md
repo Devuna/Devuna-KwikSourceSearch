@@ -1,5 +1,26 @@
 # Devuna-KwikSourceSearch #
 
+**February 18, 2019 Release**
+This release includes bug fixes and many enhancements suggested by Mark Riffy's fork of this project.  
+
+***Release Notes***
+
+1) Added 'Include Files with Non-printable Characters' to the search parameters window.  When checked the /p flag is removed from the findstr command line.
+   
+2) The 'Read File List from Specified File' now supports selecting an application filelist.xml file.     This causes KSS to process all clw, inc, def, equ, trn and int files listed in the xml file
+   
+3) Added code to force the main window onto the primary monitor on startup when only one monitor is available.  This resolves the issue of non-accessible windows in certain situations when multiple monitors are involved.
+
+4) Fixed bug in exclude MATCH code, to achieve the same effect as Mark Riffy's additional toolbar button that deletes generated built-in Clarion files.  Simply place this (without quotes) in the Exclude field '*_BC*.clw;*_SF.clw;*_R*.clw' to have them excluded from the results.
+
+5) Added Copy for Skype and Copy for Slack to editor context menu
+
+6) CheckRegistration procedure uses GetUserName() for unregistered public domain versions of the program.
+
+7) Compiled and tested with Clarion 11.0.13244
+
+**August 2017 Initial Public Release**
+
 With Kwik Source Search (KSS) you can perform powerful standard and regular expression searches through one or multiple text files, such as source code, log files, and debugging information.
 
 KSS is capable of finding the exact text you are looking for in any ASCII file or files. Sometimes you have only part of the information that you want to match, or you want to find a wider range of information. In such cases, KSS has the powerful capability to search for patterns of text using regular expressions.

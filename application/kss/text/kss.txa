@@ -470,8 +470,8 @@ WHEN  ('kss030.clw') (1)
 %AbcSourceLocation DEFAULT  ('LINK')
 %AbcLibraryName DEFAULT  ('')
 %AppTemplateFamily DEFAULT  ('ABC')
-%CWTemplateVersion DEFAULT  ('v10.0')
-%ABCVersion DEFAULT  ('10000')
+%CWTemplateVersion DEFAULT  ('v11.0')
+%ABCVersion DEFAULT  ('11000')
 %EnableExceptionMessage LONG  (0)
 %WindowFrameDragging LONG  (0)
 [ADDITION]
@@ -527,9 +527,11 @@ WHEN  ('kss030.clw') ('1')
 %LastApplicationLocalLibrary DEFAULT  ('')
 [PROJECT]
 -- NAMESPACE kss
+-- OUTPUTPATH C:\Clarion11 Projects\Devuna-KwikSourceSearch\application\kss\bin\release
 #system win32 exe
 #model clarion dll
 #pragma link_option(icon=>kss.ico)
+#pragma debug(vid=>off)
 #pragma define(_ABCDllMode_=>0) -- GENERATED
 #pragma define(_ABCLinkMode_=>1) -- GENERATED
 #pragma define(_SCIDllMode_=>0) -- GENERATED
@@ -567,11 +569,14 @@ WHEN  ('kss030.clw') ('1')
 #compile "kss030.clw" -- GENERATED
 #compile "kss_BC0.CLW" -- GENERATED
 #compile "KSS_BC.CLW" -- GENERATED
+#pragma link("cwHH%V%.LIB") -- GENERATED
+#pragma link("kss.ico") -- GENERATED
+#pragma link("kss.EXE.manifest") -- GENERATED
 #link "kss.EXE"
 [PROGRAM]
 [COMMON]
 FROM ABC ABC
-MODIFIED '2017/08/07' '16:28:05'
+MODIFIED '2019/02/17' '16:06:21'
 [DATA]
 [SCREENCONTROLS]
 ! PROMPT('glo : sz Version:'),USE(?glo:szVersion:Prompt)
@@ -579,7 +584,7 @@ MODIFIED '2017/08/07' '16:28:05'
 [REPORTCONTROLS]
 ! STRING(@s31),USE(glo:szVersion)
 glo:szVersion            CSTRING(32)
-!!> GUID('43bdda80-37f1-4a56-9560-ed3ed8f97708'),INITIAL('2017.08.05.0<0>{19}'),PROMPT('glo : sz Version:'),HEADER('glo : sz Version'),PICTURE(@s31),TYPEMODE(INS)
+!!> GUID('43bdda80-37f1-4a56-9560-ed3ed8f97708'),INITIAL('2019.02.17.4<0>{19}'),PROMPT('glo : sz Version:'),HEADER('glo : sz Version'),PICTURE(@s31),TYPEMODE(INS)
 [SCREENCONTROLS]
 ! PROMPT('glo : sz Version:'),USE(?glo:szNewVersion:Prompt)
 ! ENTRY(@s31),USE(glo:szNewVersion)
@@ -624,11 +629,11 @@ glo:bInstallOnExit       BOOL
 !!> GUID('15889cda-9275-4fb0-b302-d3f29f0bdcd2'),PROMPT('glo : b Install On Exit:'),HEADER('glo : b Install On Exit'),PICTURE(@s20),TYPEMODE(INS)
 [SCREENCONTROLS]
 ! PROMPT('Registered To:'),USE(?RegisteredTo:Prompt)
-! ENTRY(@s28),USE(RegisteredTo)
+! ENTRY(@s255),USE(RegisteredTo)
 [REPORTCONTROLS]
-! STRING(@s28),USE(RegisteredTo)
-RegisteredTo             CSTRING(29)
-!!> GUID('76703ba5-4d7e-49ff-ac32-dc469acdb102'),PROMPT('Registered To:'),HEADER('Registered To'),PICTURE(@s28),TYPEMODE(INS)
+! STRING(@s255),USE(RegisteredTo)
+RegisteredTo             CSTRING(257)
+!!> GUID('76703ba5-4d7e-49ff-ac32-dc469acdb102'),PROMPT('Registered To:'),HEADER('Registered To'),PICTURE(@s255),TYPEMODE(INS)
 [SCREENCONTROLS]
 ! PROMPT('cs:'),USE(?cs:Prompt)
 ! ENTRY(@s20),USE(cs)
@@ -1276,8 +1281,8 @@ EVENT:FoldMarginClick            EQUATE(EVENT:Last)
 
 COLOR_GRADIENTACTIVECAPTION      EQUATE(27)
 COLOR_GRADIENTINACTIVECAPTION    EQUATE(28)
-COLOR:GRADIENTACTIVECAPTION      EQUATE(08000001BH)
-COLOR:GRADIENTINACTIVECAPTION    EQUATE(08000001CH)
+!COLOR:GRADIENTACTIVECAPTION      EQUATE(08000001BH)
+!COLOR:GRADIENTINACTIVECAPTION    EQUATE(08000001CH)
 
 PROCESS_TERMINATE                EQUATE(00001h)
 PROCESS_CREATE_THREAD            EQUATE(00002h)
@@ -1298,6 +1303,22 @@ CommentStyleCpp      EQUATE(1)
 CommentStyleVB       EQUATE(2)
 CommentStylePython   EQUATE(3)
 CommentStyleSQL      EQUATE(4)
+
+MONITOR_DEFAULTTOPRIMARY   EQUATE(00000001h)
+
+RECT    GROUP,TYPE
+left     SIGNED
+top      SIGNED
+right    SIGNED
+bottom   SIGNED
+        END
+
+tagMONITORINFO GROUP,TYPE
+cbSize            DWORD
+rcMonitor         LIKE(RECT)
+rcWork            LIKE(RECT)
+dwFlags           DWORD
+               END
 [SOURCE]
 PROPERTY:BEGIN
 PRIORITY 3500
@@ -1423,6 +1444,7 @@ bCaseSensitive                BOOL
 bExactMatch                   BOOL
 bExcludeMatch                 BOOL
 bExcludeComments              BOOL
+bIncludeBinary                BOOL
 bSearchPressed                BOOL
 szPattern                     CSTRING(1025)
 szSearchPath                  CSTRING(1025)
@@ -1678,6 +1700,16 @@ Buffer                     STRING(2048)
 PROPERTY:BEGIN
 PRIORITY 4000
 PROPERTY:END
+XmlFilename          CSTRING(261),THREAD
+XmlFile              FILE,DRIVER('ASCII'),NAME(XmlFilename),CREATE,PRE(XML),THREAD
+                        RECORD
+Buffer                     STRING(2048)
+                        END
+                     END
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
 SyncOptionsFilename     CSTRING(261),THREAD
 SyncOptions             FILE,DRIVER('TOPSPEED'),NAME(SyncOptionsFilename),CREATE,PRE(SYNC),THREAD
 PatternKey                 KEY(SYNC:szPattern),NOCASE
@@ -1691,6 +1723,7 @@ bCaseSensitive                BOOL
 bExactMatch                   BOOL
 bExcludeMatch                 BOOL
 bExcludeComments              BOOL
+bIncludeBinary                BOOL
 szPattern                     CSTRING(1025)
 szSearchPath                  CSTRING(1025)
 szFileMask                    CSTRING(256)
@@ -1828,7 +1861,7 @@ feqResultList           LONG
 NAME Main
 [COMMON]
 FROM ABC Window
-MODIFIED '2017/08/07' '16:26:50'
+MODIFIED '2019/02/17' '16:05:56'
 [DATA]
 [SCREENCONTROLS]
 ! PROMPT('Match Pattern Start of Line:'),USE(?bMatchPatternStartOfLine:Prompt)
@@ -1900,6 +1933,13 @@ bExcludeMatch            BOOL
 ! STRING(@s20),USE(bExcludeComments)
 bExcludeComments         BOOL
 !!> GUID('6b558e84-a3c2-48ab-baf8-ce26499dd6b7'),PROMPT('Exclude Comments:'),HEADER('Exclude Comments'),PICTURE(@s20),TYPEMODE(INS)
+[SCREENCONTROLS]
+! PROMPT('b Include Binary:'),USE(?bIncludeBinary:Prompt)
+! ENTRY(@s20),USE(bIncludeBinary)
+[REPORTCONTROLS]
+! STRING(@s20),USE(bIncludeBinary)
+bIncludeBinary           BOOL
+!!> GUID('1500dab3-b55e-4f35-a8d0-8f0b227100af'),PROMPT('b Include Binary:'),HEADER('b Include Binary'),PICTURE(@s20),TYPEMODE(INS)
 [SCREENCONTROLS]
 ! PROMPT('b Filenames Only:'),USE(?bFilenamesOnly:Prompt)
 ! ENTRY(@s20),USE(bFilenamesOnly)
@@ -2824,6 +2864,26 @@ END
 PROPERTY:BEGIN
 PRIORITY 8310
 PROPERTY:END
+cMonitors = kcr_GetSystemMetrics(SM_CMONITORS)
+IF cMonitors = 1  
+   ptFrom.x = 0
+   ptFrom.y = 0
+   hMonitor = kcr_MonitorFromPoint(ptFrom,MONITOR_DEFAULTTOPRIMARY)
+   mi.cbSize = SIZE(mi)
+   IF kcr_GetMonitorInfo(hMonitor,ADDRESS(mi))
+      kcr_GetWindowRect(Window{PROP:Handle}, rcMain)
+      Window{PROP:Pixels} = TRUE        
+      newX = (mi.rcMonitor.right - Window{PROP:Width})/2
+      newy = (mi.rcMonitor.bottom - Window{PROP:Height})/2
+      newW = Window{PROP:Width}
+      newH = Window{PROP:Height}
+      Window{PROP:Pixels} = FALSE
+      kcr_MoveWindow(Window{PROP:Handle},newX,newY,newW,newH,SWP_SHOWWINDOW)        
+   ELSE
+     message('GetMonitorInfo failed')
+   END  
+END 
+
 szSearchPath = LONGPATH()
 szFileMask = '*.*'
 bUseRegularExpressions = FALSE
@@ -2867,6 +2927,7 @@ INIMgr.Fetch('Search Options','bCaseSensitive',bCaseSensitive)
 INIMgr.Fetch('Search Options','bExactMatch',bExactMatch)
 INIMgr.Fetch('Search Options','bExcludeMatch',bExcludeMatch)
 INIMgr.Fetch('Search Options','bExcludeComments',bExcludeComments)
+INIMgr.Fetch('Search Options','bIncludeBinary',bIncludeBinary)
 
 INIMgr.Fetch('Search Options','szPattern',szPattern)
 ReplaceChr(szPattern,'§','''')
@@ -3319,6 +3380,10 @@ keyCodeName             ctKssKeyCodeName
 !keyCodeName             CLASS(ctKeyCodeName)
 !MissingCode                PROCEDURE(LONG _ID),STRING,DERIVED
 !                        END
+hMonitor                HANDLE
+ptFrom                  LIKE(POINT)
+rcMain                  LIKE(RECT)
+mi                      LIKE(tagMONITORINFO)
 [SOURCE]
 PROPERTY:BEGIN
 PRIORITY 1300
@@ -3367,6 +3432,7 @@ bCaseSensitive             BOOL
 bExactMatch                BOOL
 bExcludeMatch              BOOL
 bExcludeComments           BOOL
+bIncludeBinary             BOOL
 bSearchPressed             BOOL
 szPattern                  CSTRING(1025)
 szSearchPath               CSTRING(1025)
@@ -3533,6 +3599,11 @@ RetVal               LONG
 szSubKey             CSTRING(256)
 szValueName          CSTRING(256)
 loc:szViewerStyle    CSTRING(256)
+cMonitors            LONG
+newX                 LONG
+newY                 LONG
+newW                 LONG
+newH                 LONG
 [END]
 [END]
 WHEN 'TakeEvent'
@@ -4847,6 +4918,7 @@ AddSearchQueueRecord    ROUTINE
   SearchQueue.bExactMatch              = bExactMatch
   SearchQueue.bExcludeMatch            = bExcludeMatch
   SearchQueue.bExcludeComments         = bExcludeComments
+  SearchQueue.bIncludeBinary           = bIncludeBinary
   SearchQueue.bSearchPressed           = FALSE
   SearchQueue.szPattern                = szPattern
   SearchQueue.szSearchPath             = szSearchPath
@@ -4908,6 +4980,7 @@ UpdateLocalSearchOptions   ROUTINE
      bExactMatch              = SearchQueue.bExactMatch
      bExcludeMatch            = SearchQueue.bExcludeMatch
      bExcludeComments         = SearchQueue.bExcludeComments
+     bIncludeBinary           = SearchQueue.bIncludeBinary
      szPattern                = SearchQueue.szPattern
      szSearchPath             = SearchQueue.szSearchPath
      szFileMask               = SearchQueue.szFileMask
@@ -4944,6 +5017,7 @@ LocationColWidth  LONG
       INIMgr.Update('Search Options','bExactMatch',SearchQueue.bExactMatch)
       INIMgr.Update('Search Options','bExcludeMatch',SearchQueue.bExcludeMatch)
       INIMgr.Update('Search Options','bExcludeComments',SearchQueue.bExcludeComments)
+      INIMgr.Update('Search Options','bIncludeBinary',SearchQueue.bIncludeBinary)
 
       ReplaceChr(SearchQueue.szPattern,'''','§')
       INIMgr.Update('Search Options','szPattern',SearchQueue.szPattern)
@@ -6607,16 +6681,19 @@ szOmitToken          CSTRING(265)
                IF thisText[1 : 7] = ' OMIT('''
                   bInOmit = TRUE
                   i = INSTRING('''',thisText,1,8)
-                  szOmitToken = thisText[8 : i-1]
-                  SciControl.SetFoldLevel(thisLine-1,BOR(thisFoldLevel,SC_FOLDLEVELHEADERFLAG))
-                  thisFoldLevel += 1
-
+                  IF i > 8    !next line will GPF if it isn't
+                     szOmitToken = thisText[8 : i-1]
+                     SciControl.SetFoldLevel(thisLine-1,BOR(thisFoldLevel,SC_FOLDLEVELHEADERFLAG))
+                     thisFoldLevel += 1
+                  END   
                ELSIF thisText[1 : 10] = ' COMPILE('''
                   bInOmit = TRUE
                   i = INSTRING('''',thisText,1,11)
-                  szOmitToken = thisText[11 : i-1]
-                  SciControl.SetFoldLevel(thisLine-1,BOR(thisFoldLevel,SC_FOLDLEVELHEADERFLAG))
-                  thisFoldLevel += 1
+                  IF i > 11   !next line will GPF if it isn't
+                     szOmitToken = thisText[11 : i-1]
+                     SciControl.SetFoldLevel(thisLine-1,BOR(thisFoldLevel,SC_FOLDLEVELHEADERFLAG))
+                     thisFoldLevel += 1
+                  END
 
                !foldable elements that have no labels
                ELSIF thisText[1 : 4] = ' MAP' AND LEN(thisText) = 4
@@ -7228,6 +7305,12 @@ PROPERTY:END
               BookmarkNext(FALSE,FALSE)
            OF CtrlE
               POST(EVENT:Accepted,?cmdEdit)
+           OF CtrlL
+              SELF.Copy()
+              SETCLIPBOARD('<060h,13,10>' & CLIPBOARD() & '<13,10,060h>')
+           OF CtrlK
+              SELF.Copy()
+              SETCLIPBOARD('{{code}<13,10>' & CLIPBOARD() & '<13,10>{{code}')
            OF CtrlS
               SELF.SaveFile(szTitle)
            OF CtrlShiftS
@@ -7379,6 +7462,8 @@ SELF.W{PROP:Alrt,255} = F2Key        !Next Bookmark
 SELF.W{PROP:Alrt,255} = ShiftF2      !Previous Bookmark
 SELF.W{PROP:Alrt,255} = CtrlShiftF2  !Clear All Bookmarks
 SELF.W{PROP:Alrt,255} = CtrlE        !Send To
+SELF.W{PROP:Alrt,255} = CtrlK        !Copy for Skype
+SELF.W{PROP:Alrt,255} = CtrlL        !Copy for Slack
 SELF.W{PROP:Alrt,255} = CtrlP        !Print
 SELF.W{PROP:Alrt,255} = CtrlR        !Replace
 SELF.W{PROP:Alrt,255} = CtrlS        !Save
@@ -7405,10 +7490,14 @@ PROPERTY:END
        IF lSelectionStart = lSelectionEnd
           SELF.Popup.SetItemEnable('CutCtrlX',FALSE)
           SELF.Popup.SetItemEnable('CopyCtrlC',FALSE)
+          SELF.Popup.SetItemEnable('CopyCtrlK',FALSE)
+          SELF.Popup.SetItemEnable('CopyCtrlL',FALSE)
           SELF.Popup.SetItemEnable('Delete',FALSE)
        ELSE
           SELF.Popup.SetItemEnable('CutCtrlX',TRUE)
           SELF.Popup.SetItemEnable('CopyCtrlC',TRUE)
+          SELF.Popup.SetItemEnable('CopyCtrlK',TRUE)
+          SELF.Popup.SetItemEnable('CopyCtrlL',TRUE)
           SELF.Popup.SetItemEnable('Delete',TRUE)
        END
        IF CLIPBOARD()
@@ -7449,6 +7538,12 @@ PROPERTY:END
             SELF.Cut()
          OF 'CopyCtrlC'
             SELF.Copy()
+         OF 'CopyCtrlK'
+            SELF.Copy()
+            SETCLIPBOARD('{{code}<13,10>' & CLIPBOARD() & '<13,10>{{code}')
+         OF 'CopyCtrlL'
+            SELF.Copy()
+            SETCLIPBOARD('<060h,13,10>' & CLIPBOARD() & '<13,10,060h>')
          OF 'PasteCtrlV'
             SELF.Paste()
          OF 'Delete'
@@ -8670,6 +8765,8 @@ SELF.Popup.AddItem('Print<9>Ctrl+P','Print')
 SELF.Popup.AddItem('-','EditMenuHere')
 SELF.Popup.AddItem('Cut<9>Ctrl+X','CutCtrlX')
 SELF.Popup.AddItem('Copy<9>Ctrl+C','CopyCtrlC')
+SELF.Popup.AddItem('Copy for Skype<9>Ctrl+K','CopyCtrlK')
+SELF.Popup.AddItem('Copy for Slack<9>Ctrl+L','CopyCtrlL')
 SELF.Popup.AddItem('Paste<9>Ctrl+V','PasteCtrlV')
 SELF.Popup.AddItem('Delete','Delete')
 SELF.Popup.AddItem('-','FileModeMenuHere')
@@ -8710,6 +8807,8 @@ SELF.Popup.SetIcon('SendTo','SendTo.ico')
 SELF.Popup.SetIcon('Print','Print.ico')
 SELF.Popup.SetIcon('CutCtrlX','Cut.ico')
 SELF.Popup.SetIcon('CopyCtrlC','Copy.ico')
+SELF.Popup.SetIcon('CopyCtrlK','Skype.ico')
+SELF.Popup.SetIcon('CopyCtrlL','Slack.ico')
 SELF.Popup.SetIcon('PasteCtrlV','Paste.ico')
 SELF.Popup.SetIcon('Delete','Delete.ico')
 SELF.Popup.SetIcon('Find','Find.ico')
@@ -9139,7 +9238,7 @@ Window  WINDOW('Kwik Source Search'),AT(,,600,273),FONT('Segoe UI',10,,,CHARSET:
             '(2)|M~Line~C(0)@n15@50L(2)|M~Location~S(1024)@s255@175L(2)|M~Text~S(1024)@s255@'), |
             FROM(EasyListPrintQueue),#FIELDS(ResultQueue.Path,ResultQueue.Filename,ResultsQueue.szExtension, |
             ResultQueue.LineNo,ResultQueue.ProcedureName,ResultQueue.Text),#ORDINAL(39)
-          REGION,AT(460,0,2,260),USE(?SplitterBar),FILL(00B48246h),IMM,#ORDINAL(40)
+          REGION,AT(460,0,2,260),USE(?SplitterBar),FILL(COLOR:SteelBlue),IMM,#ORDINAL(40)
           STRING(@S255),AT(10,147,568,8),USE(szTitle,,?szTitle:2),COLOR(COLOR:Red),#ORDINAL(41)
           BUTTON,AT(0,147,10,8),USE(?cmdSaveWarn:2),ICON('save-warn.png'),DISABLE,FLAT,SKIP, |
             #ORDINAL(42)
@@ -9149,6 +9248,7 @@ Window  WINDOW('Kwik Source Search'),AT(,,600,273),FONT('Segoe UI',10,,,CHARSET:
 [MODULE]
 [COMMON]
 FROM ABC GENERATED
+MODIFIED '2017/08/05' ' 8:56:46'
 [EMBED]
 EMBED %StartOfModule
 [DEFINITION]
@@ -9525,6 +9625,7 @@ OWNER 2
 [MODULE]
 [COMMON]
 FROM ABC GENERATED
+MODIFIED '2017/08/07' '16:33:59'
 [EMBED]
 EMBED %StartOfModule
 [DEFINITION]
@@ -9562,7 +9663,7 @@ GLOBAL
 [COMMON]
 DESCRIPTION 'Process STDOUT_Queue and store lines in ResultQueue'
 FROM ABC Source
-MODIFIED '2017/08/07' '16:33:59'
+MODIFIED '2019/02/15' '17:14:21'
 [PROMPTS]
 %GenerateOpenClose LONG  (0)
 %GenerateSaveRestore LONG  (0)
@@ -9806,7 +9907,7 @@ currentPath    LIKE(ResultQueue.Path)
 
                LOOP n = 1 TO RECORDS(excludeQueue)
                   GET(excludeQueue,n)
-                  IF MATCH(thisString,excludeQueue.excludemask,Match:Regular)
+                  IF MATCH(UPPER(thisString),excludeQueue.excludemask,Match:Regular)
                      BREAK
                   END
                END
@@ -10944,7 +11045,7 @@ PROTOTYPE '(*ProcNameQueueType ProcNameQueue,*SectionQueueType SectionQueue)'
 PARAMETERS '(*ProcNameQueueType ProcNameQueue,*SectionQueueType SectionQueue)'
 [COMMON]
 FROM ABC Window
-MODIFIED '2015/12/30' ' 9:31:32'
+MODIFIED '2019/02/15' '15:57:41'
 [PROMPTS]
 %ClassItem UNIQUE DEFAULT  ('Default', 'WindowToolbar')
 %DefaultBaseClassType DEPEND %ClassItem DEFAULT TIMES 2
@@ -13500,7 +13601,7 @@ Window  WINDOW('Options'),AT(,,530,320),FONT('Segoe UI',10),DOUBLE,TILED,GRAY,HL
             STRING('Kwik Source Search'),AT(336,226,127),USE(?ProductName),FONT(,,,FONT:bold), |
               CENTER,TRN,#ORDINAL(58)
             STRING(@s22),AT(336,234,127),USE(loc:szVersion),CENTER,TRN,#ORDINAL(59)
-            STRING('© Copyright  2011-2017'),AT(336,242,127),USE(?Copyright),CENTER,TRN,#ORDINAL(60)
+            STRING('© Copyright  2011-2019'),AT(336,242,127),USE(?Copyright),CENTER,TRN,#ORDINAL(60)
             STRING('Devuna Inc.'),AT(336,251,127),USE(?CompanyName),CENTER,TRN,#ORDINAL(61)
             REGION,AT(359,260,90,10),USE(?rgnWebAddress),IMM,#ORDINAL(62)
             STRING('http://www.devuna.com'),AT(336,260,127),USE(?strWebAddress),FONT(,10,COLOR:Blue, |
@@ -14523,7 +14624,7 @@ PROTOTYPE '(STRING strOptionsGroup)'
 PARAMETERS '(STRING strOptionsGroup)'
 [COMMON]
 FROM ABC Source
-MODIFIED '2017/04/24' '17:28:20'
+MODIFIED '2019/02/17' '11:39:11'
 [PROMPTS]
 %GenerateOpenClose LONG  (0)
 %GenerateSaveRestore LONG  (0)
@@ -14540,7 +14641,10 @@ PROPERTY:END
       ResultQueue &= FindStrOptions.ResultQueue
 
       !szCmdline   CSTRING('findstr /s /i /n /p "keystone" "d:\program files (x86)\softvelocity\clarion8\accessory\libsrc\win\*.inc"')
-      szCmdLine = 'findstr /n /p '
+      szCmdLine = 'findstr /n '
+      IF NOT FindStrOptions.bIncludeBinary
+         szCmdLine = szCmdLine & '/p '
+      END
       IF FindStrOptions.bMatchPatternStartOfLine
          szCmdLine = szCmdLine & '/b '
       END
@@ -14605,7 +14709,73 @@ PROPERTY:END
             END
          END
       ELSE
-         szCmdLine = szCmdLine & '/f:"' & FindStrOptions.szFileListFilename & '" '
+         IF UPPER(SUB(FindStrOptions.szFileListFilename,-3,3)) = 'XML'
+            FREE(FileQueue)
+            x# = 0
+!<File_List name="kss.cwproj" version="1">
+!  <Opened_Files>
+!    <file name="BIN\RELEASE\KSS.EXE" />
+!    <file name="C:\CLARION11 PROJECTS\DEVUNA-KWIKSOURCESEARCH\APPLICATION\KSS\ABDNROW.ICO" />   
+            XmlFilename = FindStrOptions.szFileListFilename
+            OPEN(XmlFile)
+            IF NOT ERRORCODE()
+               SET(XmlFile)
+               NEXT(XmlFile)
+               LOOP UNTIL ERRORCODE()
+                  szXmlString = UPPER(CLIP(LEFT(XmlFile.Buffer)))
+                  IF szXmlString = '<<OPENED_FILES>'
+                     !Get the Filenames
+                     NEXT(XmlFile)
+                     LOOP UNTIL ERRORCODE()
+                        szXmlString = UPPER(CLIP(LEFT(XmlFile.Buffer)))
+                        IF szXmlString = '<</OPENED_FILES>'
+                           BREAK !Exit inner loop
+                        ELSE
+                           IF szXmlString[14] = ':'
+                              FileQueue.Name = szXmlString[13 : (LEN(szXmlString) - 4)]
+                              !only include clw, inc, def, equ and trn
+                              CASE SUB(CLIP(FileQueue.Name),-3,3) !FileQueue.Name is a STRING so needs to be clipped
+                                OF 'CLW' OROF 'INC' OROF 'DEF' OROF 'EQU' OROF 'TRN' OROF 'INT'
+                                   ADD(FileQueue)
+                              ELSE
+                              END
+                           END
+                        END
+                        NEXT(XmlFile)
+                     END
+                     
+                     szFileListFilename = ''
+                     IF kcr_GetTempPath(SIZE(szPathName),szPathName) > 0
+                        IF kcr_GetTempFileName(szPathName, szPrefixString, THREAD(), szFileListFilename)
+                           AsciiFilename = szFileListFilename
+                           CREATE(AsciiFile)
+                           OPEN(AsciiFile)
+                           LOOP i = 1 TO RECORDS(FileQueue)
+                              GET(FileQueue,i)
+                              AsciiFile.Buffer = FileQueue.Name
+                              APPEND(AsciiFile)
+                           END
+                           CLOSE(AsciiFile)
+                           szCmdLine = szCmdLine & '/f:"' & szFileListFilename & '" '
+                        ELSE
+                           MESSAGE('GetTempFileName Failed')
+                        END
+                     ELSE
+                        MESSAGE('GetTempPath Failed')
+                     END                     
+                     
+                     BREAK !Exit outer loop
+                  ELSE
+                  END
+                  NEXT(XmlFile)
+               END
+               CLOSE(XmlFile)
+            ELSE
+               MESSAGE('Error Opening ' & XmlFilename)
+            END
+         ELSE
+            szCmdLine = szCmdLine & '/f:"' & FindStrOptions.szFileListFilename & '" '
+         END   
       END
 
       szFixedFileMask = FindStrOptions.szFileMask
@@ -14642,8 +14812,10 @@ PROPERTY:END
                       szFixedExcludeMask[k] = '$'
                       k += 1
                  ELSE
-                      szFixedExcludeMask[k] = '.'
-                      k += 1
+                      IF FindStrOptions.szExcludeMask[i-1] <> '.' !add IF statement around following code
+                         szFixedExcludeMask[k] = '.'              !
+                         k += 1                                   !   
+                      END                                         !ENDIF   
                       szFixedExcludeMask[k] = '*'
                       k += 1
                  END
@@ -14661,7 +14833,6 @@ PROPERTY:END
          END
       END
       szFixedExcludeMask[k] = '<0>'
-
 
       IF NOT FindStrOptions.bUseRegularExpressions
 !     http://stackoverflow.com/questions/8844868/what-are-the-undocumented-features-and-limitations-of-the-windows-findstr-comman
@@ -14806,7 +14977,6 @@ PROPERTY:END
                      j = RECORDS(ResultQueue)
                      LOOP i = j TO 1 BY -1
                         GET(ResultQueue,i)
-                        x# = 1
                         IF thisFile <> ResultQueue.Filename & ResultQueue.szExtension
                            thisFile = ResultQueue.Filename & ResultQueue.szExtension
                         END
@@ -14889,6 +15059,7 @@ szCmdLine            CSTRING(261)
 ResultQueue          &ResultQueueType
 lpResultQueue        LONG
 bExcludeComments     BYTE
+bIncludeBinary       BYTE
 bMatchMode           LONG
 FindStrOptions       GROUP(FindStrOptionsGroupType)
                      END
@@ -14916,6 +15087,7 @@ cc                   LONG
 progressCalls        LONG
 szAnySetOfChars      CSTRING(512)
 szBackslashes        CSTRING(512)
+szXmlString          CSTRING(2049)
 [END]
 [END]
 [ADDITION]
@@ -15711,7 +15883,7 @@ PROTOTYPE '(*FindStrOptionsGroupType SearchOptions),BOOL'
 PARAMETERS '(*FindStrOptionsGroupType SearchOptions)'
 [COMMON]
 FROM ABC Window
-MODIFIED '2017/06/05' ' 9:08:56'
+MODIFIED '2019/02/15' '16:30:49'
 [DATA]
 [SCREENCONTROLS]
 ! PROMPT('Result Code:'),USE(?ResultCode:Prompt)
@@ -17142,8 +17314,8 @@ WHEN  ('Default') ('Init {19}PROCEDURE(BYTE AppStrategy=AppStrategy:Resize,BYTE 
 %AutoFindParents DEFAULT  ('Default')
 %DeferMoves DEFAULT  ('Default')
 %OverrideControls MULTI LONG  (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, |
-  16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 32, 33, 29, 30, 31)
-%OverrideControl DEPEND %OverrideControls DEFAULT TIMES 33
+  16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 32, 33, 29, 30, 31, 34)
+%OverrideControl DEPEND %OverrideControls DEFAULT TIMES 34
 WHEN  (1) ('?szSearchStringFilename:Prompt')
 WHEN  (2) ('?szSearchStringFilename')
 WHEN  (3) ('?cmdLookupSearchStringFilename')
@@ -17177,8 +17349,9 @@ WHEN  (30) ('?cmdSearch')
 WHEN  (31) ('?cmdSearchNew')
 WHEN  (32) ('?szExcludeMask:Prompt')
 WHEN  (33) ('?szExcludeMask')
+WHEN  (34) ('?bIncludeBinary')
 
-%DisableResize DEPEND %OverrideControls LONG TIMES 33
+%DisableResize DEPEND %OverrideControls LONG TIMES 34
 WHEN  (1) (0)
 WHEN  (2) (0)
 WHEN  (3) (0)
@@ -17212,8 +17385,9 @@ WHEN  (30) (0)
 WHEN  (31) (0)
 WHEN  (32) (0)
 WHEN  (33) (0)
+WHEN  (34) (0)
 
-%HorizResize DEPEND %OverrideControls DEFAULT TIMES 33
+%HorizResize DEPEND %OverrideControls DEFAULT TIMES 34
 WHEN  (1) ('Lock Width')
 WHEN  (2) ('Constant Right Border')
 WHEN  (3) ('Lock Width')
@@ -17247,8 +17421,9 @@ WHEN  (30) ('Lock Width')
 WHEN  (31) ('Lock Width')
 WHEN  (32) ('Lock Width')
 WHEN  (33) ('Constant Right Border')
+WHEN  (34) ('Lock Width')
 
-%VertResize DEPEND %OverrideControls DEFAULT TIMES 33
+%VertResize DEPEND %OverrideControls DEFAULT TIMES 34
 WHEN  (1) ('Lock Height')
 WHEN  (2) ('Lock Height')
 WHEN  (3) ('Lock Height')
@@ -17282,8 +17457,9 @@ WHEN  (30) ('Lock Height')
 WHEN  (31) ('Lock Height')
 WHEN  (32) ('Lock Height')
 WHEN  (33) ('Lock Height')
+WHEN  (34) ('Lock Height')
 
-%HorizPositional DEPEND %OverrideControls DEFAULT TIMES 33
+%HorizPositional DEPEND %OverrideControls DEFAULT TIMES 34
 WHEN  (1) ('Fix Left')
 WHEN  (2) ('Fix Left')
 WHEN  (3) ('Fix Right')
@@ -17317,8 +17493,9 @@ WHEN  (30) ('Fix Center')
 WHEN  (31) ('Fix Right')
 WHEN  (32) ('Fix Left')
 WHEN  (33) ('Fix Left')
+WHEN  (34) ('Fix Left')
 
-%VertPositional DEPEND %OverrideControls DEFAULT TIMES 33
+%VertPositional DEPEND %OverrideControls DEFAULT TIMES 34
 WHEN  (1) ('Fix Top')
 WHEN  (2) ('Fix Top')
 WHEN  (3) ('Fix Top')
@@ -17352,6 +17529,7 @@ WHEN  (30) ('Fix Bottom')
 WHEN  (31) ('Fix Bottom')
 WHEN  (32) ('Fix Bottom')
 WHEN  (33) ('Fix Top')
+WHEN  (34) ('Fix Top')
 
 %GlobalObject DEPEND %ClassItem DEFAULT TIMES 1
 WHEN  ('Default') ('NO')
@@ -17439,7 +17617,7 @@ SaveSearchOptions
 SilentlyRemoveDirectory
 ValidateSearchPath
 [WINDOW]
-Window  WINDOW('Search for...'),AT(,,320,170),FONT('Segoe UI',10),RESIZE,GRAY,HLP('SearchFor.htm'), |
+Window  WINDOW('Search for...'),AT(,,320,180),FONT('Segoe UI',10),RESIZE,GRAY,HLP('SearchFor.htm'), |
           SYSTEM
           PROMPT('&File'),AT(5,5),USE(?szSearchStringFilename:Prompt),HIDE,TRN,#ORDINAL(1)
           ENTRY(@S255),AT(35,5,262,10),USE(SearchOptions.szSearchStringFilename,,?szSearchStringFilename), |
@@ -17473,44 +17651,46 @@ Window  WINDOW('Search for...'),AT(,,320,170),FONT('Segoe UI',10),RESIZE,GRAY,HL
           BUTTON,AT(143,65,12,10),USE(?cmdRegExHelp),ICON('help.ico'),FLAT,#ORDINAL(14)
           CHECK(' Filenames &Only'),AT(170,65),USE(SearchOptions.bFilenamesOnly,,?bFilenamesOnly), |
             TIP('Prints only the names of files that do contain a match.'),TRN,#ORDINAL(15)
-          CHECK(' Re&ad File List from Specified File'),AT(35,80),USE(SearchOptions.bFileListFromFile, |
+          CHECK(' &Include files with non-printable characters'),AT(35,75),USE(SearchOptions.bIncludeBinary, |
+            ,?bIncludeBinary),TIP('Includes files with non-printable characters.'),TRN,#ORDINAL(16)
+          CHECK(' Re&ad File List from Specified File'),AT(35,90),USE(SearchOptions.bFileListFromFile, |
             ,?bFileListFromFile),TIP('Get the list of files to search from the specified file'), |
-            TRN,#ORDINAL(16)
-          PROMPT('F&ile'),AT(5,92),USE(?szFileListFilename:Prompt),HIDE,TRN,#ORDINAL(17)
-          ENTRY(@S255),AT(35,92,262,10),USE(SearchOptions.szFileListFilename,,?szFileListFilename), |
-            HIDE,#ORDINAL(18)
-          BUTTON('...'),AT(301,92,14,10),USE(?cmdLookupFileListFilename),HIDE,TIP('Lookup Fil' & |
-            'e List Filename'),#ORDINAL(19)
-          PROMPT('&Paths'),AT(5,92),USE(?szSearchPath:Prompt),TRN,#ORDINAL(20)
-          COMBO(@S255),AT(35,92,245,10),USE(SearchOptions.szSearchPath,,?szSearchPath),VSCROLL, |
+            TRN,#ORDINAL(17)
+          PROMPT('F&ile'),AT(5,102),USE(?szFileListFilename:Prompt),HIDE,TRN,#ORDINAL(18)
+          ENTRY(@S255),AT(35,102,262,10),USE(SearchOptions.szFileListFilename,,?szFileListFilename), |
+            HIDE,#ORDINAL(19)
+          BUTTON('...'),AT(301,102,14,10),USE(?cmdLookupFileListFilename),HIDE,TIP('Lookup Fil' & |
+            'e List Filename'),#ORDINAL(20)
+          PROMPT('&Paths'),AT(5,102),USE(?szSearchPath:Prompt),TRN,#ORDINAL(21)
+          COMBO(@S255),AT(35,102,245,10),USE(SearchOptions.szSearchPath,,?szSearchPath),VSCROLL, |
             ALRT(MouseRight),COLOR(COLOR:White),DROP(10),FORMAT('80L(2)|MS(1024)@s255@'),FROM(SearchPathQueue), |
-            MSG('Search Path'),TIP('Search Path Starting Folder'),#ORDINAL(21)
-          BUTTON('...'),AT(284,92,14,10),USE(?cmdSelectFolder),TIP('Select New Search Path'), |
-            #ORDINAL(22)
-          BUTTON('+'),AT(301,92,14,10),USE(?cmdAddFolder),TIP('Append to Existing Search Path'), |
+            MSG('Search Path'),TIP('Search Path Starting Folder'),#ORDINAL(22)
+          BUTTON('...'),AT(284,102,14,10),USE(?cmdSelectFolder),TIP('Select New Search Path'), |
             #ORDINAL(23)
-          CHECK(' Search S&ubdirectories'),AT(35,107),USE(SearchOptions.bSearchSubdirectories, |
+          BUTTON('+'),AT(301,102,14,10),USE(?cmdAddFolder),TIP('Append to Existing Search Path'), |
+            #ORDINAL(24)
+          CHECK(' Search S&ubdirectories'),AT(35,117),USE(SearchOptions.bSearchSubdirectories, |
             ,?bSearchSubdirectories),TIP('Searches for matching files in the current di' & |
-            'rectory and all subdirectories.'),TRN,#ORDINAL(24)
-          PROMPT('Le&vels:'),AT(139,107),USE(?nLevels:Prompt),TRN,#ORDINAL(25)
-          SPIN(@n3b),AT(165,107,25,10),USE(SearchOptions.nLevels,,?nLevels),RIGHT,COLOR(COLOR:White), |
+            'rectory and all subdirectories.'),TRN,#ORDINAL(25)
+          PROMPT('Le&vels:'),AT(139,117),USE(?nLevels:Prompt),TRN,#ORDINAL(26)
+          SPIN(@n3b),AT(165,117,25,10),USE(SearchOptions.nLevels,,?nLevels),RIGHT,COLOR(COLOR:White), |
             MSG('Subdirectory Levels to Search'),RANGE(0,255),TIP('Specify the number o' & |
             'f subdirectory levels to search.  If this value is blank then all subdirec' & |
-            'tories will be searched.'),#ORDINAL(26)
-          PROMPT('&Files'),AT(5,122),USE(?szFileMask:Prompt),TRN,#ORDINAL(27)
-          COMBO(@s255),AT(35,122,280,10),USE(SearchOptions.szFileMask,,?szFileMask),VSCROLL, |
+            'tories will be searched.'),#ORDINAL(27)
+          PROMPT('&Files'),AT(5,132),USE(?szFileMask:Prompt),TRN,#ORDINAL(28)
+          COMBO(@s255),AT(35,132,280,10),USE(SearchOptions.szFileMask,,?szFileMask),VSCROLL, |
             ALRT(MouseRight),COLOR(COLOR:White),DROP(10),FORMAT('80L(2)|MS(1024)@s255@'),FROM(FileMaskQueue), |
             TIP('Specifies a file or files to search.<0DH,0AH>The elements in the strin' & |
-            'g may be delimited by vertical bars (|) ,  semicolons (;), or spaces.'),#ORDINAL(28)
-          PROMPT('E&xclude'),AT(5,137),USE(?szExcludeMask:Prompt),TRN,#ORDINAL(29)
-          COMBO(@s255),AT(35,137,280,10),USE(SearchOptions.szExcludeMask,,?szExcludeMask), |
+            'g may be delimited by vertical bars (|) ,  semicolons (;), or spaces.'),#ORDINAL(29)
+          PROMPT('E&xclude'),AT(5,147),USE(?szExcludeMask:Prompt),TRN,#ORDINAL(30)
+          COMBO(@s255),AT(35,147,280,10),USE(SearchOptions.szExcludeMask,,?szExcludeMask), |
             VSCROLL,ALRT(MouseRight),COLOR(COLOR:White),DROP(10),FORMAT('80L(2)|MS(1024)@s255@'), |
             FROM(ExcludeMaskQueue),TIP('Specifies a file or files to be excluded from t' & |
             'he search.<0DH,0AH>The elements in the string may be delimited by vertical' & |
-            ' bars (|) ,  semicolons (;), or spaces.'),#ORDINAL(30)
-          BUTTON('&Load Saved Results'),AT(35,152,70,14),USE(?cmdLoadSavedResults),#ORDINAL(31)
-          BUTTON('&Search'),AT(140,152,70,14),USE(?cmdSearch),DEFAULT,#ORDINAL(32)
-          BUTTON('Search Ne&w Tab'),AT(245,152,70,14),USE(?cmdSearchNew),#ORDINAL(33)
+            ' bars (|) ,  semicolons (;), or spaces.'),#ORDINAL(31)
+          BUTTON('&Load Saved Results'),AT(35,162,70,14),USE(?cmdLoadSavedResults),#ORDINAL(32)
+          BUTTON('&Search'),AT(140,162,70,14),USE(?cmdSearch),DEFAULT,#ORDINAL(33)
+          BUTTON('Search Ne&w Tab'),AT(245,162,70,14),USE(?cmdSearchNew),#ORDINAL(34)
         END
 
 [END]
@@ -20151,7 +20331,7 @@ PROTOTYPE '(*CSTRING szRegistrant, *LONG ExpiryDate),LONG'
 PARAMETERS '(*CSTRING szRegistrant,*LONG ExpiryDate)'
 [COMMON]
 FROM ABC Source
-MODIFIED '2014/03/04' '14:17:59'
+MODIFIED '2019/02/17' '10:04:45'
 [PROMPTS]
 %GenerateOpenClose LONG  (0)
 %GenerateSaveRestore LONG  (0)
@@ -20205,6 +20385,8 @@ sCrc          STRING(4),OVER(crc)
 cc            LONG
 szError       CSTRING(256)
 szErrorFunc   CSTRING(64)
+pBuffer       LONG
+cbBuffer      LONG         !size of username buffer
 [END]
 EMBED %ProcessedCode
 [DEFINITION]
@@ -20280,6 +20462,8 @@ PROPERTY:END
                RetVal = kcr_RegCloseKey(hKeystone)
 
             ELSE  !not registered
+               !!!Region Old Code
+               OMIT('!OLD_CODE')
                lDate = TODAY() + 30
                BinaryLicense = sDate & UNREGISTERED_COPY
                crc = kcr_crc32(ADDRESS(BinaryLicense),32,0)
@@ -20295,6 +20479,12 @@ PROPERTY:END
                   szErrorFunc = 'RegSetValueEx'
                   DO HandleError
                END
+               !OLD_CODE
+               !!!EndRegion Old Code
+               cbBuffer = SIZE(szRegistrant)
+               IF kcr_GetUserName(ADDRESS(szRegistrant),cbBuffer)
+                  ExpiryDate   = DATE(12,31,2099)
+               END   
             END
             RetVal = kcr_RegCloseKey(hDevuna)
          ELSE
@@ -25072,10 +25262,10 @@ Window  WINDOW('Property Editor'),AT(,,400,149),FONT('Segoe UI',10),HSCROLL,GRAY
           SYSTEM
           SHEET,AT(5,5,390,120),USE(?Sheet),IMM,#ORDINAL(1)
             TAB('General'),USE(?TAB1),#ORDINAL(2)
-              PROMPT('Description'),AT(10,20),USE(?szDescription:Prompt),FONT(,,00E16941h, |
+              PROMPT('Description'),AT(10,20),USE(?szDescription:Prompt),FONT(,,COLOR:RoyalBlue, |
                 FONT:bold),TRN,#ORDINAL(3)
               ENTRY(@s255),AT(55,20,330,10),USE(szDescription),FONT(,,,FONT:regular),#ORDINAL(4)
-              PROMPT('File Patterns'),AT(10,30),USE(?FilePatterns:Prompt),FONT(,,00E16941h, |
+              PROMPT('File Patterns'),AT(10,30),USE(?FilePatterns:Prompt),FONT(,,COLOR:RoyalBlue, |
                 FONT:bold),TRN,#ORDINAL(5)
               TEXT,AT(10,40,379,20),USE(szFilePatterns),VSCROLL,ALRT(MouseRight),TIP('not case s' & |
                 'ensitive, order of extentions is ignored'),#ORDINAL(6)
@@ -29943,7 +30133,7 @@ PROTOTYPE '(*FindStrOptionsGroupType SearchOptions),LONG,PROC'
 PARAMETERS '(*FindStrOptionsGroupType SearchOptions)'
 [COMMON]
 FROM ABC Source
-MODIFIED '2013/02/17' '16:04:25'
+MODIFIED '2019/02/15' '16:21:18'
 [PROMPTS]
 %GenerateOpenClose LONG  (0)
 %GenerateSaveRestore LONG  (0)
@@ -30002,6 +30192,7 @@ PROPERTY:END
          SyncOptions.bExactMatch                = SearchOptions.bExactMatch
          SyncOptions.bExcludeMatch              = SearchOptions.bExcludeMatch
          SyncOptions.bExcludeComments           = SearchOptions.bExcludeComments
+         SyncOptions.bIncludeBinary             = SearchOptions.bIncludeBinary
          SyncOptions.szSearchPath               = SearchOptions.szSearchPath
          SyncOptions.szFileMask                 = SearchOptions.szFileMask
          SyncOptions.bFilenamesOnly             = SearchOptions.bFilenamesOnly
@@ -30031,7 +30222,7 @@ PROTOTYPE '(*FindStrOptionsGroupType SearchOptions),LONG,PROC'
 PARAMETERS '(*FindStrOptionsGroupType SearchOptions)'
 [COMMON]
 FROM ABC Source
-MODIFIED '2013/02/17' '16:04:15'
+MODIFIED '2019/02/15' '16:20:45'
 [PROMPTS]
 %GenerateOpenClose LONG  (0)
 %GenerateSaveRestore LONG  (0)
@@ -30082,6 +30273,7 @@ PROPERTY:END
            SearchOptions.bExactMatch                = SyncOptions.bExactMatch
            SearchOptions.bExcludeMatch              = SyncOptions.bExcludeMatch
            SearchOptions.bExcludeComments           = SyncOptions.bExcludeComments
+           SearchOptions.bIncludeBinary             = SyncOptions.bIncludeBinary
            SearchOptions.szSearchPath               = SyncOptions.szSearchPath
            SearchOptions.szFileMask                 = SyncOptions.szFileMask
            SearchOptions.bFilenamesOnly             = SyncOptions.bFilenamesOnly
@@ -30147,7 +30339,7 @@ PROTOTYPE '(*WINDOW xChild)'
 PARAMETERS '(*WINDOW xChild)'
 [COMMON]
 FROM ABC Source
-MODIFIED '2013/08/17' '15:35:14'
+MODIFIED '2019/02/16' '10:05:00'
 [PROMPTS]
 %GenerateOpenClose LONG  (0)
 %GenerateSaveRestore LONG  (0)
@@ -30202,7 +30394,7 @@ PRIORITY 5000
 PROPERTY:END
   cMonitors = kcr_GetSystemMetrics(SM_CMONITORS)
   !dbx.Debugout('Monitors = ' & cmonitors)
-  IF cMonitors > 1
+  IF cMonitors > 0   !1
 
      GETPOSITION(glo:MainWindow,MainLoc.X,MainLoc.Y,MainLoc.W,MainLoc.H)
      GETPOSITION(xChild,ChildLoc.X,ChildLoc.Y,ChildLoc.W,ChildLoc.H)

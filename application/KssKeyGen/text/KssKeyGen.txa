@@ -418,8 +418,8 @@ WHEN  ('KssKeyGen001.clw') (1)
 %AbcSourceLocation DEFAULT  ('LINK')
 %AbcLibraryName DEFAULT  ('')
 %AppTemplateFamily DEFAULT  ('ABC')
-%CWTemplateVersion DEFAULT  ('v10.0')
-%ABCVersion DEFAULT  ('10000')
+%CWTemplateVersion DEFAULT  ('v11.0')
+%ABCVersion DEFAULT  ('11000')
 %ButtonMarginsCompatibility LONG  (0)
 %W7ManifestW8 LONG  (1)
 %Repository DEFAULT  ('')
@@ -455,6 +455,7 @@ WHEN  ('KssKeyGen001.clw') ('1')
 %LastApplicationLocalLibrary DEFAULT  ('')
 [PROJECT]
 -- NAMESPACE KssKeyGen
+-- OUTPUTPATH C:\Clarion11 Projects\Devuna-KwikSourceSearch\application\KssKeyGen
 #system win32 exe
 #model clarion dll
 #pragma link_option(icon=>kss.ico)
@@ -464,6 +465,8 @@ WHEN  ('KssKeyGen001.clw') ('1')
 #compile "KssKeyGen001.clw" -- GENERATED
 #compile "KssKeyGen_BC0.CLW" -- GENERATED
 #compile "KSSKEYGEN_BC.CLW" -- GENERATED
+#pragma link("kss.ico") -- GENERATED
+#pragma link("KssKeyGen.EXE.manifest") -- GENERATED
 #link "KssKeyGen.EXE"
 [PROGRAM]
 [COMMON]
@@ -749,9 +752,11 @@ WHEN  ('WindowToolbar') (0)
 
 %ExtUITabStyleOverrideGlobal DEPEND %Control LONG TIMES 0
 
-%ExtUITabStyle DEPEND %Control DEFAULT TIMES 0
+%ExtUITabStyle DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('Default')
 
-%ButtonAction DEPEND %Control DEFAULT TIMES 2
+%ButtonAction DEPEND %Control DEFAULT TIMES 3
+WHEN  ('') ('No Special Action')
 WHEN  ('?cmdClose') ('No Special Action')
 WHEN  ('?cmdGenerate') ('No Special Action')
 
@@ -763,7 +768,8 @@ WHEN  ('?cmdGenerate') ('No Special Action')
 
 %ButtonThread DEPEND %Control LONG TIMES 0
 
-%ButtonThreadStack DEPEND %Control DEFAULT TIMES 2
+%ButtonThreadStack DEPEND %Control DEFAULT TIMES 3
+WHEN  ('') ('25000')
 WHEN  ('?cmdClose') ('25000')
 WHEN  ('?cmdGenerate') ('25000')
 
@@ -773,7 +779,8 @@ WHEN  ('?cmdGenerate') ('25000')
 
 %ButtonReturnValueReferenceAssign DEPEND %Control LONG TIMES 0
 
-%ButtonRequest DEPEND %Control DEFAULT TIMES 2
+%ButtonRequest DEPEND %Control DEFAULT TIMES 3
+WHEN  ('') ('None')
 WHEN  ('?cmdClose') ('None')
 WHEN  ('?cmdGenerate') ('None')
 
@@ -797,7 +804,8 @@ WHEN  ('?cmdGenerate') ('None')
 
 %PostLookupProcedureParameters DEPEND %Control DEFAULT TIMES 0
 
-%PostLookupDuringValidate DEPEND %Control LONG TIMES 2
+%PostLookupDuringValidate DEPEND %Control LONG TIMES 3
+WHEN  ('') (1)
 WHEN  ('?Registrant') (1)
 WHEN  ('?sLicense') (1)
 
@@ -819,13 +827,15 @@ WHEN  ('?sLicense') (1)
 
 %CheckedControl DEPEND %CheckedHides DEFAULT TIMES 0
 
-%CheckedControlAction DEPEND %CheckedHides DEFAULT TIMES 0
+%CheckedControlAction DEPEND %CheckedHides DEFAULT TIMES 1
+WHEN  ('')TIMES 0
 
 %CheckedEnables DEPEND %Control MULTI LONG TIMES 0
 
 %CheckedControl1 DEPEND %CheckedEnables DEFAULT TIMES 0
 
-%CheckedControl1Action DEPEND %CheckedEnables DEFAULT TIMES 0
+%CheckedControl1Action DEPEND %CheckedEnables DEFAULT TIMES 1
+WHEN  ('')TIMES 0
 
 %UncheckedAssigns DEPEND %Control MULTI LONG TIMES 0
 
@@ -837,55 +847,69 @@ WHEN  ('?sLicense') (1)
 
 %UnCheckedControl DEPEND %UnCheckedHides DEFAULT TIMES 0
 
-%UnCheckedControlAction DEPEND %UnCheckedHides DEFAULT TIMES 0
+%UnCheckedControlAction DEPEND %UnCheckedHides DEFAULT TIMES 1
+WHEN  ('')TIMES 0
 
 %UnCheckedEnables DEPEND %Control MULTI LONG TIMES 0
 
 %UnCheckedControl1 DEPEND %UnCheckedEnables DEFAULT TIMES 0
 
-%UnCheckedControl1Action DEPEND %UnCheckedEnables DEFAULT TIMES 0
+%UnCheckedControl1Action DEPEND %UnCheckedEnables DEFAULT TIMES 1
+WHEN  ('')TIMES 0
 
 %CheckedDisables DEPEND %Control MULTI LONG TIMES 0
 
 %CheckedDisableControl DEPEND %CheckedDisables DEFAULT TIMES 0
 
-%CheckedDisableControlAction DEPEND %CheckedDisables DEFAULT TIMES 0
+%CheckedDisableControlAction DEPEND %CheckedDisables DEFAULT TIMES 1
+WHEN  ('')TIMES 0
 
 %UnCheckedDisables DEPEND %Control MULTI LONG TIMES 0
 
 %UnCheckedDisableControl DEPEND %UnCheckedDisables DEFAULT TIMES 0
 
-%UnCheckedDisableControlAction DEPEND %UnCheckedDisables DEFAULT TIMES 0
+%UnCheckedDisableControlAction DEPEND %UnCheckedDisables DEFAULT TIMES 1
+WHEN  ('')TIMES 0
 
 %ProcedureOneInstance LONG  (0)
 %PreserveVarsLoc MULTI LONG  ()
 %PreserveVarLoc DEPEND %PreserveVarsLoc DEFAULT TIMES 0
 
-%FieldGradientColorType DEPEND %Control DEFAULT TIMES 0
+%FieldGradientColorType DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('Off')
 
-%FieldGradientColorTypeVariable DEPEND %Control DEFAULT TIMES 0
+%FieldGradientColorTypeVariable DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('')
 
-%FieldGradientColorTypeIsVariable DEPEND %Control LONG TIMES 0
+%FieldGradientColorTypeIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
 
-%FieldGradientColorFrom DEPEND %Control LONG TIMES 0
+%FieldGradientColorFrom DEPEND %Control LONG TIMES 1
+WHEN  ('') (-1)
 
 %FieldGradientColorFromVariable DEPEND %Control DEFAULT TIMES 0
 
-%FieldGradientColorFromIsVariable DEPEND %Control LONG TIMES 0
+%FieldGradientColorFromIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
 
-%FieldGradientColorTo DEPEND %Control LONG TIMES 0
+%FieldGradientColorTo DEPEND %Control LONG TIMES 1
+WHEN  ('') (-1)
 
 %FieldGradientColorToVariable DEPEND %Control DEFAULT TIMES 0
 
-%FieldGradientColorToIsVariable DEPEND %Control LONG TIMES 0
+%FieldGradientColorToIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
 
 %ActiveImageEnable DEPEND %Control LONG TIMES 0
 
-%AIObjectName DEPEND %Control DEFAULT TIMES 0
+%AIObjectName DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('AIBtn0')
 
-%AIEnableMimicControl DEPEND %Control LONG TIMES 0
+%AIEnableMimicControl DEPEND %Control LONG TIMES 1
+WHEN  ('') (1)
 
-%AIMimicControl DEPEND %Control DEFAULT TIMES 0
+%AIMimicControl DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('?Registrant:Prompt')
 
 %AIImgRound DEPEND %Control LONG TIMES 0
 
@@ -893,25 +917,29 @@ WHEN  ('?sLicense') (1)
 
 %AIOverrideImgVariable DEPEND %Control DEFAULT TIMES 0
 
-%AIOverrideImgIsVariable DEPEND %Control LONG TIMES 0
+%AIOverrideImgIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
 
 %AIDisableImg DEPEND %Control DEFAULT TIMES 0
 
 %AIDisableImgVariable DEPEND %Control DEFAULT TIMES 0
 
-%AIDisableImgIsVariable DEPEND %Control LONG TIMES 0
+%AIDisableImgIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
 
 %AIHotImg DEPEND %Control DEFAULT TIMES 0
 
 %AIHotImgVariable DEPEND %Control DEFAULT TIMES 0
 
-%AIHotImgIsVariable DEPEND %Control LONG TIMES 0
+%AIHotImgIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
 
 %AIPressedImg DEPEND %Control DEFAULT TIMES 0
 
 %AIPressedImgVariable DEPEND %Control DEFAULT TIMES 0
 
-%AIPressedImgIsVariable DEPEND %Control LONG TIMES 0
+%AIPressedImgIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
 
 [EMBED]
 EMBED %DataSection
