@@ -576,7 +576,7 @@ WHEN  ('kss030.clw') ('1')
 [PROGRAM]
 [COMMON]
 FROM ABC ABC
-MODIFIED '2019/02/17' '16:06:21'
+MODIFIED '2019/02/18' '14:53:41'
 [DATA]
 [SCREENCONTROLS]
 ! PROMPT('glo : sz Version:'),USE(?glo:szVersion:Prompt)
@@ -584,7 +584,7 @@ MODIFIED '2019/02/17' '16:06:21'
 [REPORTCONTROLS]
 ! STRING(@s31),USE(glo:szVersion)
 glo:szVersion            CSTRING(32)
-!!> GUID('43bdda80-37f1-4a56-9560-ed3ed8f97708'),INITIAL('2019.02.17.4<0>{19}'),PROMPT('glo : sz Version:'),HEADER('glo : sz Version'),PICTURE(@s31),TYPEMODE(INS)
+!!> GUID('43bdda80-37f1-4a56-9560-ed3ed8f97708'),INITIAL('2019.02.18.0<0>{19}'),PROMPT('glo : sz Version:'),HEADER('glo : sz Version'),PICTURE(@s31),TYPEMODE(INS)
 [SCREENCONTROLS]
 ! PROMPT('glo : sz Version:'),USE(?glo:szNewVersion:Prompt)
 ! ENTRY(@s31),USE(glo:szNewVersion)
@@ -1861,7 +1861,7 @@ feqResultList           LONG
 NAME Main
 [COMMON]
 FROM ABC Window
-MODIFIED '2019/02/17' '16:05:56'
+MODIFIED '2019/02/18' '14:45:50'
 [DATA]
 [SCREENCONTROLS]
 ! PROMPT('Match Pattern Start of Line:'),USE(?bMatchPatternStartOfLine:Prompt)
@@ -3244,7 +3244,14 @@ WHEN '(),BYTE'
 PROPERTY:BEGIN
 PRIORITY 2500
 PROPERTY:END
-ReturnValue = CheckRegistration(RegisteredTo,ExpiryDate)
+!Bypass registration check
+cbBuffer = SIZE(RegisteredTo)
+IF kcr_GetUserName(ADDRESS(RegisteredTo),cbBuffer)
+   ExpiryDate   = DATE(12,31,2099)
+END  
+ReturnValue = Level:Benign
+!ReturnValue = CheckRegistration(RegisteredTo,ExpiryDate)
+
 IF ReturnValue = Level:Benign
    IF TODAY() <= ExpiryDate
       IF RegisteredTo = UNREGISTERED_COPY
@@ -3651,6 +3658,17 @@ PROPERTY:BEGIN
 PRIORITY 3500
 PROPERTY:END
 n      LONG
+[END]
+[END]
+WHEN 'Run'
+[INSTANCES]
+WHEN '(),BYTE'
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 5000
+PROPERTY:END
+cbBuffer             LONG(0)
 [END]
 [END]
 [END]
@@ -11661,7 +11679,7 @@ PARAMETERS '(LONG MaxStyleIndex, *CSTRING szInstallProgram)'
 [COMMON]
 DESCRIPTION 'User Options'
 FROM ABC Window
-MODIFIED '2017/08/07' '16:34:18'
+MODIFIED '2019/02/18' '14:59:24'
 [DATA]
 [SCREENCONTROLS]
 ! PROMPT('this Edit Command:'),USE(?thisEditCommand:Prompt)
@@ -11985,8 +12003,7 @@ WHEN  (3) (0)
 
 %ExtUITabStyleOverrideGlobal DEPEND %Control LONG TIMES 0
 
-%ExtUITabStyle DEPEND %Control DEFAULT TIMES 7
-WHEN  ('') ('Default')
+%ExtUITabStyle DEPEND %Control DEFAULT TIMES 6
 WHEN  ('?LookupFile') ('Default')
 WHEN  ('?LookupSendToCommand') ('Default')
 WHEN  ('?cmdApply') ('Default')
@@ -11994,8 +12011,7 @@ WHEN  ('?cmdPropertyEditor') ('Default')
 WHEN  ('?cmdRegisterNow') ('Default')
 WHEN  ('?thisEditCommand') ('Default')
 
-%ButtonAction DEPEND %Control DEFAULT TIMES 19
-WHEN  ('') ('No Special Action')
+%ButtonAction DEPEND %Control DEFAULT TIMES 18
 WHEN  ('?ApplicationColorButton') ('No Special Action')
 WHEN  ('?BookmarkBackColorButton') ('No Special Action')
 WHEN  ('?Change') ('No Special Action')
@@ -12035,8 +12051,7 @@ WHEN  ('?LookupFile') (0)
 WHEN  ('?LookupSendToCommand') (0)
 WHEN  ('?cmdPropertyEditor') (0)
 
-%ButtonThreadStack DEPEND %Control DEFAULT TIMES 19
-WHEN  ('') ('25000')
+%ButtonThreadStack DEPEND %Control DEFAULT TIMES 18
 WHEN  ('?ApplicationColorButton') ('25000')
 WHEN  ('?BookmarkBackColorButton') ('25000')
 WHEN  ('?Change') ('25000')
@@ -12071,8 +12086,7 @@ WHEN  ('?LookupFile') (0)
 WHEN  ('?LookupSendToCommand') (0)
 WHEN  ('?cmdPropertyEditor') (0)
 
-%ButtonRequest DEPEND %Control DEFAULT TIMES 19
-WHEN  ('') ('None')
+%ButtonRequest DEPEND %Control DEFAULT TIMES 18
 WHEN  ('?ApplicationColorButton') ('None')
 WHEN  ('?BookmarkBackColorButton') ('None')
 WHEN  ('?Change') ('None')
@@ -12118,8 +12132,7 @@ WHEN  ('?cmdPropertyEditor') ()
 
 %PostLookupProcedureParameters DEPEND %Control DEFAULT TIMES 0
 
-%PostLookupDuringValidate DEPEND %Control LONG TIMES 15
-WHEN  ('') (1)
+%PostLookupDuringValidate DEPEND %Control LONG TIMES 14
 WHEN  ('?LookupFile') (1)
 WHEN  ('?LookupSendToCommand') (1)
 WHEN  ('?cmdApply') (1)
@@ -12153,8 +12166,7 @@ WHEN  ('?thisEditCommand') (1)
 
 %CheckedControl DEPEND %CheckedHides DEFAULT TIMES 0
 
-%CheckedControlAction DEPEND %CheckedHides DEFAULT TIMES 7
-WHEN  ('')TIMES 0
+%CheckedControlAction DEPEND %CheckedHides DEFAULT TIMES 6
 WHEN  ('?LookupFile')TIMES 0
 WHEN  ('?LookupSendToCommand')TIMES 0
 WHEN  ('?cmdApply')TIMES 0
@@ -12166,8 +12178,7 @@ WHEN  ('?thisEditCommand')TIMES 0
 
 %CheckedControl1 DEPEND %CheckedEnables DEFAULT TIMES 0
 
-%CheckedControl1Action DEPEND %CheckedEnables DEFAULT TIMES 7
-WHEN  ('')TIMES 0
+%CheckedControl1Action DEPEND %CheckedEnables DEFAULT TIMES 6
 WHEN  ('?LookupFile')TIMES 0
 WHEN  ('?LookupSendToCommand')TIMES 0
 WHEN  ('?cmdApply')TIMES 0
@@ -12185,8 +12196,7 @@ WHEN  ('?thisEditCommand')TIMES 0
 
 %UnCheckedControl DEPEND %UnCheckedHides DEFAULT TIMES 0
 
-%UnCheckedControlAction DEPEND %UnCheckedHides DEFAULT TIMES 7
-WHEN  ('')TIMES 0
+%UnCheckedControlAction DEPEND %UnCheckedHides DEFAULT TIMES 6
 WHEN  ('?LookupFile')TIMES 0
 WHEN  ('?LookupSendToCommand')TIMES 0
 WHEN  ('?cmdApply')TIMES 0
@@ -12198,8 +12208,7 @@ WHEN  ('?thisEditCommand')TIMES 0
 
 %UnCheckedControl1 DEPEND %UnCheckedEnables DEFAULT TIMES 0
 
-%UnCheckedControl1Action DEPEND %UnCheckedEnables DEFAULT TIMES 7
-WHEN  ('')TIMES 0
+%UnCheckedControl1Action DEPEND %UnCheckedEnables DEFAULT TIMES 6
 WHEN  ('?LookupFile')TIMES 0
 WHEN  ('?LookupSendToCommand')TIMES 0
 WHEN  ('?cmdApply')TIMES 0
@@ -12211,8 +12220,7 @@ WHEN  ('?thisEditCommand')TIMES 0
 
 %CheckedDisableControl DEPEND %CheckedDisables DEFAULT TIMES 0
 
-%CheckedDisableControlAction DEPEND %CheckedDisables DEFAULT TIMES 7
-WHEN  ('')TIMES 0
+%CheckedDisableControlAction DEPEND %CheckedDisables DEFAULT TIMES 6
 WHEN  ('?LookupFile')TIMES 0
 WHEN  ('?LookupSendToCommand')TIMES 0
 WHEN  ('?cmdApply')TIMES 0
@@ -12224,8 +12232,7 @@ WHEN  ('?thisEditCommand')TIMES 0
 
 %UnCheckedDisableControl DEPEND %UnCheckedDisables DEFAULT TIMES 0
 
-%UnCheckedDisableControlAction DEPEND %UnCheckedDisables DEFAULT TIMES 7
-WHEN  ('')TIMES 0
+%UnCheckedDisableControlAction DEPEND %UnCheckedDisables DEFAULT TIMES 6
 WHEN  ('?LookupFile')TIMES 0
 WHEN  ('?LookupSendToCommand')TIMES 0
 WHEN  ('?cmdApply')TIMES 0
@@ -12234,8 +12241,7 @@ WHEN  ('?cmdRegisterNow')TIMES 0
 WHEN  ('?thisEditCommand')TIMES 0
 
 %ProcedureOneInstance LONG  (0)
-%FieldGradientColorType DEPEND %Control DEFAULT TIMES 7
-WHEN  ('') ('Off')
+%FieldGradientColorType DEPEND %Control DEFAULT TIMES 6
 WHEN  ('?Panel1') ('Off')
 WHEN  ('?loc:sApplicationColorBox') ('Off')
 WHEN  ('?loc:sBookmarkBackColorBox') ('Off')
@@ -12243,8 +12249,7 @@ WHEN  ('?loc:sResultListColorBox') ('Off')
 WHEN  ('?loc:sSelectedBackColorBox') ('Off')
 WHEN  ('?loc:sToolbarColorBox') ('Off')
 
-%FieldGradientColorTypeVariable DEPEND %Control DEFAULT TIMES 7
-WHEN  ('') ('')
+%FieldGradientColorTypeVariable DEPEND %Control DEFAULT TIMES 6
 WHEN  ('?Panel1') ('')
 WHEN  ('?loc:sApplicationColorBox') ('')
 WHEN  ('?loc:sBookmarkBackColorBox') ('')
@@ -12252,8 +12257,7 @@ WHEN  ('?loc:sResultListColorBox') ('')
 WHEN  ('?loc:sSelectedBackColorBox') ('')
 WHEN  ('?loc:sToolbarColorBox') ('')
 
-%FieldGradientColorTypeIsVariable DEPEND %Control LONG TIMES 7
-WHEN  ('') (0)
+%FieldGradientColorTypeIsVariable DEPEND %Control LONG TIMES 6
 WHEN  ('?Panel1') (0)
 WHEN  ('?loc:sApplicationColorBox') (0)
 WHEN  ('?loc:sBookmarkBackColorBox') (0)
@@ -12261,8 +12265,7 @@ WHEN  ('?loc:sResultListColorBox') (0)
 WHEN  ('?loc:sSelectedBackColorBox') (0)
 WHEN  ('?loc:sToolbarColorBox') (0)
 
-%FieldGradientColorFrom DEPEND %Control LONG TIMES 7
-WHEN  ('') (-1)
+%FieldGradientColorFrom DEPEND %Control LONG TIMES 6
 WHEN  ('?Panel1') (-1)
 WHEN  ('?loc:sApplicationColorBox') (-1)
 WHEN  ('?loc:sBookmarkBackColorBox') (-1)
@@ -12272,8 +12275,7 @@ WHEN  ('?loc:sToolbarColorBox') (-1)
 
 %FieldGradientColorFromVariable DEPEND %Control DEFAULT TIMES 0
 
-%FieldGradientColorFromIsVariable DEPEND %Control LONG TIMES 7
-WHEN  ('') (0)
+%FieldGradientColorFromIsVariable DEPEND %Control LONG TIMES 6
 WHEN  ('?Panel1') (0)
 WHEN  ('?loc:sApplicationColorBox') (0)
 WHEN  ('?loc:sBookmarkBackColorBox') (0)
@@ -12281,8 +12283,7 @@ WHEN  ('?loc:sResultListColorBox') (0)
 WHEN  ('?loc:sSelectedBackColorBox') (0)
 WHEN  ('?loc:sToolbarColorBox') (0)
 
-%FieldGradientColorTo DEPEND %Control LONG TIMES 7
-WHEN  ('') (-1)
+%FieldGradientColorTo DEPEND %Control LONG TIMES 6
 WHEN  ('?Panel1') (-1)
 WHEN  ('?loc:sApplicationColorBox') (-1)
 WHEN  ('?loc:sBookmarkBackColorBox') (-1)
@@ -12292,8 +12293,7 @@ WHEN  ('?loc:sToolbarColorBox') (-1)
 
 %FieldGradientColorToVariable DEPEND %Control DEFAULT TIMES 0
 
-%FieldGradientColorToIsVariable DEPEND %Control LONG TIMES 7
-WHEN  ('') (0)
+%FieldGradientColorToIsVariable DEPEND %Control LONG TIMES 6
 WHEN  ('?Panel1') (0)
 WHEN  ('?loc:sApplicationColorBox') (0)
 WHEN  ('?loc:sBookmarkBackColorBox') (0)
@@ -12306,14 +12306,11 @@ WHEN  ('?loc:sToolbarColorBox') (0)
 
 %ActiveImageEnable DEPEND %Control LONG TIMES 0
 
-%AIObjectName DEPEND %Control DEFAULT TIMES 1
-WHEN  ('') ('AIBtn0')
+%AIObjectName DEPEND %Control DEFAULT TIMES 0
 
-%AIEnableMimicControl DEPEND %Control LONG TIMES 1
-WHEN  ('') (1)
+%AIEnableMimicControl DEPEND %Control LONG TIMES 0
 
-%AIMimicControl DEPEND %Control DEFAULT TIMES 1
-WHEN  ('') ('?Panel1')
+%AIMimicControl DEPEND %Control DEFAULT TIMES 0
 
 %AIImgRound DEPEND %Control LONG TIMES 0
 
@@ -12321,29 +12318,25 @@ WHEN  ('') ('?Panel1')
 
 %AIOverrideImgVariable DEPEND %Control DEFAULT TIMES 0
 
-%AIOverrideImgIsVariable DEPEND %Control LONG TIMES 1
-WHEN  ('') (0)
+%AIOverrideImgIsVariable DEPEND %Control LONG TIMES 0
 
 %AIDisableImg DEPEND %Control DEFAULT TIMES 0
 
 %AIDisableImgVariable DEPEND %Control DEFAULT TIMES 0
 
-%AIDisableImgIsVariable DEPEND %Control LONG TIMES 1
-WHEN  ('') (0)
+%AIDisableImgIsVariable DEPEND %Control LONG TIMES 0
 
 %AIHotImg DEPEND %Control DEFAULT TIMES 0
 
 %AIHotImgVariable DEPEND %Control DEFAULT TIMES 0
 
-%AIHotImgIsVariable DEPEND %Control LONG TIMES 1
-WHEN  ('') (0)
+%AIHotImgIsVariable DEPEND %Control LONG TIMES 0
 
 %AIPressedImg DEPEND %Control DEFAULT TIMES 0
 
 %AIPressedImgVariable DEPEND %Control DEFAULT TIMES 0
 
-%AIPressedImgIsVariable DEPEND %Control LONG TIMES 1
-WHEN  ('') (0)
+%AIPressedImgIsVariable DEPEND %Control LONG TIMES 0
 
 [EMBED]
 EMBED %DataSection
@@ -12479,12 +12472,14 @@ END
 PROPERTY:BEGIN
 PRIORITY 8040
 PROPERTY:END
+OMIT('Original_Code')
 IF RegisteredTo = UNREGISTERED_COPY
    UNHIDE(?cmdRegisterNow)
 ELSE
    ?cmdRegisterNow{PROP:Text} = 'Check for Update'
    UNHIDE(?cmdRegisterNow)
 END
+!Original_Code
 [SOURCE]
 PROPERTY:BEGIN
 PRIORITY 8400
@@ -20331,7 +20326,7 @@ PROTOTYPE '(*CSTRING szRegistrant, *LONG ExpiryDate),LONG'
 PARAMETERS '(*CSTRING szRegistrant,*LONG ExpiryDate)'
 [COMMON]
 FROM ABC Source
-MODIFIED '2019/02/17' '10:04:45'
+MODIFIED '2019/02/18' '14:52:38'
 [PROMPTS]
 %GenerateOpenClose LONG  (0)
 %GenerateSaveRestore LONG  (0)
@@ -20462,8 +20457,6 @@ PROPERTY:END
                RetVal = kcr_RegCloseKey(hKeystone)
 
             ELSE  !not registered
-               !!!Region Old Code
-               OMIT('!OLD_CODE')
                lDate = TODAY() + 30
                BinaryLicense = sDate & UNREGISTERED_COPY
                crc = kcr_crc32(ADDRESS(BinaryLicense),32,0)
@@ -20479,12 +20472,6 @@ PROPERTY:END
                   szErrorFunc = 'RegSetValueEx'
                   DO HandleError
                END
-               !OLD_CODE
-               !!!EndRegion Old Code
-               cbBuffer = SIZE(szRegistrant)
-               IF kcr_GetUserName(ADDRESS(szRegistrant),cbBuffer)
-                  ExpiryDate   = DATE(12,31,2099)
-               END   
             END
             RetVal = kcr_RegCloseKey(hDevuna)
          ELSE
